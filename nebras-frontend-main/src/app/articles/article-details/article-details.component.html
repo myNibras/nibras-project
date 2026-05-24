@@ -1,0 +1,92 @@
+<div class="max-w-[1342px] mx-auto px-4">
+    <app-breadcrumb [data]="breadcrumb"></app-breadcrumb>
+</div>
+
+<section class="max-w-[1400px] mx-auto px-4 py-12">
+
+    <!-- SKELETON STATE -->
+    <ng-container *ngIf="loading; else content">
+
+        <!-- Title Skeleton -->
+        <div class="h-10 w-2/3 bg-gray-200 rounded mb-12 animate-pulse"></div>
+
+        <!-- Hero Image Skeleton -->
+        <div class="w-full mb-8">
+            <div class="w-full h-[420px] md:h-[480px] bg-gray-300 rounded-2xl animate-pulse"></div>
+        </div>
+
+        <!-- Date Skeleton -->
+        <div class="flex items-center gap-3 mb-10">
+            <div class="w-6 h-6 bg-gray-300 rounded animate-pulse"></div>
+            <div class="h-5 w-32 bg-gray-200 rounded animate-pulse"></div>
+        </div>
+
+        <!-- Content Skeleton -->
+        <div class="space-y-4 max-w-full">
+            <div class="h-5 w-full bg-gray-200 rounded animate-pulse"></div>
+            <div class="h-5 w-11/12 bg-gray-200 rounded animate-pulse"></div>
+            <div class="h-5 w-10/12 bg-gray-200 rounded animate-pulse"></div>
+
+            <div class="h-5 w-full bg-gray-200 rounded animate-pulse"></div>
+            <div class="h-5 w-11/12 bg-gray-200 rounded animate-pulse"></div>
+
+            <div class="h-5 w-9/12 bg-gray-200 rounded animate-pulse"></div>
+        </div>
+
+        <!-- Related Articles Skeleton -->
+        <div class="mt-16">
+            <div class="h-7 w-40 bg-gray-200 rounded mb-6 animate-pulse"></div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div *ngFor="let i of [1,2,3]"
+                    class="relative w-full h-[630px] bg-gray-200 rounded-2xl overflow-hidden animate-pulse">
+
+                    <div class="absolute inset-0 bg-gray-300"></div>
+
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-400 via-gray-400/70 to-transparent"></div>
+
+                    <div class="absolute bottom-0 p-6 w-full space-y-4">
+                        <div class="h-5 w-3/4 bg-gray-100 rounded"></div>
+                        <div class="h-4 w-full bg-gray-100 rounded"></div>
+                        <div class="h-4 w-5/6 bg-gray-100 rounded"></div>
+                        <div class="h-4 w-24 bg-gray-100 rounded"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </ng-container>
+
+    <!-- REAL CONTENT -->
+    <ng-template #content>
+
+        <!-- Title -->
+        <h1 class="text-3xl md:text-4xl font-bold text-[#043458] mb-12 text-start">
+            {{ article?.title }}
+        </h1>
+
+        <!-- Hero Image -->
+        <div class="w-full mb-8">
+            <img [src]="article?.image" [alt]="article?.title"
+                class="w-full h-[420px] md:h-[480px] object-cover rounded-2xl" />
+        </div>
+
+        <!-- Date -->
+        <div class="flex items-center gap-3 mb-10 text-[#545F71]">
+            <img src="app/assets/icons/calendar.svg" alt="Calendar" class="w-6 h-6" />
+            <span class="text-lg font-medium">
+                {{ formattedCreatedAt }}
+            </span>
+        </div>
+
+        <!-- Content (isolated from project CSS via Shadow DOM) -->
+        <div class="max-w-full mx-auto" appIsolateContent [appIsolateContent]="article?.full_description">
+        </div>
+
+        <!-- Related Articles -->
+        <app-related-articles *ngIf="article?.id" [articleId]="article!.id">
+        </app-related-articles>
+
+    </ng-template>
+
+</section>

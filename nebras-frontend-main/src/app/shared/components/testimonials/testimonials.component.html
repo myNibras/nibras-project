@@ -1,0 +1,125 @@
+<section class="mx-auto px-6 py-12 md:px-12 md:py-24 bg-white" *ngIf="testimonials.length > 0 && loading == false">
+    <h2 class="text-3xl md:text-4xl font-bold text-center cursor-pointer text-[#0B3458] block mb-5">
+        {{ useApiTitle && sectionTitle ? sectionTitle : ("inspiring testimonials" | translate) }}
+    </h2>
+    <p class="mb-3 text-center font-medium text-[#545F71] max-w-3xl mx-auto"
+        *ngIf="useApiTitle && sectionDescription">
+        {{ sectionDescription }}
+    </p>
+
+    <!-- Skeleton Loader -->
+    @if (loading) {
+    <div class="relative max-w-[1335px] container mx-auto mt-14">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 px-4">
+            <div *ngFor="let i of [1,2,3]" class="flex items-center justify-center p-3">
+                <div class="relative w-full bg-white rounded-2xl shadow-[0px_8px_16px_rgba(84,95,113,0.1)] px-8 py-8">
+                    <!-- Quote icon skeleton -->
+                    <div class="w-8 h-8 bg-gray-200 rounded animate-pulse"></div>
+
+                    <!-- Text skeleton -->
+                    <div class="mt-8 space-y-2">
+                        <div class="h-5 w-full bg-gray-200 rounded animate-pulse"></div>
+                        <div class="h-5 w-full bg-gray-200 rounded animate-pulse"></div>
+                        <div class="h-5 w-3/4 bg-gray-200 rounded animate-pulse"></div>
+                    </div>
+
+                    <!-- Profile section skeleton -->
+                    <div class="mt-10 flex items-center gap-4">
+                        <div class="w-[80px] h-[80px] rounded-3xl bg-gray-200 animate-pulse flex-shrink-0"></div>
+                        <div class="flex-1 space-y-2">
+                            <div class="h-6 w-32 bg-gray-200 rounded animate-pulse"></div>
+                            <div class="h-5 w-24 bg-gray-200 rounded animate-pulse"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Controls skeleton -->
+        <div class="flex items-center justify-center gap-5 px-4 pb-6 mt-5 w-full">
+            <div class="w-8 h-8 bg-gray-200 rounded-full animate-pulse"></div>
+            <div class="flex gap-2">
+                <div class="w-8 h-8 bg-gray-200 rounded-full animate-pulse"></div>
+                <div class="w-8 h-8 bg-gray-200 rounded-full animate-pulse"></div>
+                <div class="w-8 h-8 bg-gray-200 rounded-full animate-pulse"></div>
+            </div>
+            <div class="w-8 h-8 bg-gray-200 rounded-full animate-pulse"></div>
+        </div>
+    </div>
+
+    <!-- CTA button skeleton -->
+    <div class="text-center mt-6 lg:mt-8">
+        <div class="inline-flex h-14 w-64 bg-gray-200 rounded-2xl animate-pulse mx-auto"></div>
+    </div>
+    }
+
+    <!-- Real Content -->
+    @if (!loading) {
+    <div class="relative max-w-[1335px] container mx-auto">
+        <!-- Swiper container -->
+        <div class="swiper" #swiperContainer>
+            <div class="swiper-wrapper">
+                <div class="swiper-slide" *ngFor="let testimonial of testimonials">
+                    <div class="flex items-center justify-center p-3">
+                        <div
+                            class="relative w-full bg-white rounded-2xl shadow-[0px_8px_16px_rgba(84,95,113,0.1)] px-8 py-8">
+                            <div class="select-none" aria-hidden="true">
+                                <span
+                                    class="inline-block origin-center rotate-180 font-serif text-7xl leading-[32px] md:text-8xl lg:text-9xl font-bold tracking-tight"
+                                    [style.color]="quoteIconColor(testimonial)">
+                                    {{ quoteMark(testimonial) }}
+                                </span>
+                            </div>
+                            <p class="mt-8 text-lg text-black leading-[2.1rem] font-normal h-[100px] line-clamp-3">
+                                {{ testimonial.text }}
+                            </p>
+
+                            <div class="mt-10 flex items-center gap-4 overflow-hidden">
+                                <div class="w-[80px] h-[80px] rounded-3xl overflow-hidden flex-shrink-0">
+                                    <img src="{{ getTestimonialImage(testimonial) }}" alt="صورة الطالب"
+                                        class="relative z-10 w-full h-full object-cover" />
+                                </div>
+                                <div>
+                                    <div class="min-w-0">
+                                        <p class="text-lg text-[#545F71]">{{ testimonial.name }}</p>
+                                    </div>
+                                    <p class="mt-2 text-md leading-[1.7rem] text-[#545F71]">
+                                        {{ testimonial.course.title }}
+                                        {{ testimonial.class_room?.name }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <div class="hero-controls flex items-center justify-center gap-5 px-4 pb-6 mt-5 w-full">
+                <button type="button" #prevEl class="hero-prev swiper-button-prev !static !m-0 !p-0">
+                    <img src="app/assets/images/home-slider/right-arrow.svg" alt="Prev"
+                        class="w-4 h-4 sm:w-5 sm:h-5 {{ (storageService.siteLanguage$.value == 'ar') ? '' : 'rotate-180' }}" />
+                </button>
+
+                <div #paginationEl class="hero-pagination swiper-pagination"></div>
+
+                <button type="button" #nextEl class="hero-next swiper-button-next !static !m-0 !p-0">
+                    <img src="app/assets/images/home-slider/left-arrow.svg" alt="Next"
+                        class="w-4 h-4 sm:w-5 sm:h-5 {{ (storageService.siteLanguage$.value == 'ar') ? '' : 'rotate-180' }}" />
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <button type="button" class="inline-flex mt-6 lg:mt-8 rounded-2xl
+                bg-gradient-to-r from-[#09528A] to-[#043458] text-[#F2F2F7]
+                px-8 py-5 cursor-pointer
+                text-xl lg:text-2xl flex items-center justify-center
+                hover:brightness-110"
+                (click)="goToContactUs()">
+            {{ "start your free trial now" | translate }}
+        </button>
+    </div>
+    }
+</section>

@@ -1,0 +1,304 @@
+<section class="relative max-w-[1350px] mx-auto mb-15 mt-15">
+    <!-- Hero section -->
+    <div class="bg-[#031F34] lg:rounded-[48px] ">
+
+        <div class="absolute inset-0 bg-no-repeat bg-[length:auto_100%] lg:rounded-[48px] bottom-0 right-0 rtl:left-0 ltr:scale-x-[-1]"
+            style="background-image: url('app/assets/images/our-careers/our-careers-hero.png')"></div>
+
+        <div class="relative text-[#F2F2F7] z-10 lg:max-w-[80%] max-w-full lg:p-20 p-10">
+
+            <h1 class="lg:text-5xl text-3xl font-bold mb-4 leading-tight">
+                {{ 'careers hero title' | translate }}
+            </h1>
+
+            <p class="lg:text-[28px] text-xl leading-relaxed ">
+                {{ 'careers hero description' | translate }}
+            </p>
+
+        </div>
+    </div>
+</section>
+
+
+<section class="relative bg-[#F1F9FF] py-16 px-4 overflow-hidden">
+
+    <img src="app/assets/images/contact-us/contact-us-bg.png"
+        class="absolute rtl:right-0 ltr:left-0 z-0 pointer-events-none -bottom-30 ltr:scale-x-[-1.4]" />
+
+    <div class="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
+
+        <!-- RIGHT SIDE -->
+        <div>
+
+            <h2 class="md:text-5xl text-3xl font-bold text-[#043458] mb-8">
+                {{ 'careers contact info' | translate }}
+            </h2>
+
+            <div class="space-y-6 text-[#545F71] text-2xl">
+
+                <div class="flex items-center gap-3">
+                    <img src="app/assets/icons/email.svg" />
+                    <a href="mailto:notifier@mynibras.com">
+                        notifier&#64;mynibras.com
+                    </a>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <img src="app/assets/icons/phone.svg" />
+
+                    <a href="tel:30102626" class="inline-block [direction:ltr] [unicode-bidi:isolate]">
+                        30102626
+                    </a>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <img src="app/assets/icons/stopwatch.svg" />
+                    <span>{{ 'contact_working_hours' | translate }}</span>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!-- LEFT SIDE -->
+        <div>
+
+            <div class="flex md:flex-row flex-col md:items-center items-start gap-4 mb-8">
+
+                <h2 class="md:text-5xl text-3xl font-bold text-[#043458]">
+                    {{ 'careers form title' | translate }}
+                </h2>
+
+                <span *ngIf="!isSubmitted" class="text-gray-500 text-lg">
+                    {{ 'careers required note' | translate }}
+                </span>
+
+            </div>
+
+
+            <!-- FORM -->
+            <div *ngIf="!isSubmitted" class="bg-white rounded-3xl p-8 shadow-sm border border-[#E3EDF5] space-y-6">
+
+                <form [formGroup]="form" (ngSubmit)="onSubmit()" enctype="multipart/form-data" class="space-y-6">
+
+
+                    <!-- Years of Experience -->
+                    <div>
+
+                        <label class="block text-xl font-medium text-[#043458] mb-2">
+                            {{ 'Years of Experience' | translate }}
+                        </label>
+
+                        <input type="text" formControlName="experience" (input)="onExperienceInput($event)"
+                            [placeholder]="'Enter your years of experience' | translate"
+                            class="w-full text-[#545F71] rounded-xl border border-[#D7DEE4] px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#0B3C5D]" />
+                        <div *ngIf="form.get('experience')?.touched && form.get('experience')?.errors"
+                            class="text-red-500 text-sm mt-1">
+
+                            <span *ngIf="form.get('experience')?.errors?.['required']">
+                                {{ 'careers_experience_required' | translate }}
+                            </span>
+
+                            <span *ngIf="form.get('experience')?.errors?.['pattern']">
+                                {{ 'Only numbers are allowed.' | translate }}
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Specialization -->
+                    <div>
+
+                        <label class="block text-xl font-medium text-[#043458] mb-2">
+                            {{ 'specialization' | translate }}
+                        </label>
+
+                        <input type="text" formControlName="specialization"
+                            [placeholder]="'Enter your specialization' | translate"
+                            class="w-full text-[#545F71] rounded-xl border border-[#D7DEE4] px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#0B3C5D]" />
+
+                        <div *ngIf="form.get('specialization')?.touched && form.get('specialization')?.invalid"
+                            class="text-red-500 text-sm mt-1">
+                            {{ 'careers_specialization_required' | translate }}
+                        </div>
+
+                    </div>
+
+
+                    <!-- Full Name -->
+                    <div>
+
+                        <label class="block text-xl font-medium text-[#043458] mb-2">
+                            {{ 'full name arabic' | translate }}
+                        </label>
+
+                        <input type="text" formControlName="name" [placeholder]="'Enter your full name' | translate"
+                            class="w-full text-[#545F71] rounded-xl border border-[#D7DEE4] px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#0B3C5D]" />
+
+                        <div *ngIf="form.get('name')?.touched && form.get('name')?.invalid"
+                            class="text-red-500 text-sm mt-1">
+                            {{ 'Full name is required.' | translate }}
+                        </div>
+
+                    </div>
+
+
+                    <!-- Phone -->
+                    <div class="relative">
+
+                        <label class="block text-lg font-medium text-[#043458] mb-2">
+                            {{ 'Phone' | translate }}
+                        </label>
+
+                        <div class="flex py-3 items-center rounded-[14px] border border-[#D7DEE4] overflow-hidden bg-white"
+                            dir="ltr">
+
+                            <button type="button" (click)="$event.stopPropagation(); toggle('country')"
+                                class="flex items-center gap-2 px-3 border-r border-[#D7DEE4]">
+
+                                <img [src]="countryFlag" class="w-8 h-4 rounded-sm" />
+
+                                <svg class="w-3 text-[#545F71]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+
+                                </svg>
+
+                            </button>
+
+
+                            <div class="px-2 text-[#043458] font-medium whitespace-nowrap">
+                                {{ dropdowns.country.options[dropdowns.country.selected]?.dial }}
+                            </div>
+
+
+                            <input type="tel" formControlName="phone" (input)="onPhoneInput($event)"
+                                [placeholder]="phonePlaceholder"
+                                class="flex-1 text-base text-[#545F71] bg-transparent border-0 outline-none px-3" />
+
+                        </div>
+
+
+                        <div *ngIf="form.get('phone')?.touched && form.get('phone')?.errors"
+                            class="text-red-500 text-sm mt-1">
+
+                            <div *ngIf="form.get('phone')?.errors?.['required']">
+                                {{ 'contact_phone_required' | translate }}
+                            </div>
+
+                            <div *ngIf="form.get('phone')?.errors?.['maxlength']">
+                                {{ 'contact_phone_max' | translate }}
+                            </div>
+
+                            <div *ngIf="form.get('phone')?.errors?.['pattern']">
+                                {{ 'contact_phone_digits' | translate }}
+                            </div>
+
+                        </div>
+
+
+                        <!-- Country Dropdown -->
+                        <div *ngIf="dropdowns.country.open"
+                            class="absolute z-30 mt-2 w-full bg-white border border-[#D7DEE4] rounded-xl shadow max-h-60 overflow-y-auto"
+                            (click)="$event.stopPropagation()">
+
+                            <div *ngFor="let c of dropdowns.country.options; let i = index" (click)="selectCountry(i)"
+                                class="flex items-center gap-3 px-4 py-3 hover:bg-[#F5F7FA] cursor-pointer">
+
+                                <img [src]="c.flag" class="w-8 h-4 rounded-sm" />
+
+                                <span class="text-[#545F71]">
+                                    {{ currentLang === 'ar' ? c.arName : c.name }}
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Email -->
+                    <div>
+
+                        <label class="block text-xl font-medium text-[#043458] mb-2">
+                            {{ 'Email' | translate }}
+                        </label>
+
+                        <input type="email" formControlName="email" [placeholder]="'Enter your email' | translate"
+                            class="w-full text-[#545F71] rounded-xl border border-[#D7DEE4] px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#0B3C5D]" />
+
+                        <div *ngIf="form.get('email')?.touched && form.get('email')?.invalid"
+                            class="text-red-500 text-sm mt-1">
+
+                            <span *ngIf="form.get('email')?.errors?.['required']">
+                                {{ 'Email is required.' | translate }}
+                            </span>
+
+                            <span *ngIf="form.get('email')?.errors?.['email']">
+                                {{ 'Enter a valid email address.' | translate }}
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CV -->
+                    <div>
+
+                        <label class="block text-xl font-medium text-[#043458] mb-2">
+                            {{ 'resume' | translate }}
+                        </label>
+
+                        <label
+                            class="flex items-center justify-between border border-[#D7DEE4] rounded-xl px-4 py-3 cursor-pointer hover:bg-gray-50 transition">
+
+                            <span class="text-[#545F71] text-sm">
+                                {{ selectedFileName || ('upload file' | translate) }}
+                            </span>
+
+                            <img src="app/assets/icons/upload.svg" class="w-5 h-5" />
+
+                            <input type="file" accept=".pdf" (change)="onFileSelect($event)" hidden />
+
+                        </label>
+
+                        <div *ngIf="form.get('cv')?.touched && form.get('cv')?.invalid"
+                            class="text-red-500 text-sm mt-1">
+                            {{ 'CV is required (PDF only)' | translate }}
+                        </div>
+
+                    </div>
+
+
+                    <button type="submit" [disabled]="isLoading"
+                        class="w-[40%] bg-[#043458] text-white py-3 rounded-xl cursor-pointer hover:bg-[#032b47] transition disabled:opacity-50">
+
+                        {{ 'send' | translate }}
+
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- SUCCESS -->
+            <div *ngIf="isSubmitted"
+                class="bg-white border border-[#5CB85C] text-[#043458] rounded-3xl p-8 w-full shadow-sm text-start">
+
+                <p class="text-2xl font-medium">
+                    {{ 'careers_success_message' | translate }}
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

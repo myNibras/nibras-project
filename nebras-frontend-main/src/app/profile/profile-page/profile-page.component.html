@@ -1,0 +1,210 @@
+<!-- Skeleton Loader -->
+<ng-container *ngIf="loading">
+  <div class="mx-auto max-w-[1335px] xl:p-0 px-3 flex flex-col lg:flex-row gap-8 mt-6 mb-10">
+
+    <!-- Sidebar Skeleton -->
+    <aside class="hidden lg:block w-full lg:w-[360px] bg-white rounded-[32px] p-4
+           shadow-[0_16px_40px_rgba(15,23,42,0.08)] min-h-[1030px]">
+
+      <!-- Profile Card -->
+      <div class="rounded-3xl border border-[#CDD5E1] p-4 flex gap-3 mb-6 animate-pulse">
+
+        <div class="w-[112px] h-[112px] bg-gray-200 rounded-xl"></div>
+
+        <div class="flex-1 space-y-3">
+          <div class="h-5 w-32 bg-gray-200 rounded"></div>
+          <div class="h-4 w-24 bg-gray-200 rounded"></div>
+        </div>
+
+      </div>
+
+      <!-- Sidebar Buttons -->
+      <div class="space-y-3">
+
+        <div *ngFor="let i of [1,2,3,4,5,6]" class="h-12 w-full bg-gray-200 rounded-full animate-pulse">
+        </div>
+
+      </div>
+
+    </aside>
+
+
+    <!-- Main Content Skeleton -->
+    <div class="flex-1">
+
+      <!-- Page Title -->
+      <div class="h-10 w-64 bg-gray-200 rounded mb-6 animate-pulse"></div>
+      <div class="h-[1px] bg-gray-200 mb-6"></div>
+
+      <!-- Form Fields -->
+      <div class="space-y-6">
+
+        <div *ngFor="let i of [1,2,3,4,5,6]">
+
+          <div class="h-4 w-32 bg-gray-200 rounded mb-2 animate-pulse"></div>
+
+          <div class="h-12 w-full bg-gray-200 rounded-full animate-pulse"></div>
+
+        </div>
+
+      </div>
+
+      <!-- Change Password Button -->
+      <div class="mt-8">
+        <div class="h-12 w-48 bg-gray-200 rounded-full animate-pulse"></div>
+      </div>
+
+    </div>
+
+  </div>
+</ng-container>
+
+<!-- ================= WRAPPER ================= -->
+<ng-container *ngIf="!loading && student">
+
+  <div class="mx-auto max-w-[1335px] xl:p-0 px-3 flex flex-col lg:flex-row gap-8 mt-6 mb-10">
+
+    <!-- ================= MOBILE / TABLET DROPDOWN ================= -->
+    <div class="block lg:hidden relative w-[330px] ">
+
+      <!-- Selected Tab -->
+      <button (click)="menuOpen = !menuOpen" class="w-full flex items-center justify-between gap-3 px-5 py-4
+             rounded-xl bg-[#1E90FF] text-white text-lg font-medium">
+
+        <div class="flex flex-row gap-2 items-center">
+          <img src="app/assets/icons/profile-dropdown-icon.svg" />
+          <span>{{ activeTabLabel | translate }}</span>
+        </div>
+
+        <svg class="w-5 h-5 transition" [class.rotate-180]="menuOpen" fill="none" stroke="currentColor"
+          viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+
+      <!-- Dropdown List -->
+      <div *ngIf="menuOpen" class="absolute z-30 mt-2 w-full bg-white rounded-2xl
+             border border-[#D7E8F5] shadow-lg overflow-hidden">
+
+        <button *ngFor="let tab of tabs" (click)="selectTab(tab.key)" class="w-full text-start px-5 py-3 text-[#043458]
+               hover:bg-[#F0F7FF]" [class.bg-[#1E90FF]]="selectedTab === tab.key"
+          [class.text-white]="selectedTab === tab.key">
+
+          {{ tab.label | translate }}
+        </button>
+      </div>
+    </div>
+
+    <!-- ================= DESKTOP SIDEBAR ================= -->
+    <aside class="hidden lg:block w-full lg:w-[360px] bg-white rounded-[32px] p-4
+           shadow-[0_16px_40px_rgba(15,23,42,0.08)] min-h-[1030px]">
+
+      <!-- Profile Card -->
+      <div class="rounded-3xl flex items-center border border-[#CDD5E1] overflow-hidden mb-4">
+        <div class="w-[112px] h-[112px] flex-none">
+          <img [src]="profileImage" alt="profile image" class="w-full h-full object-cover" />
+        </div>
+        <div class="flex-1 px-3 min-w-0">
+          <p class="text-xl text-[#545F71] truncate">{{ student.name }}</p>
+          <hr class="border-[#D7E8F5] border my-[6px]">
+          <p class="text-base text-[#545F71] truncate">
+            {{ student.class_name }}
+          </p>
+        </div>
+      </div>
+
+      <!-- Sidebar Menu -->
+      <div class="flex flex-col gap-4">
+
+        <button *ngFor="let tab of tabs" (click)="selectTab(tab.key)" class="w-full flex justify-between items-center px-4 py-3
+               rounded-full border border-[#CDD5E1]
+               text-lg text-[#043458]" [ngClass]="{ 'active-tab': selectedTab === tab.key }">
+
+          {{ tab.label | translate }}
+
+          <img *ngIf="selectedTab === tab.key" src="app/assets/icons/white-arrow.svg" alt="arrow"
+            [ngClass]="{ 'rotate-180': storageService.siteLanguage$.value === 'en' }">
+        </button>
+
+      </div>
+    </aside>
+
+    <div class="flex-1 flex flex-col gap-6">
+      @if (paymentError) {
+      <div class="rounded-2xl bg-red-50 border border-red-200 p-4 flex items-center justify-between gap-3">
+        <p class="text-red-800 text-sm font-medium">{{ paymentError }}</p>
+        <button type="button" (click)="paymentError = null" class="text-red-600 hover:text-red-800 shrink-0">×</button>
+      </div>
+      }
+      @if (paymentFailedMessage) {
+      <div class="rounded-2xl bg-red-50 border border-red-200 p-4 flex items-center justify-between gap-3">
+        <p class="text-red-800 text-sm font-medium">{{ paymentFailedMessage }}</p>
+        <button type="button" (click)="closePaymentFailedMessage()"
+          class="text-red-600 hover:text-red-800 shrink-0">×</button>
+      </div>
+      }
+      @if(selectedTab === 'profile') {
+      <h2 class="text-[#043458] font-bold text-4xl mb-4">{{ "account information" | translate }}</h2>
+      <hr class="border-[#D7E8F5]">
+      <app-unpaid-reminders (payNow)="onPayNowReminder($event)"></app-unpaid-reminders>
+      <app-user-info [student]="student" (changePassword)="openChangePassword()"
+        (profileUpdated)="onProfileUpdated($event)"></app-user-info>
+      }
+      @else if(selectedTab === 'registered-materials') {
+      <h2 class="text-[#043458] font-bold text-4xl mb-4">{{ "registered materials" | translate }}</h2>
+      <hr class="border-[#D7E8F5]">
+      <app-unpaid-reminders (payNow)="onPayNowReminder($event)"></app-unpaid-reminders>
+      <app-registered-materials></app-registered-materials>
+      }
+      @else if(selectedTab === 'messages-and-notifications') {
+      <h2 class="text-[#043458] font-bold text-4xl mb-4">{{ "messages and notifications" | translate }}</h2>
+      <hr class="border-[#D7E8F5]">
+      <app-unpaid-reminders (payNow)="onPayNowReminder($event)"></app-unpaid-reminders>
+      <app-messages-and-notifications></app-messages-and-notifications>
+      }
+      @else if(selectedTab === 'invoices') {
+      <h2 class="text-[#043458] font-bold text-4xl mb-4">{{ "payments & invoices" | translate }}</h2>
+      <hr class="border-[#D7E8F5]">
+      <app-unpaid-reminders (payNow)="onPayNowReminder($event)"></app-unpaid-reminders>
+      <app-invoices (payNowInstallment)="onPayNowInstallment($event)"
+        [installmentPaymentLoading]="installmentPaymentLoading"></app-invoices>
+      }
+      @else if(selectedTab === 'rating') {
+      <h2 class="text-[#043458] font-bold text-4xl mb-4">{{ "My Testimonials" | translate }}</h2>
+      <hr class="border-[#D7E8F5]">
+      <app-unpaid-reminders (payNow)="onPayNowReminder($event)"></app-unpaid-reminders>
+      <app-my-testimonials></app-my-testimonials>
+      }
+      @else if(selectedTab === 'chats') {
+      <h2 class="text-[#043458] font-bold text-4xl mb-4">{{ "Group Chats" | translate }}</h2>
+      <hr class="border-[#D7E8F5]">
+      <app-unpaid-reminders (payNow)="onPayNowReminder($event)"></app-unpaid-reminders>
+      <app-group-chats></app-group-chats>
+      }
+    </div>
+  </div>
+
+  @if (showInstallmentCheckout && installmentSessionId) {
+  <app-network [sessionId]="installmentSessionId" />
+  }
+
+  <!-- ================= RELATED COURSES ================= -->
+  <app-related-courses [courses]="relatedCourses"></app-related-courses>
+
+</ng-container>
+
+
+<!-- Change Password Popup -->
+<app-change-password *ngIf="showChangePassword" (closeModal)="closeChangePassword()"
+  (passwordChanged)="onPasswordChanged()">
+</app-change-password>
+
+<!-- Success Popup -->
+<app-successful-popup *ngIf="showSuccessPopup" [title]="'Password Changed Successfully' | translate"
+  [message]="'Your password has been updated.' | translate" (close)="closeSuccessPopup()">
+</app-successful-popup>
+
+<!-- Payment success popup (after gateway redirect) -->
+<app-successful-popup *ngIf="showPaymentSuccessPopup" [title]="'Payment Successful' | translate"
+  [message]="'Your installment payment was completed successfully.' | translate" (close)="closePaymentSuccessPopup()">
+</app-successful-popup>

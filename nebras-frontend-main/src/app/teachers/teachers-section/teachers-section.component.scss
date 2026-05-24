@@ -1,0 +1,19 @@
+.teachers-swiper-container {
+  padding-inline: 40px;
+  overflow: hidden;
+}
+
+.swiper {
+  overflow: visible;
+}
+
+/* 🔥 IMPORTANT FIX */
+.swiper-wrapper {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.swiper-slide {
+  flex-shrink: 0;
+  width: 280px;
+}

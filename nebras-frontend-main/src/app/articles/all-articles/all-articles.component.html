@@ -1,0 +1,74 @@
+<div class="max-w-[1342px] mx-auto px-4">
+    <app-breadcrumb [data]="breadcrumb"></app-breadcrumb>
+</div>
+
+<section class="max-w-[1440px] mx-auto px-4 py-14">
+
+
+    <!-- PAGE TITLE -->
+    <h1 class="text-4xl font-bold text-[#0B3458] mb-12 text-start">
+        {{ sectionTitle || ('Articles' | translate) }}
+    </h1>
+
+    <!-- SKELETON STATE -->
+    <ng-container *ngIf="loading; else content">
+
+        <!-- Featured Article Skeleton -->
+        <div class="mb-12">
+            <div class="relative w-full h-[420px] md:h-[480px] rounded-2xl overflow-hidden bg-gray-200 animate-pulse">
+
+                <div class="absolute inset-0 bg-gray-300"></div>
+                <div class="absolute inset-0 bg-gray-400/30"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-500 via-gray-500/70 to-transparent"></div>
+
+                <div class="absolute bottom-0 p-8 w-full space-y-4">
+                    <div class="h-6 w-1/2 bg-gray-100 rounded"></div>
+                    <div class="h-4 w-2/3 bg-gray-100 rounded"></div>
+                    <div class="h-4 w-24 bg-gray-100 rounded"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Grid Skeleton -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div *ngFor="let i of [1,2,3]"
+                class="relative w-full h-[630px] rounded-2xl overflow-hidden bg-gray-200 animate-pulse">
+
+                <div class="absolute inset-0 bg-gray-300"></div>
+                <div class="absolute inset-0 bg-gray-400/30"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-500 via-gray-500/70 to-transparent"></div>
+
+                <div class="absolute bottom-0 p-6 w-full space-y-4">
+                    <div class="h-5 w-3/4 bg-gray-100 rounded"></div>
+                    <div class="h-4 w-full bg-gray-100 rounded"></div>
+                    <div class="h-4 w-5/6 bg-gray-100 rounded"></div>
+                    <div class="h-4 w-20 bg-gray-100 rounded"></div>
+                </div>
+            </div>
+        </div>
+
+    </ng-container>
+
+
+    <!-- REAL CONTENT -->
+    <ng-template #content>
+
+        <!-- Featured Article -->
+        <div class="mb-12">
+            <app-article-card class="block w-full" [article]="articlesList[0]">
+            </app-article-card>
+        </div>
+
+        <!-- Articles Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <ng-container *ngFor="let article of articlesList; let i = index">
+                <app-article-card *ngIf="i > 0" [article]="article">
+                </app-article-card>
+            </ng-container>
+
+        </div>
+
+    </ng-template>
+
+</section>

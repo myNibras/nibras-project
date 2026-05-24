@@ -1,0 +1,162 @@
+<!-- Top Bar -->
+<nav id="navbar" class="w-full z-20 sticky top-0 start-0 p-1 md:px-6 transition-colors duration-100"
+    [ngClass]="scrolled ? 'bg-[#f1f9ff] shadow-md' : 'bg-[#f1f9ff80] backdrop-blur'">
+
+    <div class="container h-full mx-auto max-w-[1335px]">
+
+        <!-- ====== Mobile/Tablet (≤1023px) ====== -->
+        <div class="flex items-center justify-between lg:hidden">
+            <!-- Hamburger (EN: left, AR: right) -->
+            <button type="button"
+                class="inline-flex items-center justify-center w-11 h-11 mx-2 rounded-lg text-[#043458] hover:bg-white/60"
+                (click)="openMenu()" [class.order-2]="isRTL" [class.order-1]="!isRTL">
+                <span class="sr-only">Open menu</span>
+                <svg class="w-9 h-9" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+            </button>
+
+            <!-- Logo (center) -->
+            <a [href]="storageService.siteLanguage$.value" class="flex items-center order-2">
+                <img src="app/assets/images/layouts/ar-logo.png" class="h-[50px] md:h-[62px]" alt="Logo" />
+            </a>
+
+            @if(authService.isLoggedIn()){
+            <a [routerLink]="profileRoutes[storageService.siteLanguage$.value]"
+                class="order-3 inline-flex items-center justify-center bg-[#FD9A33] text-white font-bold rounded-full px-3 py-2 mx-1 md:mx-2 md:px-5 md:text-base text-sm hover:brightness-95">
+                {{ authService.getStudentName() }}
+            </a>
+            <!-- <ngx-skeleton-loader class="mb-0" [theme]="{ height: '50px', width: '180px', margin: '0px !important', 'border-radius': '32px' }"></ngx-skeleton-loader> -->
+            } @else {
+            <button (click)="openLogin($event)"
+                class="order-3 inline-flex items-center justify-center bg-[#FD9A33] text-white font-bold rounded-full px-3 py-2 mx-1 md:mx-2 md:px-5 md:text-base text-sm hover:brightness-95">
+                {{ 'Register Now' | translate }}
+            </button>
+            }
+        </div>
+
+        <!-- ====== Desktop (≥1024px) — original 3-column layout ====== -->
+        <div class="hidden lg:grid lg:grid-cols-[auto_1fr_auto] lg:items-center lg:gap-8">
+            <!-- Logo left -->
+            <a [routerLink]="storageService.siteLanguage$.value" class="flex items-center">
+                <img [src]="storageService.siteLanguage$.value === 'ar'
+            ? 'app/assets/images/layouts/ar-logo.png'
+            : 'app/assets/images/layouts/en-logo.png'" class="h-[82px]" alt="Logo" />
+            </a>
+
+            <!-- Links center -->
+            <ul class="flex justify-center gap-10 text-[#043458] font-bold text-base">
+                <li>
+                    <a [routerLink]="storageService.siteLanguage$.value" class="py-2"
+                        [ngClass]="{ 'active-link': activeSection === 'home' }">
+                        {{ 'Home' | translate }}
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="storageService.siteLanguage$.value === 'ar' ? ['/ar/المواد', ''] : ['/en/subjects', '']"
+                        class="py-2" [ngClass]="{ 'active-link': activeSection === 'subjects' }">
+                        {{ 'Subjects' | translate }}
+                    </a>
+
+
+                </li>
+                <li>
+                    <a [routerLink]="['/']" (click)="scrollToFragment('about-us')" class="py-2 cursor-pointer"
+                        [ngClass]="{ 'active-link': activeSection === 'about' }">
+                        {{ 'About Us' | translate }}
+                    </a>
+                </li>
+                <li>
+                    <a [routerLink]="['/']" (click)="scrollToFragment('contact-us')" class="py-2"
+                        [ngClass]="{ 'active-link': activeSection === 'contact' }">
+                        {{ 'Contact Us' | translate }}
+                    </a>
+                </li>
+                <li class="relative">
+                    <div class="flex gap-3 cursor-pointer" (click)="toggleLanguage()">
+                        <img src="/app/assets/images/shared/earth_043458.svg" style="width: 25px;" />
+                        <span class='toggle-lang' [ngClass]="{'ar': storageService.siteLanguage$.value == 'en'}">{{
+                            'TOGGLE_LANGUAGE_SHORT' | translate }}</span>
+                    </div>
+                </li>
+            </ul>
+            @if(authService.isLoggedIn()){
+            <a [routerLink]="profileRoutes[storageService.siteLanguage$.value]"
+                class="inline-flex items-center justify-center bg-[#FD9A33] text-white font-semibold rounded-full px-5 py-2 text-xl hover:brightness-95">
+                {{ authService.getStudentName() }}
+            </a>
+            <!-- <ngx-skeleton-loader class="mb-0" [theme]="{ height: '50px', width: '180px', margin: '0px !important', 'border-radius': '32px' }"></ngx-skeleton-loader> -->
+            } @else {
+            <button (click)="openLogin($event)"
+                class="inline-flex items-center justify-center bg-[#FD9A33] text-white font-semibold rounded-full px-5 py-2 text-xl hover:brightness-95">
+                {{ 'Register Now' | translate }}
+            </button>
+            }
+        </div>
+    </div>
+</nav>
+
+<!-- ====== DRAWER (Tablet/Mobile) ====== -->
+
+<!-- Backdrop -->
+<div *ngIf="isMenuOpen" class="fixed inset-0 z-40 bg-black/50 backdrop-blur-[1px]" (click)="closeMenu()"></div>
+
+<!-- Panel -->
+<aside class="fixed top-0 bottom-0 z-50 w-[78vw] max-w-[360px]
+          text-white transition-transform duration-300 ease-out lg:hidden overflow-y-auto
+          bg-[linear-gradient(90deg,#09528A_0%,#043458_100%)]" [ngClass]="[
+    isRTL ? 'right-0 rounded-s-2xl' : 'left-0 rounded-e-2xl',
+    isMenuOpen ? 'translate-x-0' : (isRTL ? 'translate-x-full' : '-translate-x-full')
+  ]">
+
+    <!-- Drawer header -->
+    <div class="flex items-center justify-between px-5 pt-4 pb-6">
+        <span class="text-sm opacity-70">{{ 'Menu' | translate }}</span>
+        <button class="w-10 h-10 inline-flex items-center justify-center rounded-full hover:bg-white/10"
+            (click)="closeMenu()" aria-label="Close">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M6 6l12 12M18 6l-12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            </svg>
+        </button>
+    </div>
+
+    <!-- Drawer links -->
+    <nav class="px-6">
+        <ul class="space-y-4 text-base font-semibold">
+            <li>
+                <a class="block py-2" [href]="storageService.siteLanguage$.value" (click)="closeMenu()"
+                    [ngClass]="{ 'active-link': activeSection === 'home' }">
+                    {{ 'Home' | translate }}
+                </a>
+            </li>
+            <li>
+                <a class="block py-2" [routerLink]="subjectsRoutes[storageService.siteLanguage$.value]"
+                    routerLinkActive="active-link" (click)="closeMenu()">
+                    {{ 'Subjects' | translate }}
+                </a>
+            </li>
+            <li>
+                <a class="block py-2 cursor-pointer" [routerLink]="['/']" (click)="scrollToFragment('about-us')"
+                    [ngClass]="{ 'active-link': activeSection === 'about' }">
+                    {{ 'About Us' | translate }}
+                </a>
+            </li>
+            <li>
+                <a class="block py-2 cursor-pointer" [routerLink]="['/']" (click)="scrollToFragment('contact-us')"
+                    [ngClass]="{ 'active-link': activeSection === 'contact' }">
+                    {{ 'Contact Us' | translate }}
+                </a>
+            </li>
+            <li class="border-t border-white/10 pt-3 mt-3">
+                <div class="flex gap-3" (click)="toggleLanguage()">
+                    <img src="/app/assets/images/shared/earth.svg" style="width: 25px; color: #043458;" />
+                    <span class='toggle-lang' [ngClass]="{'ar': storageService.siteLanguage$.value == 'en'}">{{
+                        'TOGGLE_LANGUAGE' | translate }}</span>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</aside>
+
+<app-login-register [open]="loginOpen" [isRTL]="isRTL" (closed)="loginOpen = false">
+</app-login-register>

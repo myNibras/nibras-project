@@ -1,0 +1,19 @@
+<section class="page-hero relative overflow-hidden">
+  <div class="max-w-[1400px] mx-auto px-6 pt-10 pb-8 lg:pt-16 lg:pb-12 relative z-10">
+
+    <app-breadcrumb *ngIf="breadcrumb && breadcrumb.length > 0" [data]="breadcrumb"></app-breadcrumb>
+
+    <h1 class="text-3xl md:text-5xl font-extrabold text-[#043458] leading-tight mt-2">
+      <ng-container *ngIf="translate; else rawTitle">{{ title | translate }}</ng-container>
+      <ng-template #rawTitle>{{ title }}</ng-template>
+    </h1>
+
+    <p *ngIf="subtitle" class="mt-3 max-w-2xl text-base md:text-lg text-[#475569]">
+      <ng-container *ngIf="translate; else rawSubtitle">{{ subtitle | translate }}</ng-container>
+      <ng-template #rawSubtitle>{{ subtitle }}</ng-template>
+    </p>
+
+  </div>
+
+  <div class="hero-glow" aria-hidden="true"></div>
+</section>

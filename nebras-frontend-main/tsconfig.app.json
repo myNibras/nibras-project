@@ -1,0 +1,26 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./out-tsc/app",
+    "types": [
+      "node"
+    ],
+    "noUnusedLocals": true,         // ✅ warn about unused variables
+    "noUnusedParameters": true,     // ✅ warn about unused function args
+    "forceConsistentCasingInFileNames": true  // ✅ catches casing mismatches
+  },
+  "files": [
+    "src/main.ts",
+    "src/main.server.ts",
+    "server.ts"
+  ],
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.d.ts"
+  ],
+  "exclude": [
+    "src/test.ts",
+    "src/**/*.spec.ts"              // ✅ avoid test files in prod build
+  ]
+}

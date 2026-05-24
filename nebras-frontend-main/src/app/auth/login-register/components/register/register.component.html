@@ -1,0 +1,375 @@
+<div class="min-h-screen flex flex-col py-5 items-center justify-start bg-[#F5F8FB] px-4">
+
+    <!-- Title -->
+    <h1 class="text-[#043458] text-3xl md:text-4xl font-bold mb-8">
+        {{ 'Sign Up' | translate }}
+    </h1>
+
+    <div class="w-full max-w-3xl bg-white p-8 rounded-2xl shadow-lg">
+
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="space-y-6">
+
+            <!-- ================= ROW 1 ================= -->
+            <!-- Name | Email -->
+            <div class="grid md:grid-cols-2 gap-6">
+
+                <!-- Full Name -->
+                <div>
+                    <label class="block text-[#043458] md:text-[18px] text-[16px] font-medium">
+                        {{ 'Full Name' | translate }}
+                    </label>
+
+                    <input formControlName="name" [placeholder]="'Enter your full name' | translate"
+                        class="mt-1 w-full rounded-xl border text-[14px] text-[#545F71] border-[#D7DEE4] px-5 py-3" />
+
+                    <ng-container *ngIf="registerForm.get('name') as nameCtrl">
+                        <p *ngIf="nameCtrl.touched && nameCtrl.hasError('required')" class="text-red-600 text-sm mt-1">
+                            {{ 'Full name is required.' | translate }}
+                        </p>
+                        <p *ngIf="nameCtrl.touched && nameCtrl.hasError('minlength')" class="text-red-600 text-sm mt-1">
+                            {{ 'Name must be at least 2 characters.' | translate }}
+                        </p>
+                        <p *ngIf="nameCtrl.touched && nameCtrl.hasError('pattern')" class="text-red-600 text-sm mt-1">
+                            {{ 'Name can only contain letters.' | translate }}
+                        </p>
+                    </ng-container>
+
+                    <p *ngIf="registerForm.get('name')?.errors?.['serverError']" class="text-red-600 text-sm mt-1">
+                        {{ registerForm.get('name')?.errors?.['serverError'] }}
+                    </p>
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <label class="block text-[#043458] md:text-[18px] text-[16px] font-medium">
+                        {{ 'Email' | translate }}
+                    </label>
+
+                    <input type="email" formControlName="email" [placeholder]="'Enter your email' | translate"
+                        class="mt-1 w-full rounded-xl text-[14px] text-[#545F71] border border-[#D7DEE4] px-5 py-3" />
+
+                    <p *ngIf="registerForm.get('email')?.touched && registerForm.get('email')?.hasError('required')"
+                        class="text-red-600 text-sm mt-1">
+                        {{ 'Email is required.' | translate }}
+                    </p>
+
+                    <p *ngIf="registerForm.get('email')?.touched &&
+                registerForm.get('email')?.hasError('email')" class="text-red-600 text-sm mt-1">
+                        {{ 'Enter a valid email.' | translate }}
+                    </p>
+
+                    <p *ngIf="registerForm.get('email')?.errors?.['serverError']" class="text-red-600 text-sm mt-1">
+                        {{ registerForm.get('email')?.errors?.['serverError'] }}
+                    </p>
+                </div>
+            </div>
+
+            <!-- ================= ROW 2 ================= -->
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Phone -->
+                <div class="relative">
+                    <label class="block text-[#043458] md:text-[18px] text-[16px] font-medium">
+                        {{ 'Phone Number' | translate }}
+                    </label>
+
+                    <div class="mt-1 flex py-3 items-center rounded-[14px] border border-[#D7DEE4] overflow-hidden bg-white"
+                        dir="ltr">
+                        <!-- Country dropdown -->
+                        <button type="button" (click)="$event.stopPropagation(); toggle('country')"
+                            (keydown)="onKeydown('country', $event)"
+                            class="flex items-center justify-between gap-1 px-3 min-w-[60px] shrink-0 bg-transparent border-r border-[#D7DEE4]"
+                            [attr.aria-expanded]="dropdowns.country.open ? 'true' : 'false'">
+                            <img [src]="countryFlag" alt="" class="w-8 h-4 rounded-sm block" />
+                            <svg class="w-3 text-[#545F71] shrink-0" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+
+                        <!-- Hidden field for country code -->
+                        <input type="hidden" formControlName="country" />
+
+                        <!-- Static dial code (UI only) -->
+                        <div class="px-2 text-[#043458] font-medium flex items-center whitespace-nowrap">
+                            {{ dropdowns.country.options[dropdowns.country.selected]?.dial }}
+                        </div>
+
+                        <!-- Phone input (number only, without dial code) -->
+                        <input #phoneInput type="tel" formControlName="phone" (input)="onPhoneInput($event)"
+                            [placeholder]="phonePlaceholder" maxlength="11" minlength="7"
+                            class="flex-1 text-base text-[#545F71] placeholder:text-[#545F71]/70 bg-transparent border-0 outline-none h-full" />
+                    </div>
+                    <ng-container *ngIf="registerForm.get('phone') as phoneCtrl">
+                        <p *ngIf="phoneCtrl.touched && phoneCtrl.hasError('minlength')"
+                            class="text-red-600 text-sm mt-1">
+                            {{ 'Phone number is too short.' | translate }}
+                        </p>
+                        <p *ngIf="phoneCtrl.touched && phoneCtrl.hasError('maxlength')"
+                            class="text-red-600 text-sm mt-1">
+                            {{ 'Phone number is too long.' | translate }}
+                        </p>
+                        <p *ngIf="phoneCtrl.touched && phoneCtrl.hasError('pattern')" class="text-red-600 text-sm mt-1">
+                            {{ 'Phone number must contain digits only.' | translate }}
+                        </p>
+                    </ng-container>
+
+                    <!-- Country dropdown list -->
+                    <div *ngIf="dropdowns.country.open"
+                        class="absolute z-20 mt-1 w-full bg-white border border-[#D7DEE4] rounded-[14px] shadow"
+                        (click)="$event.stopPropagation()">
+                        <div class="p-2 border-b border-[#E9E9E9]">
+                            <input type="text" [value]="dropdowns.country.search || ''"
+                                (input)="onCountrySearch($event)" [placeholder]="'Search' | translate"
+                                class="w-full h-8 px-2 text-sm border border-[#D7DEE4] rounded-[8px] focus:outline-none focus:border-slate-300" />
+                        </div>
+                        <ul class="max-h-48 overflow-y-auto">
+                            <li *ngFor="let c of filtered('country'); let i = index" (click)="select('country', i)"
+                                (mouseenter)="dropdowns.country.highlighted = i"
+                                class="flex items-center gap-2 px-3 py-2 hover:bg-[#F5F7FA] cursor-pointer"
+                                [class.bg-blue-100]="i === dropdowns.country.highlighted">
+                                <img [src]="c.flag" class="h-4 w-8 rounded-sm" [alt]="c.label" />
+                                <span>
+                                    {{ storageService.siteLanguage$.value === 'ar' ? c.arName : c.name }}
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Validation messages -->
+                    <ng-container *ngIf="registerForm.get('phone') as phoneCtrl">
+                        <p *ngIf="(phoneCtrl.touched || phoneCtrl.dirty) && phoneCtrl.hasError('required')"
+                            class="text-red-600 text-sm mt-1">
+                            {{ 'Phone number is required.' | translate }}
+                        </p>
+                        <p *ngIf="phoneCtrl.errors?.['serverError']" class="text-red-600 text-sm mt-1">
+                            {{ phoneCtrl.errors?.['serverError'] }}
+                        </p>
+                    </ng-container>
+                </div>
+
+
+                <!-- Class -->
+                <div class="relative">
+                    <label class="block text-[#043458] md:text-[18px] text-[16px] font-medium">
+                        {{ 'Class' | translate }}
+                    </label>
+
+                    <button type="button" (click)="$event.stopPropagation(); toggle('class')"
+                        (keydown)="onKeydown('class', $event)"
+                        class="flex items-center justify-between w-full mt-1 rounded-[14px] border border-[#D7DEE4] bg-white text-[#545F71] px-4 py-3 text-sm"
+                        [attr.aria-expanded]="dropdowns.class.open ? 'true' : 'false'">
+                        <span>{{ getLabel('class') || ('select' | translate) }}</span>
+                        <svg class="w-4 h-4 shrink-0 text-[#545F71]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+
+                    <ul *ngIf="dropdowns.class.open"
+                        class="absolute z-20 mt-1 w-full bg-white border border-[#D7DEE4] rounded-[14px] shadow max-h-48 overflow-y-auto"
+                        (click)="$event.stopPropagation()">
+                        <li *ngFor="let g of dropdowns.class.options; let i = index" (click)="select('class', i)"
+                            (mouseenter)="dropdowns.class.highlighted = i"
+                            class="px-4 py-2 text-sm cursor-pointer text-[#545F71] hover:bg-[#F5F7FA]"
+                            [class.bg-blue-100]="i === dropdowns.class.highlighted">
+                            {{ g.name }}
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6">
+
+                <!-- Age -->
+                <div class="relative">
+                    <label class="block text-[#043458] md:text-[18px] text-[16px] font-medium">
+                        {{ 'Age' | translate }}
+                    </label>
+
+                    <input type="number" formControlName="age" min="3" max="100"
+                        class="mt-1 w-full rounded-xl border border-[#D7DEE4] text-[#545F71] px-4 py-3 text-sm"
+                        placeholder="{{ 'Age' | translate }}" />
+
+                    <ng-container *ngIf="registerForm.get('age') as ageCtrl">
+                        <p *ngIf="(ageCtrl.touched || ageCtrl.dirty) && ageCtrl.hasError('required')"
+                            class="text-red-600 text-sm mt-1">
+                            {{ 'Age is required.' | translate }}
+                        </p>
+                        <p *ngIf="(ageCtrl.touched || ageCtrl.dirty) && ageCtrl.hasError('min')"
+                            class="text-red-600 text-sm mt-1">
+                            {{ 'Age must be at least 3.' | translate }}
+                        </p>
+                    </ng-container>
+                </div>
+
+                
+                <!-- Gender -->
+                <div class="relative">
+                    <label class="block text-[#043458] md:text-[18px] text-[16px] font-medium">
+                        {{ 'Gender' | translate }}
+                    </label>
+
+                    <button type="button" (click)="$event.stopPropagation(); toggle('gender')"
+                        (keydown)="onKeydown('gender', $event)"
+                        class="flex items-center justify-between w-full mt-1 rounded-[14px] border border-[#D7DEE4] bg-white text-[#545F71] px-4 py-3 text-sm"
+                        [attr.aria-expanded]="dropdowns.gender.open ? 'true' : 'false'">
+                        <span>{{ getLabel('gender') || ('select' | translate) }}</span>
+                        <svg class="w-4 h-4 text-[#545F71]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+
+                    <ul *ngIf="dropdowns.gender.open"
+                        class="absolute z-20 mt-1 w-full bg-white border border-[#D7DEE4] rounded-[14px] shadow max-h-48 overflow-y-auto"
+                        (click)="$event.stopPropagation()">
+                        <li *ngFor="let g of dropdowns.gender.options; let i = index" (click)="select('gender', i)"
+                            (mouseenter)="dropdowns.gender.highlighted = i"
+                            class="px-4 py-2 text-sm cursor-pointer text-[#545F71] hover:bg-[#F5F7FA]"
+                            [class.bg-blue-100]="i === dropdowns.gender.highlighted">
+                            {{ g.label | translate }}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- ================= ROW 3 ================= -->
+            <!-- Password | Confirm Password -->
+            <div class="grid md:grid-cols-2 gap-6">
+
+                <!-- Password -->
+                <div class="relative">
+                    <label class="block text-[#043458] md:text-[18px] text-[16px] font-medium">{{ 'Password' | translate
+                        }}</label>
+                    <div class="mt-1 relative">
+                        <input [type]="showPassword ? 'text' : 'password'" formControlName="password"
+                            [placeholder]="'Enter your password' | translate" autocomplete="new-password"
+                            class="w-full rounded-xl text-[14px] text-[#545F71] border border-[#D7DEE4] px-5 py-3" />
+                        <button type="button" (click)="togglePassword()"
+                            class="absolute inset-y-0 rtl:left-3 ltr:right-3 my-auto h-6 w-6 grid place-items-center text-[#545F71]/80 hover:text-[#043458]"
+                            aria-label="Toggle password visibility">
+                            <svg *ngIf="!showPassword" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                            <svg *ngIf="showPassword" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 3l18 18M10.584 10.59A3 3 0 0113.41 13.41M9.88 4.24A9.94 9.94 0 0112 4c4.477 0 8.268 2.943 9.542 7a9.98 9.98 0 01-2.102 3.368M6.61 6.61C4.7 7.81 3.3 9.67 2.458 12c1.274 4.057 5.065 7 9.542 7 1.1 0 2.165-.18
+                -4.514" />
+                            </svg>
+                        </button>
+                    </div>
+                    <!-- Password messages -->
+                    <ng-container *ngIf="registerForm.get('password') as pwd">
+                        <p *ngIf="(pwd.touched || pwd.dirty) && pwd.hasError('required')"
+                            class="text-red-600 text-sm mt-1">
+                            {{ 'newPassword errorRequired' | translate }}
+                        </p>
+
+                        <p *ngIf="(pwd.touched || pwd.dirty) && pwd.hasError('minlength')"
+                            class="text-red-600 text-sm mt-1">
+                            {{ 'Password must be at least' | translate }}
+                            {{ pwd.getError('minlength')?.requiredLength ?? 6 }}
+                            {{ 'characters.' | translate }}
+                        </p>
+
+                        <p *ngIf="pwd.getError('serverError') as sErr" class="text-red-600 text-sm mt-1">
+                            {{ sErr }}
+                        </p>
+                    </ng-container>
+
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="relative">
+                    <label class="block text-[#043458] md:text-[18px] text-[16px] font-medium">
+                        {{ 'Confirm Password' | translate }}
+                    </label>
+                    <div class="mt-1 relative">
+                        <input [type]="showConfirmPassword ? 'text' : 'password'" formControlName="confirmPassword"
+                            [placeholder]="'Re-enter your password' | translate" autocomplete="new-password"
+                            class="w-full rounded-xl text-[14px] text-[#545F71] border border-[#D7DEE4] px-5 py-3" />
+                        <button type="button" (click)="toggleConfirmPassword()"
+                            class="absolute inset-y-0 rtl:left-3 ltr:right-3 my-auto h-6 w-6 grid place-items-center text-[#545F71]/80 hover:text-[#043458]"
+                            aria-label="Toggle confirm password visibility">
+                            <!-- eye -->
+                            <svg *ngIf="!showConfirmPassword" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="h-5 w-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5
+                        c4.477 0 8.268 2.943 9.542 7
+                        -1.274 4.057-5.065 7-9.542 7
+                        -4.477 0-8.268-2.943-9.542-7z" />
+                                <circle cx="12" cy="12" r="3" />
+                            </svg>
+                            <!-- eye-off -->
+                            <svg *ngIf="showConfirmPassword" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor" class="h-5 w-5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M3 3l18 18M10.584 10.59A3 3 0 0113.41 13.41
+                    M9.88 4.24A9.94 9.94 0 0112 4
+                    c4.477 0 8.268 2.943 9.542 7
+                    a9.98 9.98 0 01-2.102 3.368M6.61 6.61
+                    C4.7 7.81 3.3 9.67 2.458 12
+                    c1.274 4.057 5.065 7 9.542 7
+                    1.1 0 2.165-.18 3.166-.514" />
+                            </svg>
+                        </button>
+                    </div>
+                    <p *ngIf="registerForm.get('confirm_password')?.errors?.['serverError']"
+                        class="text-red-600 text-sm mt-1">
+                        {{ registerForm.get('confirm_password')?.errors?.['serverError'] }}
+                    </p>
+                    <p *ngIf="registerForm.hasError('passwordsNotMatching') && registerForm.get('confirmPassword')?.touched"
+                        class="text-red-600 text-sm mt-1">
+                        {{ 'Passwords do not match.' | translate }}
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- ================= ROW 4 ================= -->
+            <button type="submit" [disabled]="loading" class="w-full mt-2 rounded-[14px] font-bold py-3 bg-[#0D3C63] text-white flex justify-center items-center gap-2
+        disabled:bg-gray-400 disabled:text-gray-200 disabled:cursor-not-allowed">
+                <img src="app/assets/images/shared/loader-white.gif" class="w-6" *ngIf="loading">
+                {{ 'Sign Up form button' | translate }}
+            </button>
+
+            <p *ngIf="error_message != ''" class="text-base text-red-600">
+                {{ error_message }}
+            </p>
+
+            <!-- ================= ROW 5 + 6: Google (only when configured) ================= -->
+            <ng-container *ngIf="googleSignInEnabled">
+                <div class="flex items-center my-6">
+                    <div class="flex-1 h-px bg-[#D7DEE4]"></div>
+                    <span class="px-4 text-sm text-[#545F71] whitespace-nowrap">
+                        {{ 'Or create account via' | translate }}
+                    </span>
+                    <div class="flex-1 h-px bg-[#D7DEE4]"></div>
+                </div>
+                <button type="button" (click)="signUpWithGoogle()"
+                [disabled]="loading"
+                class="w-full border border-[#D7DEE4] rounded-[14px] py-3
+                flex items-center justify-center gap-3
+                bg-white hover:bg-gray-50 transition disabled:opacity-60 disabled:cursor-not-allowed">
+                <img src="https://www.svgrepo.com/show/475656/google-color.svg" class="w-5 h-5" alt="Google" />
+                <span class="text-[#0D3C63] font-medium">
+                    {{ 'Google' | translate }}
+                </span>
+            </button>
+            </ng-container>
+
+        </form>
+    </div>
+    <!-- Sign up under card -->
+    <p class="mt-6 text-[#545F71] text-sm">
+        {{ "You have an account in Nibras?" | translate }}
+        <a type="button" [routerLink]="loginRoutes[storageService.siteLanguage$.value]"
+            class="text-[#1396FD] font-semibold hover:underline ml-1">
+            {{ 'login button' | translate }}
+        </a>
+    </p>
+</div>

@@ -1,0 +1,271 @@
+<section class="relative bg-[#F1F9FF] py-16 px-4 overflow-hidden">
+
+    <!-- ================= BACKGROUND IMAGE ================= -->
+    <img src="app/assets/images/contact-us/contact-us-bg.png" alt=""
+        class="absolute  rtl:right-0 ltr:left-0 z-0 pointer-events-none -bottom-30 ltr:scale-x-[-1.4]" />
+
+    <app-contact-us></app-contact-us>
+
+    <div class="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
+
+        <!-- ================= RIGHT SIDE - CONTACT INFO ================= -->
+        <div>
+            <h2 class="md:text-5xl text-3xl font-bold text-[#043458] mb-8">
+                {{ 'contact_info_title' | translate }}
+
+            </h2>
+
+            <div class="space-y-6 text-[#545F71] text-2xl">
+
+                <!-- EMAIL -->
+                <div class="flex items-center gap-3">
+                    <img src="app/assets/icons/email.svg" />
+
+                    <a href="mailto:notifier@mynibras.com">
+                        notifier&#64;mynibras.com
+                    </a>
+                </div>
+
+                <!-- PHONE -->
+                <div class="flex items-center gap-3">
+                    <img src="app/assets/icons/phone.svg" />
+
+                    <a href="tel:30102626" class="inline-block  [direction:ltr] [unicode-bidi:isolate]">
+                        30102626
+                    </a>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <img src="app/assets/icons/stopwatch.svg" />
+                    <span>{{ 'contact_working_hours' | translate }}</span>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ================= LEFT SIDE ================= -->
+        <div>
+
+            <!-- Title -->
+            <div class="flex md:flex-row flex-col md:items-center items-start gap-4 mb-8">
+                <h2 class="md:text-5xl text-3xl font-bold text-[#043458]">
+                    {{ 'contact_form_title' | translate }}
+                </h2>
+                <span *ngIf="!formSubmitted" class="text-gray-500 text-lg">
+                    {{ 'contact_required_note' | translate }}
+                </span>
+            </div>
+
+            <!-- Form Card -->
+            <div *ngIf="!formSubmitted" class="bg-white rounded-3xl p-8 shadow-sm border border-[#E3EDF5] space-y-6">
+
+                <form [formGroup]="form" (ngSubmit)="onSubmit()" class="space-y-6">
+
+                    <!-- Name -->
+                    <div>
+                        <label class="block text-xl font-medium text-[#043458] mb-2">
+                            {{ 'contact_full_name_label' | translate }}
+                        </label>
+                        <input type="text" formControlName="full_name" maxlength="50"
+                            [placeholder]="'contact_full_name_placeholder' | translate"
+                            class="w-full text-[#888D91] rounded-xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#0B3C5D]" />
+
+                        <div *ngIf="form.get('full_name')?.touched && form.get('full_name')?.errors"
+                            class="text-red-500 text-sm mt-1">
+
+                            <div *ngIf="form.get('full_name')?.errors?.['required']">
+                                {{ 'contact.name.required' | translate }}
+                            </div>
+
+                            <div *ngIf="form.get('full_name')?.errors?.['maxlength']">
+                                {{ 'Maximum 50 characters allowed.' | translate }}
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ================= PHONE ================= -->
+                    <div class="relative">
+
+                        <label class="block text-lg font-medium text-[#043458] mb-2">
+                            {{"Phone" | translate}}
+                        </label>
+
+                        <div class="flex py-3 items-center rounded-[14px] border border-[#D7DEE4] overflow-hidden bg-white"
+                            dir="ltr">
+
+                            <!-- Country Button -->
+                            <button type="button" (click)="$event.stopPropagation(); toggle('country')"
+                                class="flex items-center gap-2 px-3 border-r border-[#D7DEE4]">
+
+                                <img [src]="countryFlag" class="w-8 h-4 rounded-sm" />
+
+                                <svg class="w-3 text-[#545F71]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </button>
+
+                            <!-- Dial Code -->
+                            <div class="px-2 text-[#043458] font-medium whitespace-nowrap">
+                                {{ dropdowns.country.options[dropdowns.country.selected]?.dial }}
+                            </div>
+
+                            <!-- Phone Input -->
+                            <input type="tel" formControlName="phone" (input)="onPhoneInput($event)"
+                                [placeholder]="phonePlaceholder"
+                                class="flex-1 text-base text-[#545F71] bg-transparent border-0 outline-none px-3" />
+
+
+                        </div>
+                        <div *ngIf="form.get('phone')?.touched && form.get('phone')?.errors"
+                            class="text-red-500 text-sm mt-1">
+
+                            <div *ngIf="form.get('phone')?.errors?.['required']">
+                                {{ 'contact_phone_required' | translate }}
+                            </div>
+
+                            <div *ngIf="form.get('phone')?.errors?.['maxlength']">
+                                {{ 'contact_phone_max' | translate }}
+                            </div>
+
+                            <div *ngIf="form.get('phone')?.errors?.['pattern']">
+                                {{ 'contact_phone_digits' | translate }}
+                            </div>
+
+                        </div>
+
+                        <!-- Country Dropdown -->
+                        <div *ngIf="dropdowns.country.open"
+                            class="absolute z-30 mt-2 w-full bg-white border border-[#D7DEE4] rounded-xl shadow max-h-60 overflow-y-auto"
+                            (click)="$event.stopPropagation()">
+
+                            <div *ngFor="let c of filtered('country'); let i = index" (click)="select('country', i)"
+                                class="flex items-center gap-3 px-4 py-3 hover:bg-[#F5F7FA] cursor-pointer">
+
+                                <img [src]="c.flag" class="w-8 h-4 rounded-sm" />
+
+                                <span class="text-[#545F71]">
+                                    {{ currentLang === 'ar' ? c.arName : c.name }}
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- ================= EMAIL ================= -->
+                    <div>
+                        <label class="block text-xl font-medium text-[#043458] mb-2">
+                            {{ 'contact_email_label' | translate }}
+                        </label>
+                        <input type="email" formControlName="email"
+                            [placeholder]="'contact_email_placeholder' | translate"
+                            class="w-full rounded-xl text-[#888D91] border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#0B3C5D]" />
+                        <div *ngIf="form.get('email')?.touched && form.get('email')?.errors"
+                            class="text-red-500 text-sm mt-1">
+
+                            <div *ngIf="form.get('email')?.errors?.['required']">
+                                {{ 'contact_email_required' | translate }}
+
+
+                            </div>
+
+                            <div *ngIf="form.get('email')?.errors?.['email']">
+                                {{ 'contact_email_invalid' | translate }}
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ================= SUBJECT ================= -->
+                    <div class="relative">
+
+                        <label class="block text-xl font-medium text-[#043458] mb-2">
+                            {{ 'contact_subject_label' | translate }}
+
+                        </label>
+
+                        <button type="button" (click)="$event.stopPropagation(); toggleSubject()"
+                            class="w-full flex items-center justify-between px-4 py-3 rounded-[14px] border border-[#D7DEE4] bg-white text-[#888D91]">
+
+                            <span>
+                                {{ selectedSubject | translate }}
+                            </span>
+
+                            <svg class="w-5 h-5 text-[#778D9D]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                                    d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+
+                        <!-- Subject Dropdown -->
+                        <div *ngIf="subjectOpen"
+                            class="absolute z-30 mt-2 w-full bg-white border border-[#D7DEE4] rounded-[14px] shadow max-h-60 overflow-y-auto">
+
+                            <div *ngFor="let s of subjects" (click)="selectSubject(s)"
+                                class="px-4 py-3 hover:bg-[#F5F7FA] cursor-pointer text-[#545F71]">
+
+                                {{ s | translate }}
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ================= MESSAGE ================= -->
+                    <div>
+                        <label class="block text-xl font-medium text-[#043458] mb-2">
+                            {{ 'contact_message_label' | translate }}
+
+                        </label>
+                        <textarea rows="5" maxlength="200" formControlName="message"
+                            class="w-full rounded-xl border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-[#0B3C5D]">
+                        </textarea>
+                        <div class="text-xs text-gray-400 text-end mt-1">
+                            {{ form.get('message')?.value?.length || 0 }}/200
+                        </div>
+                        <div *ngIf="form.get('message')?.touched && form.get('message')?.errors"
+                            class="text-red-500 text-sm mt-1">
+
+                            <div *ngIf="form.get('message')?.errors?.['required']">
+                                {{ 'contact_message_required' | translate }}
+                            </div>
+
+                            <div *ngIf="form.get('message')?.errors?.['maxlength']">
+                                {{ 'Maximum 200 characters allowed.' | translate }}
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <!-- ================= SUBMIT ================= -->
+                    <div class="text-start">
+                        <button type="submit"
+                            class="bg-[#043458] cursor-pointer text-white px-10 py-3 rounded-xl hover:bg-[#032b47] transition">
+                            {{ 'contact_submit' | translate }}
+
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+            <!-- ================= SUCCESS MESSAGE ================= -->
+            <div *ngIf="formSubmitted" class="bg-white border border-[#5CB85C] text-[#043458]
+            rounded-3xl p-8 w-full shadow-sm text-start">
+
+                <p class="text-2xl font-medium">
+                    {{ 'contact_success_message' | translate }}
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>

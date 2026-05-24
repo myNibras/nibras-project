@@ -1,0 +1,185 @@
+<!-- SECTION -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+    <!-- ===================== -->
+    <!-- Teacher Card -->
+    <!-- ===================== -->
+    <div class="lg:col-span-1 rounded-2xl border border-[#E6EEF6] bg-white p-6 text-center">
+
+        <!-- Title -->
+        <h2 class="text-3xl text-start font-bold text-[#043458] mb-6">
+            {{ "About teacher" |translate}}
+        </h2>
+
+        <!-- Avatar -->
+        <div class="flex justify-center relative">
+
+            <div class="h-65 w-65 rounded-full bg-[#66D56E] flex items-center justify-center overflow-hidden">
+
+                <img [src]="teacher?.image" alt="Teacher" class="h-full w-full object-cover" />
+
+            </div>
+
+        </div>
+
+        <!-- Rating pill -->
+        <div class="flex justify-center -mt-6 relative z-20">
+
+            <div class="flex items-center gap-3 bg-[#7A8B98] text-white px-6 py-2 rounded-xl">
+
+                <span class="font-semibold">{{teacher?.reviews}}</span>
+
+                <svg class="h-4 w-4" viewBox="0 0 24 24">
+                    <path fill="currentColor"
+                        d="M12 17.3l-6.18 3.7 1.64-7.03L2 9.24l7.19-.61L12 2l2.81 6.63L22 9.24l-5.46 4.73L18.18 21z" />
+                </svg>
+
+                <span class="opacity-80">|</span>
+
+                <span class="text-sm">
+                    {{teacher?.years_of_experience}} {{"Years of Experience" |translate}}
+                </span>
+
+            </div>
+
+        </div>
+
+        <!-- Stats -->
+        <div class="flex justify-center gap-6 mt-4 text-[#545F71] text-sm">
+
+            <div class="flex gap-1">
+                <span>{{"Classes" |translate}} </span>
+                <span class="font-bold">{{teacher?.number_of_classes}}</span>
+            </div>
+
+            <div class="flex gap-1">
+                <span>{{"Students" |translate}} </span>
+                <span class="font-bold">{{teacher?.number_of_students}}</span>
+            </div>
+
+        </div>
+
+        <!-- Button -->
+        <button (click)="goToTeachers()"
+            class="mt-6 w-[80%] bg-[#E6EEF6] text-[#043458] py-3 rounded-xl font-semibold hover:bg-[#d9e3ec] transition">
+
+            {{"Teacher details" |translate}}
+
+        </button>
+
+    </div>
+
+    <!-- ===================== -->
+    <!-- Rating Card -->
+    <!-- ===================== -->
+    <!-- Rating Card -->
+    <form *ngIf="!reviewSent" [formGroup]="ratingForm" (ngSubmit)="submit()"
+        class="lg:col-span-2 rounded-2xl border border-[#E6EEF6] bg-white p-6">
+        <!-- Title -->
+        <h2 class="text-3xl font-bold text-[#043458] mb-6">
+            {{ "Rating" |translate }}
+        </h2>
+
+        <!-- INNER BOX -->
+        <div class="border border-[#E6EEF6] rounded-xl p-5">
+
+            <!-- Rating Row -->
+            <div class="flex items-center justify-start pb-4 border-b border-[#E6EEF6]">
+
+                <span class="text-[#043458] text-xl font-medium">
+                    {{ "Rate" |translate}}
+                </span>
+
+                <!-- Stars -->
+                <div class="flex gap-2 text-3xl cursor-pointer mx-10">
+                    <span *ngFor="let star of [1,2,3,4,5]" (click)="setRating(star)"
+                        [class.text-[#FBBF24]]="star <= rating" [class.text-gray-300]="star > rating">
+                        ★
+                    </span>
+                </div>
+
+            </div>
+
+
+            <!-- Comment -->
+            <div class="py-4 border-b border-[#E6EEF6]">
+
+                <textarea formControlName="comment" [placeholder]="'Write your review here' | translate" maxlength="200"
+                    class="w-full h-28 border border-[#E6EEF6] text-[#545F71] rounded-xl p-4 resize-none outline-none">
+                </textarea>
+
+                <div class="text-sm text-gray-400 mt-1">
+                    {{200 - commentLength}} {{"characters remaining" |translate}}
+                </div>
+
+            </div>
+
+
+            <!-- Upload Section -->
+            <div class="flex border-b border-[#E6EEF6] items-center justify-between py-4">
+
+                <div class="flex items-center gap-5">
+
+                    <span class="text-[#043458] text-xl">
+                        {{"Upload Image" |translate}}
+                    </span>
+
+                    <label
+                        class="flex items-center gap-2 bg-[#CDD5E1] px-4 py-2 border border-[#E6EEF6] rounded-lg text-sm text-[#043458] cursor-pointer">
+
+                        <svg class="h-4 w-4" viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M5 17v2h14v-2M12 5l-5 5h3v4h4v-4h3l-5-5z" />
+                        </svg>
+
+                        {{"Change Image" |translate}}
+
+                        <input type="file" class="hidden" (change)="onFileSelected($event)">
+                    </label>
+                    <div class="w-10 h-10 rounded-full overflow-hidden bg-gray-200">
+
+                        <img *ngIf="previewImage" [src]="previewImage" class="w-full h-full object-cover">
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="flex items-center justify-start py-4">
+                <!-- Submit -->
+                <button type="submit"
+                    class="bg-[#0B3458] cursor-pointer text-white px-8 py-3 rounded-xl font-semibold hover:opacity-90 transition">
+                    {{"send" |translate}}
+                </button>
+            </div>
+
+            <!-- Inline API error (shows under the submit button) -->
+            <div *ngIf="errorAlertVisible"
+                class="mt-2 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-red-700 text-sm">
+                <div class="flex items-start justify-between gap-3">
+                    <p class="flex-1 leading-relaxed">
+                        {{ errorAlertMessage }}
+                    </p>
+                    <button type="button" (click)="errorAlertVisible = false"
+                        class="text-red-700 hover:text-red-900 font-bold leading-none">
+                        ✕
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+    </form>
+    <div *ngIf="reviewSent" class="lg:col-span-2 rounded-2xl border border-[#E6EEF6] bg-white p-6">
+
+        <h2 class="text-3xl font-bold text-[#043458] mb-6">
+            {{ "Rating" | translate }}
+        </h2>
+
+        <div class="border border-[#E6EEF6] rounded-xl p-6 text-start text-[#043458]">
+
+            {{ "review_pending_message" | translate }}
+
+        </div>
+
+    </div>
+</section>

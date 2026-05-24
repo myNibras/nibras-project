@@ -1,0 +1,43 @@
+<div class="w-[280px] h-[560px] rounded-2xl  text-center">
+
+    <!-- Image -->
+    <div class="mx-auto h-[300px] w-[275px] overflow-hidden">
+        <img [src]="teacher?.image ? teacher?.image : 'app/assets/images/shared/domy-profile.png'"
+            (error)="onImageError($event)" alt="Teacher" class="w-full h-full object-cover" />
+    </div>
+
+
+    <!-- Rating & Experience -->
+    <div class="mx-auto mb-3 flex items-center justify-center gap-2 rounded-lg bg-[#778D9D] py-2  text-[#fff] text-lg">
+        <span>{{teacher?.years_of_experience}} {{"Years Experience" |translate}}</span>
+        <span class="w-px h-4 bg-[#CDD5E1]"></span>
+        <span class="flex justify-center gap-2"><img class="inline" src="app\assets\icons\teatcher-star.svg" />
+            {{teacher?.reviews}}</span>
+
+    </div>
+
+    <!-- Teacher Name -->
+    <h3 class="text-[#043458] text-2xl font-bold mb-1">
+        {{teacher?.name}}
+    </h3>
+
+    @if (teacher?.position) {
+        <p class="text-[#778D9D] text-lg mb-1">
+            {{ teacher?.position }}
+        </p>
+    }
+
+    <!-- Subject -->
+    <p class="text-[#545F71] text-xl mb-1 line-clamp-2 min-h-0">
+        {{teacher?.description}}
+    </p>
+
+    <!-- Footer Info -->
+    <div class="flex justify-center gap-3 text-[#545F71] text-xl">
+        <span>{{"Classes" |translate}}: <b>{{teacher?.number_of_classes}}</b></span>
+        @if (teacher?.number_of_students != null) {
+            <span>{{"Students" |translate}}: <b>{{teacher?.number_of_students}}</b></span>
+        }
+    </div>
+
+</div>

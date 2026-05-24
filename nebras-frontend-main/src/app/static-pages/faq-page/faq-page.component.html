@@ -1,0 +1,33 @@
+<section class="relative max-w-[1350px] mx-auto ">
+    <!-- Hero section -->
+    <div class="bg-[#031F34] lg:rounded-[48px] ">
+        <div class="
+    absolute inset-0
+    bg-no-repeat
+    bg-[length:auto_100%]
+    lg:rounded-[48px]
+    bottom-0 right-0
+    rtl:left-0
+    ltr:scale-x-[-1]
+  " style="background-image: url('app/assets/images/about-us/about-us-hero.png')"></div>
+
+        <!-- Content -->
+        <div class="relative text-[#F2F2F7]  z-10 lg:max-w-[80%] max-w-full lg:p-20 p-10">
+            <h1 class="lg:text-5xl text-3xl font-bold mb-4 leading-tight">
+                {{ faqSection?.section_title || ('about us title' | translate) }}
+            </h1>
+
+            <p class="lg:text-[28px] text-xl leading-relaxed ">
+                {{ faqSection?.section_description || ('about us descreption' | translate) }}
+            </p>
+        </div>
+    </div>
+
+</section>
+
+<!-- Reuse the shared FAQ component to render the full list (no limit).
+     Hide its inner section title since this page already shows its own heading above. -->
+<app-faq
+    [showViewAllLink]="false"
+    [showSectionTitle]="false"
+    (sectionChange)="onFaqSectionChange($event)" />

@@ -1,0 +1,38 @@
+.active-link {
+  position: relative;
+}
+
+@keyframes underlineFadeIn {
+  from {
+    opacity: 0;
+    transform: scaleX(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+.active-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 3px;
+  background-color: #fd9a33;
+  border-radius: 2px;
+  animation: underlineFadeIn 220ms ease-out both;
+}
+
+/* ===== Custom Scrollbar Style for Login/Register Modal ===== */
+
+/* Applies to the scroll area inside the modal body */
+:host ::ng-deep .overflow-y-auto {
+  scrollbar-width: thin; /* Firefox */
+}
+
+/* Chrome, Edge, Safari */
+:host ::ng-deep .overflow-y-auto::-webkit-scrollbar {
+  width: 8px;
+}

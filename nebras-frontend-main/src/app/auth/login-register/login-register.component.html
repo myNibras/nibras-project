@@ -1,0 +1,66 @@
+<!-- Modal (login/register + forgot password flow) -->
+<div *ngIf="open" id="lr-backdrop"
+    class="fixed inset-0 z-[100] bg-slate-900/40 backdrop-blur-[1px] flex items-center justify-center overscroll-none"
+    (click)="onBackdropClick($event)" role="dialog" aria-modal="true">
+
+    <!-- Panel -->
+    <div class="relative w-full md:max-w-[450px] max-w-[95%] rounded-[24px] bg-[#043458] shadow-xl
+            flex flex-col transition transform duration-150 ease-out scale-100" [ngClass]="{
+            'h-[418px]': view === 'forgot-password' || view === 'verification-code' || view === 'new-password' || view === 'successful-popup',
+            'max-h-[95%]': view === 'login' || view === 'register'
+        }">
+        <!-- ✅ Close button for mobile -->
+        <button type="button" (click)="close()" class="absolute top-3 end-3 z-50 md:hidden bg-white/20 hover:bg-white/30 
+                text-white rounded-full w-9 h-9 flex items-center justify-center 
+                transition duration-200 ease-in-out" [class.left-3]="isRTL" [class.right-3]="!isRTL"
+            aria-label="Close">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+                stroke="currentColor" class="w-5 h-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <!-- Tabs header (only for login/register) -->
+        <div *ngIf="view==='login' || view==='register'" id="lr-title"
+            class="relative rounded-t-[24px] text-[#F2F2F7] py-3 w-full">
+            <div #tabsRow class="flex justify-evenly md:text-xl text-[18px] font-medium relative">
+                <!-- Login tab -->
+                <button (click)="switch('login')" class="text-center py-1 cursor-pointer focus:outline-none"
+                    [class.opacity-70]="activeTab !== 'login'">
+                    <span #loginTxt>{{"log in" | translate}}</span>
+                </button>
+
+                <!-- Register tab -->
+                <button (click)="switch('register')" class="text-center py-1 cursor-pointer focus:outline-none"
+                    [class.opacity-70]="activeTab !== 'register'">
+                    <span #registerTxt>{{"create account" |translate}}</span>
+                </button>
+            </div>
+
+            <!-- Orange indicator under the active tab -->
+            <div class="absolute left-0 right-0 bottom-0 h-1">
+                <div class="h-1 bg-[#FD9A33] rounded-full transition-all duration-200 mx-auto"
+                    [style.width.px]="indicatorW" [style.marginLeft.px]="indicatorL"></div>
+            </div>
+        </div>
+
+        <!-- Body -->
+        <div class="w-full flex-1 rounded-3xl md:px-8 md:py-8 px-5 py-4 bg-white flex flex-col overflow-y-auto">
+
+            <!-- Show login/register when view is login/register -->
+            <ng-container *ngIf="view==='login' || view==='register'; ">
+                <app-login *ngIf="activeTab==='login'" (closeModal)="closeModal($event)"></app-login>
+                <app-register *ngIf="activeTab==='register'" [parent]="this"
+                    (closeModal)="closeModal($event)"></app-register>
+            </ng-container>
+
+            <!-- Forgot password flow screens -->
+            <app-successful-popup
+                *ngIf="view==='successful-popup'"
+                [title]="popupTitle"
+                [message]="popupMessage"
+                [buttonLabel]="popupButtonLabel">
+            </app-successful-popup>
+
+        </div>
+    </div>
+</div>

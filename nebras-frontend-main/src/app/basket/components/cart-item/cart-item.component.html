@@ -1,0 +1,44 @@
+<div class="grid grid-cols-1 gap-4 py-6
+         sm:grid-cols-[140px_1fr_140px]
+         sm:items-center
+         sm:gap-x-8
+         min-h-[220px]">
+
+    <!-- IMAGE -->
+    <img [src]="item.course.image" [alt]="item.title" class="h-[130px] w-[150px] rounded-xl object-cover" />
+
+    <!-- TEXT -->
+    <div class="min-w-0 text-start flex gap-1 flex-col text-[#043458]">
+        <h3 class="text-lg font-bold">
+            {{ item.title }}
+        </h3>
+
+        <div class="mt-1 flex items-center gap-2 text-base font-normal">
+            <img src="app/assets/icons/book.svg" class="h-4 w-4" />
+            {{ item.course.class }}
+        </div>
+
+        <p class="text-base font-normal">
+            {{ item.short_description }}
+        </p>
+    </div>
+
+    <!-- PRICE + REMOVE -->
+    <div class="flex flex-col h-full justify-between gap-2 items-end">
+        <div class="flex flex-col gap-1 items-end">
+            <span class="text-2xl font-normal text-[#0B3458]">
+                {{ displayPrice }}$
+            </span>
+            <span *ngIf="isMonthlyPayment && monthlyAmount && numberOfMonths" class="text-sm font-normal text-[#6F8799]">
+                <span>${{ formatPrice(monthlyAmount) }}x{{ numberOfMonths }}</span> {{"Payments" | translate}}
+            </span>
+        </div>
+
+        <button type="button" (click)="onRemove()"
+            class="inline-flex items-center gap-2 text-[13px] font-semibold text-[#6F8799] hover:text-red-600 cursor-pointer">
+            <img src="app/assets/icons/trash.svg" class="h-4 w-4" />
+            {{"Remove" |translate}}
+        </button>
+    </div>
+
+</div>

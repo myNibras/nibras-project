@@ -1,0 +1,1712 @@
+[
+  {
+    "country_name_english": "Algeria",
+    "country_name_arabic": "الجزائر",
+    "flag": "https://flagcdn.com/w320/dz.png",
+    "phone_code": "+213",
+    "phone_placeholder": "+213 XXXXXXXXX",
+    "country_code": "DZ",
+    "currency_code": "DZD"
+  },
+  {
+    "country_name_english": "Antigua and Barbuda",
+    "country_name_arabic": "أنتيغوا وباربودا",
+    "flag": "https://flagcdn.com/w320/ag.png",
+    "phone_code": "+1-268",
+    "phone_placeholder": "+1-268 XXXXXXXXX",
+    "country_code": "AG",
+    "currency_code": "XCD"
+  },
+  {
+    "country_name_english": "Argentina",
+    "country_name_arabic": "الأرجنتين",
+    "flag": "https://flagcdn.com/w320/ar.png",
+    "phone_code": "+54",
+    "phone_placeholder": "+54 XXXXXXXXX",
+    "country_code": "AR",
+    "currency_code": "ARS"
+  },
+  {
+    "country_name_english": "Armenia",
+    "country_name_arabic": "أرمينيا",
+    "flag": "https://flagcdn.com/w320/am.png",
+    "phone_code": "+374",
+    "phone_placeholder": "+374 XXXXXXXXX",
+    "country_code": "AM",
+    "currency_code": "AMD"
+  },
+  {
+    "country_name_english": "Australia",
+    "country_name_arabic": "أستراليا",
+    "flag": "https://flagcdn.com/w320/au.png",
+    "phone_code": "+61",
+    "phone_placeholder": "+61 XXXXXXXXXX",
+    "country_code": "AU",
+    "currency_code": "AUD"
+  },
+  {
+    "country_name_english": "Austria",
+    "country_name_arabic": "النمسا",
+    "flag": "https://flagcdn.com/w320/at.png",
+    "phone_code": "+43",
+    "phone_placeholder": "+43 XXXXXXXXXX",
+    "country_code": "AT",
+    "currency_code": "EUR"
+  },
+  {
+    "country_name_english": "Azerbaijan",
+    "country_name_arabic": "أذربيجان",
+    "flag": "https://flagcdn.com/w320/az.png",
+    "phone_code": "+994",
+    "phone_placeholder": "+994 XXXXXXXXX",
+    "country_code": "AZ",
+    "currency_code": "AZN"
+  },
+  {
+    "country_name_english": "Bahamas",
+    "country_name_arabic": "الباهاما",
+    "flag": "https://flagcdn.com/w320/bs.png",
+    "phone_code": "+1-242",
+    "phone_placeholder": "+1-242 XXXXXXXXX",
+    "country_code": "BS",
+    "currency_code": "BSD"
+  },
+  {
+    "country_name_english": "Bahrain",
+    "country_name_arabic": "البحرين",
+    "flag": "https://flagcdn.com/w320/bh.png",
+    "phone_code": "+973",
+    "phone_placeholder": "+973 XXXXXXXXX",
+    "country_code": "BH",
+    "currency_code": "BHD"
+  },
+  {
+    "country_name_english": "Bangladesh",
+    "country_name_arabic": "بنغلاديش",
+    "flag": "https://flagcdn.com/w320/bd.png",
+    "phone_code": "+880",
+    "phone_placeholder": "+880 XXXXXXXXX",
+    "country_code": "BD",
+    "currency_code": "BDT"
+  },
+  {
+    "country_name_english": "Barbados",
+    "country_name_arabic": "باربادوس",
+    "flag": "https://flagcdn.com/w320/bb.png",
+    "phone_code": "+1-246",
+    "phone_placeholder": "+1-246 XXXXXXXXX",
+    "country_code": "BB",
+    "currency_code": "BBD"
+  },
+  {
+    "country_name_english": "Belarus",
+    "country_name_arabic": "بيلاروسيا",
+    "flag": "https://flagcdn.com/w320/by.png",
+    "phone_code": "+375",
+    "phone_placeholder": "+375 XXXXXXXXX",
+    "country_code": "BY",
+    "currency_code": "BYN"
+  },
+  {
+    "country_name_english": "Belgium",
+    "country_name_arabic": "بلجيكا",
+    "flag": "https://flagcdn.com/w320/be.png",
+    "phone_code": "+32",
+    "phone_placeholder": "+32 XXXXXXXXX",
+    "country_code": "BE",
+    "currency_code": "EUR"
+  },
+  {
+    "country_name_english": "Belize",
+    "country_name_arabic": "بليز",
+    "flag": "https://flagcdn.com/w320/bz.png",
+    "phone_code": "+501",
+    "phone_placeholder": "+501 XXXXXXXXX",
+    "country_code": "BZ",
+    "currency_code": "BZD"
+  },
+  {
+    "country_name_english": "Benin",
+    "country_name_arabic": "بنين",
+    "flag": "https://flagcdn.com/w320/bj.png",
+    "phone_code": "+229",
+    "phone_placeholder": "+229 XXXXXXXXX",
+    "country_code": "BJ",
+    "currency_code": "XOF"
+  },
+  {
+    "country_name_english": "Bhutan",
+    "country_name_arabic": "بوتان",
+    "flag": "https://flagcdn.com/w320/bt.png",
+    "phone_code": "+975",
+    "phone_placeholder": "+975 XXXXXXXXX",
+    "country_code": "BT",
+    "currency_code": "BTN"
+  },
+  {
+    "country_name_english": "Bolivia",
+    "country_name_arabic": "بوليفيا",
+    "flag": "https://flagcdn.com/w320/bo.png",
+    "phone_code": "+591",
+    "phone_placeholder": "+591 XXXXXXXXX",
+    "country_code": "BO",
+    "currency_code": "BOB"
+  },
+  {
+    "country_name_english": "Bosnia and Herzegovina",
+    "country_name_arabic": "البوسنة والهرسك",
+    "flag": "https://flagcdn.com/w320/ba.png",
+    "phone_code": "+387",
+    "phone_placeholder": "+387 XXXXXXXXX",
+    "country_code": "BA",
+    "currency_code": "BAM"
+  },
+  {
+    "country_name_english": "Botswana",
+    "country_name_arabic": "بوتسوانا",
+    "flag": "https://flagcdn.com/w320/bw.png",
+    "phone_code": "+267",
+    "phone_placeholder": "+267 XXXXXXXXX",
+    "country_code": "BW",
+    "currency_code": "BWP"
+  },
+  {
+    "country_name_english": "Brazil",
+    "country_name_arabic": "البرازيل",
+    "flag": "https://flagcdn.com/w320/br.png",
+    "phone_code": "+55",
+    "phone_placeholder": "+55 XXXXXXXXX",
+    "country_code": "BR",
+    "currency_code": "BRL"
+  },
+  {
+    "country_name_english": "Brunei",
+    "country_name_arabic": "بروناي",
+    "flag": "https://flagcdn.com/w320/bn.png",
+    "phone_code": "+673",
+    "phone_placeholder": "+673 XXXXXXXXX",
+    "country_code": "BN",
+    "currency_code": "BND"
+  },
+  {
+    "country_name_english": "Bulgaria",
+    "country_name_arabic": "بلغاريا",
+    "flag": "https://flagcdn.com/w320/bg.png",
+    "phone_code": "+359",
+    "phone_placeholder": "+359 XXXXXXXXX",
+    "country_code": "BG",
+    "currency_code": "BGN"
+  },
+  {
+    "country_name_english": "Burkina Faso",
+    "country_name_arabic": "بوركينا فاسو",
+    "flag": "https://flagcdn.com/w320/bf.png",
+    "phone_code": "+226",
+    "phone_placeholder": "+226 XXXXXXXXX",
+    "country_code": "BF",
+    "currency_code": "XOF"
+  },
+  {
+    "country_name_english": "Burundi",
+    "country_name_arabic": "بوروندي",
+    "flag": "https://flagcdn.com/w320/bi.png",
+    "phone_code": "+257",
+    "phone_placeholder": "+257 XXXXXXXXX",
+    "country_code": "BI",
+    "currency_code": "BIF"
+  },
+  {
+    "country_name_english": "Cabo Verde",
+    "country_name_arabic": "الرأس الأخضر",
+    "flag": "https://flagcdn.com/w320/cv.png",
+    "phone_code": "+238",
+    "phone_placeholder": "+238 XXXXXXXXX",
+    "country_code": "CV",
+    "currency_code": "CVE"
+  },
+  {
+    "country_name_english": "Cambodia",
+    "country_name_arabic": "كمبوديا",
+    "flag": "https://flagcdn.com/w320/kh.png",
+    "phone_code": "+855",
+    "phone_placeholder": "+855 XXXXXXXXX",
+    "country_code": "KH",
+    "currency_code": "KHR"
+  },
+  {
+    "country_name_english": "Cameroon",
+    "country_name_arabic": "الكاميرون",
+    "flag": "https://flagcdn.com/w320/cm.png",
+    "phone_code": "+237",
+    "phone_placeholder": "+237 XXXXXXXXX",
+    "country_code": "CM",
+    "currency_code": "XAF"
+  },
+  {
+    "country_name_english": "Canada",
+    "country_name_arabic": "كندا",
+    "flag": "https://flagcdn.com/w320/ca.png",
+    "phone_code": "+1",
+    "phone_placeholder": "+1 XXXXXXXXXX",
+    "country_code": "CA",
+    "currency_code": "CAD"
+  },
+  {
+    "country_name_english": "Central African Republic",
+    "country_name_arabic": "جمهورية إفريقيا الوسطى",
+    "flag": "https://flagcdn.com/w320/cf.png",
+    "phone_code": "+236",
+    "phone_placeholder": "+236 XXXXXXXXX",
+    "country_code": "CF",
+    "currency_code": "XAF"
+  },
+  {
+    "country_name_english": "Chad",
+    "country_name_arabic": "تشاد",
+    "flag": "https://flagcdn.com/w320/td.png",
+    "phone_code": "+235",
+    "phone_placeholder": "+235 XXXXXXXXX",
+    "country_code": "TD",
+    "currency_code": "XAF"
+  },
+  {
+    "country_name_english": "Chile",
+    "country_name_arabic": "تشيلي",
+    "flag": "https://flagcdn.com/w320/cl.png",
+    "phone_code": "+56",
+    "phone_placeholder": "+56 XXXXXXXXX",
+    "country_code": "CL",
+    "currency_code": "CLP"
+  },
+  {
+    "country_name_english": "China",
+    "country_name_arabic": "الصين",
+    "flag": "https://flagcdn.com/w320/cn.png",
+    "phone_code": "+86",
+    "phone_placeholder": "+86 XXXXXXXXX",
+    "country_code": "CN",
+    "currency_code": "CNY"
+  },
+  {
+    "country_name_english": "Colombia",
+    "country_name_arabic": "كولومبيا",
+    "flag": "https://flagcdn.com/w320/co.png",
+    "phone_code": "+57",
+    "phone_placeholder": "+57 XXXXXXXXX",
+    "country_code": "CO",
+    "currency_code": "COP"
+  },
+  {
+    "country_name_english": "Comoros",
+    "country_name_arabic": "جزر القمر",
+    "flag": "https://flagcdn.com/w320/km.png",
+    "phone_code": "+269",
+    "phone_placeholder": "+269 XXXXXXXXX",
+    "country_code": "KM",
+    "currency_code": "KMF"
+  },
+  {
+    "country_name_english": "Congo (Congo-Brazzaville)",
+    "country_name_arabic": "الكونغو (الكونغو برازافيل)",
+    "flag": "https://flagcdn.com/w320/cg.png",
+    "phone_code": "+242",
+    "phone_placeholder": "+242 XXXXXXXXX",
+    "country_code": "CG",
+    "currency_code": "XAF"
+  },
+  {
+    "country_name_english": "Congo (Congo-Kinshasa)",
+    "country_name_arabic": "الكونغو (الكونغو كينشاسا)",
+    "flag": "https://flagcdn.com/w320/cd.png",
+    "phone_code": "+243",
+    "phone_placeholder": "+243 XXXXXXXXX",
+    "country_code": "CD",
+    "currency_code": "CDF"
+  },
+  {
+    "country_name_english": "Costa Rica",
+    "country_name_arabic": "كوستاريكا",
+    "flag": "https://flagcdn.com/w320/cr.png",
+    "phone_code": "+506",
+    "phone_placeholder": "+506 XXXXXXXXX",
+    "country_code": "CR",
+    "currency_code": "CRC"
+  },
+  {
+    "country_name_english": "Croatia",
+    "country_name_arabic": "كرواتيا",
+    "flag": "https://flagcdn.com/w320/hr.png",
+    "phone_code": "+385",
+    "phone_placeholder": "+385 XXXXXXXXX",
+    "country_code": "HR",
+    "currency_code": "HRK"
+  },
+  {
+    "country_name_english": "Cuba",
+    "country_name_arabic": "كوبا",
+    "flag": "https://flagcdn.com/w320/cu.png",
+    "phone_code": "+53",
+    "phone_placeholder": "+53 XXXXXXXXX",
+    "country_code": "CU",
+    "currency_code": "CUP"
+  },
+  {
+    "country_name_english": "Cyprus",
+    "country_name_arabic": "قبرص",
+    "flag": "https://flagcdn.com/w320/cy.png",
+    "phone_code": "+357",
+    "phone_placeholder": "+357 XXXXXXXXX",
+    "country_code": "CY",
+    "currency_code": "EUR"
+  },
+  {
+    "country_name_english": "Czech Republic (Czechia)",
+    "country_name_arabic": "جمهورية التشيك (التشيك)",
+    "flag": "https://flagcdn.com/w320/cz.png",
+    "phone_code": "+420",
+    "phone_placeholder": "+420 XXXXXXXXX",
+    "country_code": "CZ",
+    "currency_code": "CZK"
+  },
+  {
+    "country_name_english": "Denmark",
+    "country_name_arabic": "الدنمارك",
+    "flag": "https://flagcdn.com/w320/dk.png",
+    "phone_code": "+45",
+    "phone_placeholder": "+45 XXXXXXXXXX",
+    "country_code": "DK",
+    "currency_code": "DKK"
+  },
+  {
+    "country_name_english": "Djibouti",
+    "country_name_arabic": "جيبوتي",
+    "flag": "https://flagcdn.com/w320/dj.png",
+    "phone_code": "+253",
+    "phone_placeholder": "+253 XXXXXXXXX",
+    "country_code": "DJ",
+    "currency_code": "DJF"
+  },
+  {
+    "country_name_english": "Dominica",
+    "country_name_arabic": "دومينيكا",
+    "flag": "https://flagcdn.com/w320/dm.png",
+    "phone_code": "+1-767",
+    "phone_placeholder": "+1-767 XXXXXXXXX",
+    "country_code": "DM",
+    "currency_code": "XCD"
+  },
+  {
+    "country_name_english": "Dominican Republic",
+    "country_name_arabic": "جمهورية الدومينيكان",
+    "flag": "https://flagcdn.com/w320/do.png",
+    "phone_code": "+1-809",
+    "phone_placeholder": "+1-809 XXXXXXXXX",
+    "country_code": "DO",
+    "currency_code": "DOP"
+  },
+  {
+    "country_name_english": "Ecuador",
+    "country_name_arabic": "الإكوادور",
+    "flag": "https://flagcdn.com/w320/ec.png",
+    "phone_code": "+593",
+    "phone_placeholder": "+593 XXXXXXXXX",
+    "country_code": "EC",
+    "currency_code": "USD"
+  },
+  {
+    "country_name_english": "Egypt",
+    "country_name_arabic": "مصر",
+    "flag": "https://flagcdn.com/w320/eg.png",
+    "phone_code": "+20",
+    "phone_placeholder": "+20 XXXXXXXXX",
+    "country_code": "EG",
+    "currency_code": "EGP"
+  },
+  {
+    "country_name_english": "El Salvador",
+    "country_name_arabic": "السلفادور",
+    "flag": "https://flagcdn.com/w320/sv.png",
+    "phone_code": "+503",
+    "phone_placeholder": "+503 XXXXXXXXX",
+    "country_code": "SV",
+    "currency_code": "USD"
+  },
+  {
+    "country_name_english": "Equatorial Guinea",
+    "country_name_arabic": "غينيا الاستوائية",
+    "flag": "https://flagcdn.com/w320/gq.png",
+    "phone_code": "+240",
+    "phone_placeholder": "+240 XXXXXXXXX",
+    "country_code": "GQ",
+    "currency_code": "XAF"
+  },
+  {
+    "country_name_english": "Eritrea",
+    "country_name_arabic": "إريتريا",
+    "flag": "https://flagcdn.com/w320/er.png",
+    "phone_code": "+291",
+    "phone_placeholder": "+291 XXXXXXXXX",
+    "country_code": "ER",
+    "currency_code": "ERN"
+  },
+  {
+    "country_name_english": "Estonia",
+    "country_name_arabic": "إستونيا",
+    "flag": "https://flagcdn.com/w320/ee.png",
+    "phone_code": "+372",
+    "phone_placeholder": "+372 XXXXXXXXX",
+    "country_code": "EE",
+    "currency_code": "EUR"
+  },
+  {
+    "country_name_english": "Eswatini",
+    "country_name_arabic": "إسواتيني",
+    "flag": "https://flagcdn.com/w320/sz.png",
+    "phone_code": "+268",
+    "phone_placeholder": "+268 XXXXXXXXX",
+    "country_code": "SZ",
+    "currency_code": "SZL"
+  },
+  {
+    "country_name_english": "Ethiopia",
+    "country_name_arabic": "إثيوبيا",
+    "flag": "https://flagcdn.com/w320/et.png",
+    "phone_code": "+251",
+    "phone_placeholder": "+251 XXXXXXXXX",
+    "country_code": "ET",
+    "currency_code": "ETB"
+  },
+  {
+    "country_name_english": "Fiji",
+    "country_name_arabic": "فيجي",
+    "flag": "https://flagcdn.com/w320/fj.png",
+    "phone_code": "+679",
+    "phone_placeholder": "+679 XXXXXXXXX",
+    "country_code": "FJ",
+    "currency_code": "FJD"
+  },
+  {
+    "country_name_english": "Finland",
+    "country_name_arabic": "فنلندا",
+    "flag": "https://flagcdn.com/w320/fi.png",
+    "phone_code": "+358",
+    "phone_placeholder": "+358 XXXXXXXXX",
+    "country_code": "FI",
+    "currency_code": "EUR"
+  },
+  {
+    "country_name_english": "France",
+    "country_name_arabic": "فرنسا",
+    "flag": "https://flagcdn.com/w320/fr.png",
+    "phone_code": "+33",
+    "phone_placeholder": "+33 XXXXXXXXX",
+    "country_code": "FR",
+    "currency_code": "EUR"
+  },
+  {
+    "country_name_english": "Gabon",
+    "country_name_arabic": "الغابون",
+    "flag": "https://flagcdn.com/w320/gw.png",
+    "phone_code": "+241",
+    "phone_placeholder": "+241 XXXXXXXXX",
+    "country_code": "GW",
+    "currency_code": "XOF"
+  },
+  {
+    "country_name_english": "Gambia",
+    "country_name_arabic": "غامبيا",
+    "flag": "https://flagcdn.com/w320/gm.png",
+    "phone_code": "+220",
+    "phone_placeholder": "+220 XXXXXXXXX",
+    "country_code": "GM",
+    "currency_code": "GMD"
+  },
+  {
+    "country_name_english": "Georgia",
+    "country_name_arabic": "جورجيا",
+    "flag": "https://flagcdn.com/w320/ge.png",
+    "phone_code": "+995",
+    "phone_placeholder": "+995 XXXXXXXXX",
+    "country_code": "GE",
+    "currency_code": "GEL"
+  },
+  {
+    "country_name_english": "Germany",
+    "country_name_arabic": "ألمانيا",
+    "flag": "https://flagcdn.com/w320/de.png",
+    "phone_code": "+49",
+    "phone_placeholder": "+49 XXXXXXXXX",
+    "country_code": "DE",
+    "currency_code": "EUR"
+  },
+  {
+    "country_name_english": "Ghana",
+    "country_name_arabic": "غانا",
+    "flag": "https://flagcdn.com/w320/gh.png",
+    "phone_code": "+233",
+    "phone_placeholder": "+233 XXXXXXXXX",
+    "country_code": "GH",
+    "currency_code": "GHS"
+  },
+  {
+    "country_name_english": "Greece",
+    "country_name_arabic": "اليونان",
+    "flag": "https://flagcdn.com/w320/gr.png",
+    "phone_code": "+30",
+    "phone_placeholder": "+30 XXXXXXXXX",
+    "country_code": "GR",
+    "currency_code": "EUR"
+  },
+  {
+    "country_name_english": "Grenada",
+    "country_name_arabic": "غرينادا",
+    "flag": "https://flagcdn.com/w320/gd.png",
+    "phone_code": "+1-473",
+    "phone_placeholder": "+1-473 XXXXXXXXX",
+    "country_code": "GD",
+    "currency_code": "XCD"
+  },
+  {
+    "country_name_english": "Guatemala",
+    "country_name_arabic": "غواتيمالا",
+    "flag": "https://flagcdn.com/w320/gt.png",
+    "phone_code": "+502",
+    "phone_placeholder": "+502 XXXXXXXXX",
+    "country_code": "GT",
+    "currency_code": "GTQ"
+  },
+  {
+    "country_name_english": "Guinea",
+    "country_name_arabic": "غينيا",
+    "flag": "https://flagcdn.com/w320/gn.png",
+    "phone_code": "+224",
+    "phone_placeholder": "+224 XXXXXXXXX",
+    "country_code": "GN",
+    "currency_code": "GNF"
+  },
+  {
+    "country_name_english": "Guinea-Bissau",
+    "country_name_arabic": "غينيا بيساو",
+    "flag": "https://flagcdn.com/w320/gw.png",
+    "phone_code": "+245",
+    "phone_placeholder": "+245 XXXXXXXXX",
+    "country_code": "GW",
+    "currency_code": "XOF"
+  },
+  {
+    "country_name_english": "Guyana",
+    "country_name_arabic": "غويانا",
+    "flag": "https://flagcdn.com/w320/gy.png",
+    "phone_code": "+592",
+    "phone_placeholder": "+592 XXXXXXXXX",
+    "country_code": "GY",
+    "currency_code": "GYD"
+  },
+  {
+    "country_name_english": "Haiti",
+    "country_name_arabic": "هايتي",
+    "flag": "https://flagcdn.com/w320/ht.png",
+    "phone_code": "+509",
+    "phone_placeholder": "+509 XXXXXXXXX",
+    "country_code": "HT",
+    "currency_code": "HTG"
+  },
+  {
+    "country_name_english": "Honduras",
+    "country_name_arabic": "هندوراس",
+    "flag": "https://flagcdn.com/w320/hn.png",
+    "phone_code": "+504",
+    "phone_placeholder": "+504 XXXXXXXXX",
+    "country_code": "HN",
+    "currency_code": "HNL"
+  },
+  {
+    "country_name_english": "Hungary",
+    "country_name_arabic": "هنغاريا",
+    "flag": "https://flagcdn.com/w320/hu.png",
+    "phone_code": "+36",
+    "phone_placeholder": "+36 XXXXXXXXX",
+    "country_code": "HU",
+    "currency_code": "HUF"
+  },
+  {
+    "country_name_english": "Iceland",
+    "country_name_arabic": "أيسلندا",
+    "flag": "https://flagcdn.com/w320/is.png",
+    "phone_code": "+354",
+    "phone_placeholder": "+354 XXXXXXXXX",
+    "country_code": "IS",
+    "currency_code": "ISK"
+  },
+  {
+    "country_name_english": "India",
+    "country_name_arabic": "الهند",
+    "flag": "https://flagcdn.com/w320/in.png",
+    "phone_code": "+91",
+    "phone_placeholder": "+91 XXXXXXXXX",
+    "country_code": "IN",
+    "currency_code": "INR"
+  },
+  {
+    "country_name_english": "Indonesia",
+    "country_name_arabic": "إندونيسيا",
+    "flag": "https://flagcdn.com/w320/id.png",
+    "phone_code": "+62",
+    "phone_placeholder": "+62 XXXXXXXXX",
+    "country_code": "ID",
+    "currency_code": "IDR"
+  },
+  {
+    "country_name_english": "Iran",
+    "country_name_arabic": "إيران",
+    "flag": "https://flagcdn.com/w320/ir.png",
+    "phone_code": "+98",
+    "phone_placeholder": "+98 XXXXXXXXX",
+    "country_code": "IR",
+    "currency_code": "IRR"
+  },
+  {
+    "country_name_english": "Iraq",
+    "country_name_arabic": "العراق",
+    "flag": "https://flagcdn.com/w320/iq.png",
+    "phone_code": "+964",
+    "phone_placeholder": "+964 XXXXXXXXX",
+    "country_code": "IQ",
+    "currency_code": "IQD"
+  },
+  {
+    "country_name_english": "Ireland",
+    "country_name_arabic": "أيرلندا",
+    "flag": "https://flagcdn.com/w320/ie.png",
+    "phone_code": "+353",
+    "phone_placeholder": "+353 XXXXXXXXX",
+    "country_code": "IE",
+    "currency_code": "EUR"
+  },
+  {
+    "country_name_english": "Italy",
+    "country_name_arabic": "إيطاليا",
+    "flag": "https://flagcdn.com/w320/it.png",
+    "phone_code": "+39",
+    "phone_placeholder": "+39 XXXXXXXXX",
+    "country_code": "IT",
+    "currency_code": "EUR"
+  },
+  {
+    "country_name_english": "Jamaica",
+    "country_name_arabic": "جامايكا",
+    "flag": "https://flagcdn.com/w320/jm.png",
+    "phone_code": "+1-876",
+    "phone_placeholder": "+1-876 XXXXXXXXX",
+    "country_code": "JM",
+    "currency_code": "JMD"
+  },
+  {
+    "country_name_english": "Japan",
+    "country_name_arabic": "اليابان",
+    "flag": "https://flagcdn.com/w320/jp.png",
+    "phone_code": "+81",
+    "phone_placeholder": "+81 XXXXXXXXX",
+    "country_code": "JP",
+    "currency_code": "JPY"
+  },
+  {
+    "country_name_english": "Jordan",
+    "country_name_arabic": "الأردن",
+    "flag": "https://flagcdn.com/w320/jo.png",
+    "phone_code": "+962",
+    "phone_placeholder": "+962 XXXXXXXXX",
+    "country_code": "JO",
+    "currency_code": "JOD"
+  },
+  {
+    "country_name_english": "Kazakhstan",
+    "country_name_arabic": "كازاخستان",
+    "flag": "https://flagcdn.com/w320/kz.png",
+    "phone_code": "+7",
+    "phone_placeholder": "+7 XXXXXXXXX",
+    "country_code": "KZ",
+    "currency_code": "KZT"
+  },
+  {
+    "country_name_english": "Kenya",
+    "country_name_arabic": "كينيا",
+    "flag": "https://flagcdn.com/w320/ke.png",
+    "phone_code": "+254",
+    "phone_placeholder": "+254 XXXXXXXXX",
+    "country_code": "KE",
+    "currency_code": "KES"
+  },
+  {
+    "country_name_english": "Kiribati",
+    "country_name_arabic": "كيريباس",
+    "flag": "https://flagcdn.com/w320/ki.png",
+    "phone_code": "+686",
+    "phone_placeholder": "+686 XXXXXXXXX",
+    "country_code": "KI",
+    "currency_code": "AUD"
+  },
+  {
+    "country_name_english": "Korea (North)",
+    "country_name_arabic": "كوريا الشمالية",
+    "flag": "https://flagcdn.com/w320/kp.png",
+    "phone_code": "+850",
+    "phone_placeholder": "+850 XXXXXXXXX",
+    "country_code": "KP",
+    "currency_code": "KPW"
+  },
+  {
+    "country_name_english": "Korea (South)",
+    "country_name_arabic": "كوريا الجنوبية",
+    "flag": "https://flagcdn.com/w320/kr.png",
+    "phone_code": "+82",
+    "phone_placeholder": "+82 XXXXXXXXX",
+    "country_code": "KR",
+    "currency_code": "KRW"
+  },
+  {
+    "country_name_english": "Kuwait",
+    "country_name_arabic": "الكويت",
+    "flag": "https://flagcdn.com/w320/kw.png",
+    "phone_code": "+965",
+    "phone_placeholder": "+965 XXXXXXXXX",
+    "country_code": "KW",
+    "currency_code": "KWD"
+  },
+  {
+    "country_name_english": "Kyrgyzstan",
+    "country_name_arabic": "قيرغيزستان",
+    "flag": "https://flagcdn.com/w320/kg.png",
+    "phone_code": "+996",
+    "phone_placeholder": "+996 XXXXXXXXX",
+    "country_code": "KG",
+    "currency_code": "KGS"
+  },
+  {
+    "country_name_english": "Laos",
+    "country_name_arabic": "لاوس",
+    "flag": "https://flagcdn.com/w320/la.png",
+    "phone_code": "+856",
+    "phone_placeholder": "+856 XXXXXXXXX",
+    "country_code": "LA",
+    "currency_code": "LAK"
+  },
+  {
+    "country_name_english": "Latvia",
+    "country_name_arabic": "لاتفيا",
+    "flag": "https://flagcdn.com/w320/lv.png",
+    "phone_code": "+371",
+    "phone_placeholder": "+371 XXXXXXXXX",
+    "country_code": "LV",
+    "currency_code": "EUR"
+  },
+  {
+    "country_name_english": "Lebanon",
+    "country_name_arabic": "لبنان",
+    "flag": "https://flagcdn.com/w320/lb.png",
+    "phone_code": "+961",
+    "phone_placeholder": "+961 XXXXXXXXX",
+    "country_code": "LB",
+    "currency_code": "LBP"
+  },
+  {
+    "country_name_english": "Lesotho",
+    "country_name_arabic": "ليسوتو",
+    "flag": "https://flagcdn.com/w320/ls.png",
+    "phone_code": "+266",
+    "phone_placeholder": "+266 XXXXXXXXX",
+    "country_code": "LS",
+    "currency_code": "LSL"
+  },
+  {
+    "country_name_english": "Liberia",
+    "country_name_arabic": "ليبيريا",
+    "flag": "https://flagcdn.com/w320/lr.png",
+    "phone_code": "+231",
+    "phone_placeholder": "+231 XXXXXXXXX",
+    "country_code": "LR",
+    "currency_code": "LRD"
+  },
+  {
+    "country_name_english": "Libya",
+    "country_name_arabic": "ليبيا",
+    "flag": "https://flagcdn.com/w320/ly.png",
+    "phone_code": "+218",
+    "phone_placeholder": "+218 XXXXXXXXX",
+    "country_code": "LY",
+    "currency_code": "LYD"
+  },
+  {
+    "country_name_english": "Liechtenstein",
+    "country_name_arabic": "ليختنشتاين",
+    "flag": "https://flagcdn.com/w320/li.png",
+    "phone_code": "+423",
+    "phone_placeholder": "+423 XXXXXXXXX",
+    "country_code": "LI",
+    "currency_code": "CHF"
+  },
+  {
+    "country_name_english": "Lithuania",
+    "country_name_arabic": "ليتوانيا",
+    "flag": "https://flagcdn.com/w320/lt.png",
+    "phone_code": "+370",
+    "phone_placeholder": "+370 XXXXXXXXX",
+    "country_code": "LT",
+    "currency_code": "EUR"
+  },
+  {
+    "country_name_english": "Luxembourg",
+    "country_name_arabic": "لوكسمبورغ",
+    "flag": "https://flagcdn.com/w320/lu.png",
+    "phone_code": "+352",
+    "phone_placeholder": "+352 XXXXXXXXX",
+    "country_code": "LU",
+    "currency_code": "EUR"
+  },
+  {
+    "country_name_english": "Madagascar",
+    "country_name_arabic": "مدغشقر",
+    "flag": "https://flagcdn.com/w320/mg.png",
+    "phone_code": "+261",
+    "phone_placeholder": "+261 XXXXXXXXX",
+    "country_code": "MG",
+    "currency_code": "MGA"
+  },
+  {
+    "country_name_english": "Malawi",
+    "country_name_arabic": "مالاوي",
+    "flag": "https://flagcdn.com/w320/mw.png",
+    "phone_code": "+265",
+    "phone_placeholder": "+265 XXXXXXXXX",
+    "country_code": "MW",
+    "currency_code": "MWK"
+  },
+  {
+    "country_name_english": "Malaysia",
+    "country_name_arabic": "ماليزيا",
+    "flag": "https://flagcdn.com/w320/my.png",
+    "phone_code": "+60",
+    "phone_placeholder": "+60 XXXXXXXXX",
+    "country_code": "MY",
+    "currency_code": "MYR"
+  },
+  {
+    "country_name_english": "Maldives",
+    "country_name_arabic": "جزر المالديف",
+    "flag": "https://flagcdn.com/w320/mv.png",
+    "phone_code": "+960",
+    "phone_placeholder": "+960 XXXXXXXXX",
+    "country_code": "MV",
+    "currency_code": "MVR"
+  },
+  {
+    "country_name_english": "Mali",
+    "country_name_arabic": "مالي",
+    "flag": "https://flagcdn.com/w320/ml.png",
+    "phone_code": "+223",
+    "phone_placeholder": "+223 XXXXXXXXX",
+    "country_code": "ML",
+    "currency_code": "XOF"
+  },
+  {
+    "country_name_english": "Malta",
+    "country_name_arabic": "مالطا",
+    "flag": "https://flagcdn.com/w320/mt.png",
+    "phone_code": "+356",
+    "phone_placeholder": "+356 XXXXXXXXX",
+    "country_code": "MT",
+    "currency_code": "EUR"
+  },
+  {
+    "country_name_english": "Marshall Islands",
+    "country_name_arabic": "جزر مارشال",
+    "flag": "https://flagcdn.com/w320/mh.png",
+    "phone_code": "+692",
+    "phone_placeholder": "+692 XXXXXXXXX",
+    "country_code": "MH",
+    "currency_code": "USD"
+  },
+  {
+    "country_name_english": "Mauritania",
+    "country_name_arabic": "موريتانيا",
+    "flag": "https://flagcdn.com/w320/mr.png",
+    "phone_code": "+222",
+    "phone_placeholder": "+222 XXXXXXXXX",
+    "country_code": "MR",
+    "currency_code": "MRU"
+  },
+  {
+    "country_name_english": "Mauritius",
+    "country_name_arabic": "موريشيوس",
+    "flag": "https://flagcdn.com/w320/mu.png",
+    "phone_code": "+230",
+    "phone_placeholder": "+230 XXXXXXXXX",
+    "country_code": "MU",
+    "currency_code": "MUR"
+  },
+  {
+    "country_name_english": "Mexico",
+    "country_name_arabic": "المكسيك",
+    "flag": "https://flagcdn.com/w320/mx.png",
+    "phone_code": "+52",
+    "phone_placeholder": "+52 XXXXXXXXX",
+    "country_code": "MX",
+    "currency_code": "MXN"
+  },
+  {
+    "country_name_english": "Micronesia",
+    "country_name_arabic": "ميكرونيزيا",
+    "flag": "https://flagcdn.com/w320/fm.png",
+    "phone_code": "+691",
+    "phone_placeholder": "+691 XXXXXXXXX",
+    "country_code": "FM",
+    "currency_code": "USD"
+  },
+  {
+    "country_name_english": "Moldova",
+    "country_name_arabic": "مولدوفا",
+    "flag": "https://flagcdn.com/w320/md.png",
+    "phone_code": "+373",
+    "phone_placeholder": "+373 XXXXXXXXX",
+    "country_code": "MD",
+    "currency_code": "MDL"
+  },
+  {
+    "country_name_english": "Monaco",
+    "country_name_arabic": "موناكو",
+    "flag": "https://flagcdn.com/w320/mc.png",
+    "phone_code": "+377",
+    "phone_placeholder": "+377 XXXXXXXXX",
+    "country_code": "MC",
+    "currency_code": "EUR"
+  },
+  {
+    "country_name_english": "Mongolia",
+    "country_name_arabic": "منغوليا",
+    "flag": "https://flagcdn.com/w320/mn.png",
+    "phone_code": "+976",
+    "phone_placeholder": "+976 XXXXXXXXX",
+    "country_code": "MN",
+    "currency_code": "MNT"
+  },
+  {
+    "country_name_english": "Montenegro",
+    "country_name_arabic": "مونتينيغرو",
+    "flag": "https://flagcdn.com/w320/me.png",
+    "phone_code": "+382",
+    "phone_placeholder": "+382 XXXXXXXXX",
+    "country_code": "ME",
+    "currency_code": "EUR"
+  },
+  {
+    "country_name_english": "Morocco",
+    "country_name_arabic": "المغرب",
+    "flag": "https://flagcdn.com/w320/ma.png",
+    "phone_code": "+212",
+    "phone_placeholder": "+212 XXXXXXXXX",
+    "country_code": "MA",
+    "currency_code": "MAD"
+  },
+  {
+    "country_name_english": "Mozambique",
+    "country_name_arabic": "موزمبيق",
+    "flag": "https://flagcdn.com/w320/mz.png",
+    "phone_code": "+258",
+    "phone_placeholder": "+258 XXXXXXXXX",
+    "country_code": "MZ",
+    "currency_code": "MZN"
+  },
+  {
+    "country_name_english": "Myanmar",
+    "country_name_arabic": "ميانمار",
+    "flag": "https://flagcdn.com/w320/mm.png",
+    "phone_code": "+95",
+    "phone_placeholder": "+95 XXXXXXXXX",
+    "country_code": "MM",
+    "currency_code": "MMK"
+  },
+  {
+    "country_name_english": "Namibia",
+    "country_name_arabic": "ناميبيا",
+    "flag": "https://flagcdn.com/w320/na.png",
+    "phone_code": "+264",
+    "phone_placeholder": "+264 XXXXXXXXX",
+    "country_code": "NA",
+    "currency_code": "NAD"
+  },
+  {
+    "country_name_english": "Nauru",
+    "country_name_arabic": "ناورو",
+    "flag": "https://flagcdn.com/w320/nr.png",
+    "phone_code": "+674",
+    "phone_placeholder": "+674 XXXXXXXXX",
+    "country_code": "NR",
+    "currency_code": "AUD"
+  },
+  {
+    "country_name_english": "Nepal",
+    "country_name_arabic": "نيبال",
+    "flag": "https://flagcdn.com/w320/np.png",
+    "phone_code": "+977",
+    "phone_placeholder": "+977 XXXXXXXXX",
+    "country_code": "NP",
+    "currency_code": "NPR"
+  },
+  {
+    "country_name_english": "Netherlands",
+    "country_name_arabic": "هولندا",
+    "flag": "https://flagcdn.com/w320/nl.png",
+    "phone_code": "+31",
+    "phone_placeholder": "+31 XXXXXXXXX",
+    "country_code": "NL",
+    "currency_code": "EUR"
+  },
+  {
+    "country_name_english": "New Zealand",
+    "country_name_arabic": "نيوزيلندا",
+    "flag": "https://flagcdn.com/w320/nz.png",
+    "phone_code": "+64",
+    "phone_placeholder": "+64 XXXXXXXXX",
+    "country_code": "NZ",
+    "currency_code": "NZD"
+  },
+  {
+    "country_name_english": "Nicaragua",
+    "country_name_arabic": "نيكاراغوا",
+    "flag": "https://flagcdn.com/w320/ni.png",
+    "phone_code": "+505",
+    "phone_placeholder": "+505 XXXXXXXXX",
+    "country_code": "NI",
+    "currency_code": "NIO"
+  },
+  {
+    "country_name_english": "Niger",
+    "country_name_arabic": "النيجر",
+    "flag": "https://flagcdn.com/w320/ne.png",
+    "phone_code": "+227",
+    "phone_placeholder": "+227 XXXXXXXXX",
+    "country_code": "NE",
+    "currency_code": "XOF"
+  },
+  {
+    "country_name_english": "Nigeria",
+    "country_name_arabic": "نيجيريا",
+    "flag": "https://flagcdn.com/w320/ng.png",
+    "phone_code": "+234",
+    "phone_placeholder": "+234 XXXXXXXXX",
+    "country_code": "NG",
+    "currency_code": "NGN"
+  },
+  {
+    "country_name_english": "North Macedonia",
+    "country_name_arabic": "مقدونيا الشمالية",
+    "flag": "https://flagcdn.com/w320/mk.png",
+    "phone_code": "+389",
+    "phone_placeholder": "+389 XXXXXXXXX",
+    "country_code": "MK",
+    "currency_code": "MKD"
+  },
+  {
+    "country_name_english": "Norway",
+    "country_name_arabic": "النرويج",
+    "flag": "https://flagcdn.com/w320/no.png",
+    "phone_code": "+47",
+    "phone_placeholder": "+47 XXXXXXXXX",
+    "country_code": "NO",
+    "currency_code": "NOK"
+  },
+  {
+    "country_name_english": "Oman",
+    "country_name_arabic": "عمان",
+    "flag": "https://flagcdn.com/w320/om.png",
+    "phone_code": "+968",
+    "phone_placeholder": "+968 XXXXXXXXX",
+    "country_code": "OM",
+    "currency_code": "OMR"
+  },
+  {
+    "country_name_english": "Palestine",
+    "country_name_arabic": "فلسطين",
+    "flag": "https://flagcdn.com/w320/ps.png",
+    "phone_code": "+970",
+    "phone_placeholder": "+970 XXXXXXXXX",
+    "country_code": "PS",
+    "currency_code": "ILS"
+  },
+  {
+    "country_name_english": "Pakistan",
+    "country_name_arabic": "باكستان",
+    "flag": "https://flagcdn.com/w320/pk.png",
+    "phone_code": "+92",
+    "phone_placeholder": "+92 XXXXXXXXX",
+    "country_code": "PK",
+    "currency_code": "PKR"
+  },
+  {
+    "country_name_english": "Palau",
+    "country_name_arabic": "بالاو",
+    "flag": "https://flagcdn.com/w320/pw.png",
+    "phone_code": "+680",
+    "phone_placeholder": "+680 XXXXXXXXX",
+    "country_code": "PW",
+    "currency_code": "USD"
+  },
+  {
+    "country_name_english": "Panama",
+    "country_name_arabic": "بنما",
+    "flag": "https://flagcdn.com/w320/pa.png",
+    "phone_code": "+507",
+    "phone_placeholder": "+507 XXXXXXXXX",
+    "country_code": "PA",
+    "currency_code": "PAB"
+  },
+  {
+    "country_name_english": "Papua New Guinea",
+    "country_name_arabic": "بابوا غينيا الجديدة",
+    "flag": "https://flagcdn.com/w320/pg.png",
+    "phone_code": "+675",
+    "phone_placeholder": "+675 XXXXXXXXX",
+    "country_code": "PG",
+    "currency_code": "PGK"
+  },
+  {
+    "country_name_english": "Paraguay",
+    "country_name_arabic": "باراغواي",
+    "flag": "https://flagcdn.com/w320/py.png",
+    "phone_code": "+595",
+    "phone_placeholder": "+595 XXXXXXXXX",
+    "country_code": "PY",
+    "currency_code": "PYG"
+  },
+  {
+    "country_name_english": "Peru",
+    "country_name_arabic": "بيرو",
+    "flag": "https://flagcdn.com/w320/pe.png",
+    "phone_code": "+51",
+    "phone_placeholder": "+51 XXXXXXXXX",
+    "country_code": "PE",
+    "currency_code": "PEN"
+  },
+  {
+    "country_name_english": "Philippines",
+    "country_name_arabic": "الفلبين",
+    "flag": "https://flagcdn.com/w320/ph.png",
+    "phone_code": "+63",
+    "phone_placeholder": "+63 XXXXXXXXX",
+    "country_code": "PH",
+    "currency_code": "PHP"
+  },
+  {
+    "country_name_english": "Poland",
+    "country_name_arabic": "بولندا",
+    "flag": "https://flagcdn.com/w320/pl.png",
+    "phone_code": "+48",
+    "phone_placeholder": "+48 XXXXXXXXX",
+    "country_code": "PL",
+    "currency_code": "PLN"
+  },
+  {
+    "country_name_english": "Portugal",
+    "country_name_arabic": "البرتغال",
+    "flag": "https://flagcdn.com/w320/pt.png",
+    "phone_code": "+351",
+    "phone_placeholder": "+351 XXXXXXXXX",
+    "country_code": "PT",
+    "currency_code": "EUR"
+  },
+  {
+    "country_name_english": "Qatar",
+    "country_name_arabic": "قطر",
+    "flag": "https://flagcdn.com/w320/qa.png",
+    "phone_code": "+974",
+    "phone_placeholder": "+974 XXXXXXXXX",
+    "country_code": "QA",
+    "currency_code": "QAR"
+  },
+  {
+    "country_name_english": "Romania",
+    "country_name_arabic": "رومانيا",
+    "flag": "https://flagcdn.com/w320/ro.png",
+    "phone_code": "+40",
+    "phone_placeholder": "+40 XXXXXXXXX",
+    "country_code": "RO",
+    "currency_code": "RON"
+  },
+  {
+    "country_name_english": "Russia",
+    "country_name_arabic": "روسيا",
+    "flag": "https://flagcdn.com/w320/ru.png",
+    "phone_code": "+7",
+    "phone_placeholder": "+7 XXXXXXXXX",
+    "country_code": "RU",
+    "currency_code": "RUB"
+  },
+  {
+    "country_name_english": "Rwanda",
+    "country_name_arabic": "رواندا",
+    "flag": "https://flagcdn.com/w320/rw.png",
+    "phone_code": "+250",
+    "phone_placeholder": "+250 XXXXXXXXX",
+    "country_code": "RW",
+    "currency_code": "RWF"
+  },
+  {
+    "country_name_english": "Saint Kitts and Nevis",
+    "country_name_arabic": "سانت كيتس ونيفيس",
+    "flag": "https://flagcdn.com/w320/kn.png",
+    "phone_code": "+1-869",
+    "phone_placeholder": "+1-869 XXXXXXXXX",
+    "country_code": "KN",
+    "currency_code": "XCD"
+  },
+  {
+    "country_name_english": "Saint Lucia",
+    "country_name_arabic": "سانت لوسيا",
+    "flag": "https://flagcdn.com/w320/lc.png",
+    "phone_code": "+1-758",
+    "phone_placeholder": "+1-758 XXXXXXXXX",
+    "country_code": "LC",
+    "currency_code": "XCD"
+  },
+  {
+    "country_name_english": "Saint Vincent and the Grenadines",
+    "country_name_arabic": "سانت فنسنت وغرنادين",
+    "flag": "https://flagcdn.com/w320/vc.png",
+    "phone_code": "+1-784",
+    "phone_placeholder": "+1-784 XXXXXXXXX",
+    "country_code": "VC",
+    "currency_code": "XCD"
+  },
+  {
+    "country_name_english": "Samoa",
+    "country_name_arabic": "ساموا",
+    "flag": "https://flagcdn.com/w320/ws.png",
+    "phone_code": "+685",
+    "phone_placeholder": "+685 XXXXXXXXX",
+    "country_code": "WS",
+    "currency_code": "WST"
+  },
+  {
+    "country_name_english": "San Marino",
+    "country_name_arabic": "سان مارينو",
+    "flag": "https://flagcdn.com/w320/sm.png",
+    "phone_code": "+378",
+    "phone_placeholder": "+378 XXXXXXXXX",
+    "country_code": "SM",
+    "currency_code": "EUR"
+  },
+  {
+    "country_name_english": "Sao Tome and Principe",
+    "country_name_arabic": "ساو تومي وبرينسيب",
+    "flag": "https://flagcdn.com/w320/st.png",
+    "phone_code": "+239",
+    "phone_placeholder": "+239 XXXXXXXXX",
+    "country_code": "ST",
+    "currency_code": "STN"
+  },
+  {
+    "country_name_english": "Saudi Arabia",
+    "country_name_arabic": "السعودية",
+    "flag": "https://flagcdn.com/w320/sa.png",
+    "phone_code": "+966",
+    "phone_placeholder": "+966 XXXXXXXXX",
+    "country_code": "SA",
+    "currency_code": "SAR"
+  },
+  {
+    "country_name_english": "Senegal",
+    "country_name_arabic": "السنغال",
+    "flag": "https://flagcdn.com/w320/sn.png",
+    "phone_code": "+221",
+    "phone_placeholder": "+221 XXXXXXXXX",
+    "country_code": "SN",
+    "currency_code": "XOF"
+  },
+  {
+    "country_name_english": "Serbia",
+    "country_name_arabic": "صربيا",
+    "flag": "https://flagcdn.com/w320/rs.png",
+    "phone_code": "+381",
+    "phone_placeholder": "+381 XXXXXXXXX",
+    "country_code": "RS",
+    "currency_code": "RSD"
+  },
+  {
+    "country_name_english": "Seychelles",
+    "country_name_arabic": "سيشل",
+    "flag": "https://flagcdn.com/w320/sc.png",
+    "phone_code": "+248",
+    "phone_placeholder": "+248 XXXXXXXXX",
+    "country_code": "SC",
+    "currency_code": "SCR"
+  },
+  {
+    "country_name_english": "Sierra Leone",
+    "country_name_arabic": "سيرا ليون",
+    "flag": "https://flagcdn.com/w320/sl.png",
+    "phone_code": "+232",
+    "phone_placeholder": "+232 XXXXXXXXX",
+    "country_code": "SL",
+    "currency_code": "SLL"
+  },
+  {
+    "country_name_english": "Singapore",
+    "country_name_arabic": "سنغافورة",
+    "flag": "https://flagcdn.com/w320/sg.png",
+    "phone_code": "+65",
+    "phone_placeholder": "+65 XXXXXXXXX",
+    "country_code": "SG",
+    "currency_code": "SGD"
+  },
+  {
+    "country_name_english": "Slovakia",
+    "country_name_arabic": "سلوفاكيا",
+    "flag": "https://flagcdn.com/w320/sk.png",
+    "phone_code": "+421",
+    "phone_placeholder": "+421 XXXXXXXXX",
+    "country_code": "SK",
+    "currency_code": "EUR"
+  },
+  {
+    "country_name_english": "Slovenia",
+    "country_name_arabic": "سلوفينيا",
+    "flag": "https://flagcdn.com/w320/si.png",
+    "phone_code": "+386",
+    "phone_placeholder": "+386 XXXXXXXXX",
+    "country_code": "SI",
+    "currency_code": "EUR"
+  },
+  {
+    "country_name_english": "Solomon Islands",
+    "country_name_arabic": "جزر سولومون",
+    "flag": "https://flagcdn.com/w320/sb.png",
+    "phone_code": "+677",
+    "phone_placeholder": "+677 XXXXXXXXX",
+    "country_code": "SB",
+    "currency_code": "SBD"
+  },
+  {
+    "country_name_english": "Somalia",
+    "country_name_arabic": "الصومال",
+    "flag": "https://flagcdn.com/w320/so.png",
+    "phone_code": "+252",
+    "phone_placeholder": "+252 XXXXXXXXX",
+    "country_code": "SO",
+    "currency_code": "SOS"
+  },
+  {
+    "country_name_english": "South Africa",
+    "country_name_arabic": "جنوب أفريقيا",
+    "flag": "https://flagcdn.com/w320/za.png",
+    "phone_code": "+27",
+    "phone_placeholder": "+27 XXXXXXXXX",
+    "country_code": "ZA",
+    "currency_code": "ZAR"
+  },
+  {
+    "country_name_english": "South Sudan",
+    "country_name_arabic": "جنوب السودان",
+    "flag": "https://flagcdn.com/w320/ss.png",
+    "phone_code": "+211",
+    "phone_placeholder": "+211 XXXXXXXXX",
+    "country_code": "SS",
+    "currency_code": "SSP"
+  },
+  {
+    "country_name_english": "Spain",
+    "country_name_arabic": "إسبانيا",
+    "flag": "https://flagcdn.com/w320/es.png",
+    "phone_code": "+34",
+    "phone_placeholder": "+34 XXXXXXXXX",
+    "country_code": "ES",
+    "currency_code": "EUR"
+  },
+  {
+    "country_name_english": "Sri Lanka",
+    "country_name_arabic": "سريلانكا",
+    "flag": "https://flagcdn.com/w320/lk.png",
+    "phone_code": "+94",
+    "phone_placeholder": "+94 XXXXXXXXX",
+    "country_code": "LK",
+    "currency_code": "LKR"
+  },
+  {
+    "country_name_english": "Sudan",
+    "country_name_arabic": "السودان",
+    "flag": "https://flagcdn.com/w320/sd.png",
+    "phone_code": "+249",
+    "phone_placeholder": "+249 XXXXXXXXX",
+    "country_code": "SD",
+    "currency_code": "SDG"
+  },
+  {
+    "country_name_english": "Suriname",
+    "country_name_arabic": "سورينام",
+    "flag": "https://flagcdn.com/w320/sr.png",
+    "phone_code": "+597",
+    "phone_placeholder": "+597 XXXXXXXXX",
+    "country_code": "SR",
+    "currency_code": "SRD"
+  },
+  {
+    "country_name_english": "Sweden",
+    "country_name_arabic": "السويد",
+    "flag": "https://flagcdn.com/w320/se.png",
+    "phone_code": "+46",
+    "phone_placeholder": "+46 XXXXXXXXX",
+    "country_code": "SE",
+    "currency_code": "SEK"
+  },
+  {
+    "country_name_english": "Switzerland",
+    "country_name_arabic": "سويسرا",
+    "flag": "https://flagcdn.com/w320/ch.png",
+    "phone_code": "+41",
+    "phone_placeholder": "+41 XXXXXXXXX",
+    "country_code": "CH",
+    "currency_code": "CHF"
+  },
+  {
+    "country_name_english": "Syria",
+    "country_name_arabic": "سوريا",
+    "flag": "https://flagcdn.com/w320/sy.png",
+    "phone_code": "+963",
+    "phone_placeholder": "+963 XXXXXXXXX",
+    "country_code": "SY",
+    "currency_code": "SYP"
+  },
+  {
+    "country_name_english": "Taiwan",
+    "country_name_arabic": "تايوان",
+    "flag": "https://flagcdn.com/w320/tw.png",
+    "phone_code": "+886",
+    "phone_placeholder": "+886 XXXXXXXXX",
+    "country_code": "TW",
+    "currency_code": "TWD"
+  },
+  {
+    "country_name_english": "Tajikistan",
+    "country_name_arabic": "طاجيكستان",
+    "flag": "https://flagcdn.com/w320/tj.png",
+    "phone_code": "+992",
+    "phone_placeholder": "+992 XXXXXXXXX",
+    "country_code": "TJ",
+    "currency_code": "TJS"
+  },
+  {
+    "country_name_english": "Tanzania",
+    "country_name_arabic": "تنزانيا",
+    "flag": "https://flagcdn.com/w320/tz.png",
+    "phone_code": "+255",
+    "phone_placeholder": "+255 XXXXXXXXX",
+    "country_code": "TZ",
+    "currency_code": "TZS"
+  },
+  {
+    "country_name_english": "Thailand",
+    "country_name_arabic": "تايلاند",
+    "flag": "https://flagcdn.com/w320/th.png",
+    "phone_code": "+66",
+    "phone_placeholder": "+66 XXXXXXXXX",
+    "country_code": "TH",
+    "currency_code": "THB"
+  },
+  {
+    "country_name_english": "Timor-Leste",
+    "country_name_arabic": "تيمور الشرقية",
+    "flag": "https://flagcdn.com/w320/tl.png",
+    "phone_code": "+670",
+    "phone_placeholder": "+670 XXXXXXXXX",
+    "country_code": "TL",
+    "currency_code": "USD"
+  },
+  {
+    "country_name_english": "Togo",
+    "country_name_arabic": "توجو",
+    "flag": "https://flagcdn.com/w320/tg.png",
+    "phone_code": "+228",
+    "phone_placeholder": "+228 XXXXXXXXX",
+    "country_code": "TG",
+    "currency_code": "XOF"
+  },
+  {
+    "country_name_english": "Tonga",
+    "country_name_arabic": "تونغا",
+    "flag": "https://flagcdn.com/w320/to.png",
+    "phone_code": "+676",
+    "phone_placeholder": "+676 XXXXXXXXX",
+    "country_code": "TO",
+    "currency_code": "TOP"
+  },
+  {
+    "country_name_english": "Trinidad and Tobago",
+    "country_name_arabic": "ترينيداد وتوباغو",
+    "flag": "https://flagcdn.com/w320/tt.png",
+    "phone_code": "+1-868",
+    "phone_placeholder": "+1-868 XXXXXXXXX",
+    "country_code": "TT",
+    "currency_code": "TTD"
+  },
+  {
+    "country_name_english": "Tunisia",
+    "country_name_arabic": "تونس",
+    "flag": "https://flagcdn.com/w320/tn.png",
+    "phone_code": "+216",
+    "phone_placeholder": "+216 XXXXXXXXX",
+    "country_code": "TN",
+    "currency_code": "TND"
+  },
+  {
+    "country_name_english": "Turkey",
+    "country_name_arabic": "تركيا",
+    "flag": "https://flagcdn.com/w320/tr.png",
+    "phone_code": "+90",
+    "phone_placeholder": "+90 XXXXXXXXX",
+    "country_code": "TR",
+    "currency_code": "TRY"
+  },
+  {
+    "country_name_english": "Turkmenistan",
+    "country_name_arabic": "تركمانستان",
+    "flag": "https://flagcdn.com/w320/tm.png",
+    "phone_code": "+993",
+    "phone_placeholder": "+993 XXXXXXXXX",
+    "country_code": "TM",
+    "currency_code": "TMT"
+  },
+  {
+    "country_name_english": "Tuvalu",
+    "country_name_arabic": "توفالو",
+    "flag": "https://flagcdn.com/w320/tv.png",
+    "phone_code": "+688",
+    "phone_placeholder": "+688 XXXXXXXXX",
+    "country_code": "TV",
+    "currency_code": "AUD"
+  },
+  {
+    "country_name_english": "Uganda",
+    "country_name_arabic": "أوغندا",
+    "flag": "https://flagcdn.com/w320/ug.png",
+    "phone_code": "+256",
+    "phone_placeholder": "+256 XXXXXXXXX",
+    "country_code": "UG",
+    "currency_code": "UGX"
+  },
+  {
+    "country_name_english": "Ukraine",
+    "country_name_arabic": "أوكرانيا",
+    "flag": "https://flagcdn.com/w320/ua.png",
+    "phone_code": "+380",
+    "phone_placeholder": "+380 XXXXXXXXX",
+    "country_code": "UA",
+    "currency_code": "UAH"
+  },
+  {
+    "country_name_english": "United Arab Emirates",
+    "country_name_arabic": "الإمارات العربية المتحدة",
+    "flag": "https://flagcdn.com/w320/ae.png",
+    "phone_code": "+971",
+    "phone_placeholder": "+971 XXXXXXXXX",
+    "country_code": "AE",
+    "currency_code": "AED"
+  },
+  {
+    "country_name_english": "United Kingdom",
+    "country_name_arabic": "المملكة المتحدة",
+    "flag": "https://flagcdn.com/w320/gb.png",
+    "phone_code": "+44",
+    "phone_placeholder": "+44 XXXXXXXXX",
+    "country_code": "GB",
+    "currency_code": "GBP"
+  },
+  {
+    "country_name_english": "United States",
+    "country_name_arabic": "الولايات المتحدة الأمريكية",
+    "flag": "https://flagcdn.com/w320/us.png",
+    "phone_code": "+1",
+    "phone_placeholder": "+1 XXXXXXXXX",
+    "country_code": "US",
+    "currency_code": "USD"
+  },
+  {
+    "country_name_english": "Uruguay",
+    "country_name_arabic": "أوروغواي",
+    "flag": "https://flagcdn.com/w320/uy.png",
+    "phone_code": "+598",
+    "phone_placeholder": "+598 XXXXXXXXX",
+    "country_code": "UY",
+    "currency_code": "UYU"
+  },
+  {
+    "country_name_english": "Uzbekistan",
+    "country_name_arabic": "أوزبكستان",
+    "flag": "https://flagcdn.com/w320/uz.png",
+    "phone_code": "+998",
+    "phone_placeholder": "+998 XXXXXXXXX",
+    "country_code": "UZ",
+    "currency_code": "UZS"
+  },
+  {
+    "country_name_english": "Vanuatu",
+    "country_name_arabic": "فانواتو",
+    "flag": "https://flagcdn.com/w320/vu.png",
+    "phone_code": "+678",
+    "phone_placeholder": "+678 XXXXXXXXX",
+    "country_code": "VU",
+    "currency_code": "VUV"
+  },
+  {
+    "country_name_english": "Vatican City",
+    "country_name_arabic": "مدينة الفاتيكان",
+    "flag": "https://flagcdn.com/w320/va.png",
+    "phone_code": "+379",
+    "phone_placeholder": "+379 XXXXXXXXX",
+    "country_code": "VA",
+    "currency_code": "EUR"
+  },
+  {
+    "country_name_english": "Venezuela",
+    "country_name_arabic": "فنزويلا",
+    "flag": "https://flagcdn.com/w320/ve.png",
+    "phone_code": "+58",
+    "phone_placeholder": "+58 XXXXXXXXX",
+    "country_code": "VE",
+    "currency_code": "VES"
+  },
+  {
+    "country_name_english": "Vietnam",
+    "country_name_arabic": "فيتنام",
+    "flag": "https://flagcdn.com/w320/vn.png",
+    "phone_code": "+84",
+    "phone_placeholder": "+84 XXXXXXXXX",
+    "country_code": "VN",
+    "currency_code": "VND"
+  },
+  {
+    "country_name_english": "Yemen",
+    "country_name_arabic": "اليمن",
+    "flag": "https://flagcdn.com/w320/ye.png",
+    "phone_code": "+967",
+    "phone_placeholder": "+967 XXXXXXXXX",
+    "country_code": "YE",
+    "currency_code": "YER"
+  },
+  {
+    "country_name_english": "Zambia",
+    "country_name_arabic": "زامبيا",
+    "flag": "https://flagcdn.com/w320/zm.png",
+    "phone_code": "+260",
+    "phone_placeholder": "+260 XXXXXXXXX",
+    "country_code": "ZM",
+    "currency_code": "ZMW"
+  },
+  {
+    "country_name_english": "Zimbabwe",
+    "country_name_arabic": "زيمبابوي",
+    "flag": "https://flagcdn.com/w320/zw.png",
+    "phone_code": "+263",
+    "phone_placeholder": "+263 XXXXXXXXX",
+    "country_code": "ZW",
+    "currency_code": "ZWL"
+  }
+]

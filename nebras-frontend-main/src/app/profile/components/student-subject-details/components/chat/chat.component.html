@@ -1,0 +1,239 @@
+<!-- ================= CHAT SECTION ================= -->
+<section class="rounded-3xl h-[885px] border border-[#D7E8F5] bg-white p-5 md:p-8  flex flex-col">
+
+    <div class="lg:px-5 md:px-2 flex flex-col h-full">
+
+        <!-- ================= HEADER (FIXED) ================= -->
+        <div>
+            <div class="flex items-center justify-between flex-wrap gap-3">
+                <h2 class="lg:text-4xl text-[24px] md:text-[32px] font-bold text-[#043458]">
+                    {{ 'Chat' | translate }}
+                </h2>
+                @if (courseId && !error) {
+                <div class="flex rounded-xl border border-[#D7E8F5] p-1 bg-[#F1F7FB]">
+                    <button
+                        type="button"
+                        (click)="setMode('channel')"
+                        [class.bg-white]="chatMode === 'channel'"
+                        [class.shadow-sm]="chatMode === 'channel'"
+                        [class.text-[#043458]]="chatMode === 'channel'"
+                        class="px-4 py-2 rounded-lg text-sm font-medium transition text-[#545F71] hover:text-[#043458]">
+                        {{ 'Course chat' | translate }}
+                    </button>
+                    <button
+                        type="button"
+                        (click)="setMode('direct')"
+                        [class.bg-white]="chatMode === 'direct'"
+                        [class.shadow-sm]="chatMode === 'direct'"
+                        [class.text-[#043458]]="chatMode === 'direct'"
+                        class="px-4 py-2 rounded-lg text-sm font-medium transition text-[#545F71] hover:text-[#043458]">
+                        {{ 'Private with teacher' | translate }}
+                    </button>
+                </div>
+                }
+            </div>
+            @if (chatMode === 'channel' && !error) {
+            <p class="mt-2 text-sm text-[#545F71]">
+                Use <b>&#64;</b> to mention students and <b>Like</b> to react to messages in group chat.
+            </p>
+            }
+
+            <div class="mt-4 border-t border-[#D7E8F5]"></div>
+
+            @if (messages.length) {
+            <div class="flex justify-center my-6">
+                <span class="bg-[#E2E8F0] text-[#043458] text-xs px-4 py-1 rounded-full font-medium">
+                    {{ messages[0].created_at | date:'y.M.d' }}
+                </span>
+            </div>
+            }
+        </div>
+
+        <!-- ================= ERROR ================= -->
+        @if (error) {
+        <div class="mb-4 p-4 rounded-xl bg-red-50 text-red-700 border border-red-200">
+            {{ error }}
+        </div>
+        }
+
+        <!-- ================= MESSAGES AREA ================= -->
+        <div id="chatMessagesArea" class="flex-1 overflow-y-auto custom-scroll pr-2">
+            @if (loading && messages.length === 0) {
+            <div class="flex justify-center items-center h-48">
+                <span class="text-[#545F71]">{{ 'Loading...' | translate }}</span>
+            </div>
+            } @else if (messages.length === 0 && !error) {
+            <div class="flex justify-center items-center h-48 text-[#545F71]">
+                {{ 'No messages yet. Start the conversation!' | translate }}
+            </div>
+            } @else {
+            <div class="flex flex-col justify-end min-h-full space-y-6">
+                @for (msg of messages; track msg.id) {
+                <!-- Teacher message (right) -->
+                @if (msg.sender_type === 'teacher') {
+                <div class="flex justify-end items-start gap-4">
+                    <div class="bg-[#E8EFF4] rounded-2xl p-4 w-full md:max-w-[75%] lg:max-w-[60%]">
+                        <div class="flex items-center justify-end gap-3 mb-2">
+                            <span class="text-[#043458] text-sm">{{ formatTime(msg.created_at) }}</span>
+                            <span class="font-bold text-lg text-[#043458]">{{ msg.sender_name }}</span>
+                        </div>
+                        @if (msg.reply_to) {
+                        <div class="mb-2 rounded-xl border border-[#c9d8e3] bg-white px-3 py-2">
+                            <p class="mb-1 text-xs font-semibold text-[#043458]">{{ msg.reply_to.sender_name }}</p>
+                            <p class="mb-0 text-sm text-[#545F71] line-clamp-2" [innerHTML]="msg.reply_to.body | linkify"></p>
+                        </div>
+                        }
+                        <p class="text-[#043458] text-sm md:text-base leading-relaxed whitespace-pre-wrap break-words" [innerHTML]="msg.body | linkify"></p>
+                        @if (chatMode === 'channel' && (msg.mentioned_students?.length || 0) > 0) {
+                        <div class="mt-2 flex justify-end gap-1 flex-wrap">
+                            @for (mentioned of msg.mentioned_students || []; track mentioned.id) {
+                            <span class="text-[11px] bg-white text-[#043458] px-2 py-1 rounded-full">&#64;{{ mentioned.name }}</span>
+                            }
+                        </div>
+                        }
+                        <div class="mt-2 text-right flex items-center justify-end gap-3">
+                            @if (chatMode === 'channel') {
+                            <button
+                                type="button"
+                                (click)="toggleLike(msg)"
+                                class="text-xs text-[#043458] hover:underline font-medium">
+                                {{ msg.liked_by_me ? '❤️' : '🤍' }} {{ (msg.liked_by_me ? 'Unlike' : 'Like') | translate }} ({{ msg.likes_count || 0 }})
+                            </button>
+                            }
+                            <button
+                                type="button"
+                                (click)="selectReply(msg)"
+                                class="text-xs text-[#043458] hover:underline">
+                                {{ 'Reply' | translate }}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                } @else {
+                <!-- Student message (left, blue) -->
+                <div class="flex justify-start items-center gap-3">
+                    <div class="bg-[#1396FD] text-white rounded-2xl px-5 py-4 w-full md:max-w-[70%] lg:max-w-[60%]">
+                        @if (msg.reply_to) {
+                        <div class="mb-2 rounded-xl border border-[#8ec8fb] bg-[#0d83de] px-3 py-2">
+                            <p class="mb-1 text-xs font-semibold">{{ msg.reply_to.sender_name }}</p>
+                            <p class="mb-0 text-sm line-clamp-2" [innerHTML]="msg.reply_to.body | linkify"></p>
+                        </div>
+                        }
+                        <p class="text-sm md:text-lg leading-relaxed whitespace-pre-wrap break-words" [innerHTML]="msg.body | linkify"></p>
+                        @if (chatMode === 'channel' && (msg.mentioned_students?.length || 0) > 0) {
+                        <div class="mt-2 flex gap-1 flex-wrap">
+                            @for (mentioned of msg.mentioned_students || []; track mentioned.id) {
+                            <span class="text-[11px] bg-[#0d83de] border border-[#8ec8fb] px-2 py-1 rounded-full">&#64;{{ mentioned.name }}</span>
+                            }
+                        </div>
+                        }
+                        <div class="mt-2 flex items-center gap-3">
+                            @if (chatMode === 'channel') {
+                            <button
+                                type="button"
+                                (click)="toggleLike(msg)"
+                                class="text-xs text-white/90 hover:underline font-medium">
+                                {{ msg.liked_by_me ? '❤️' : '🤍' }} {{ (msg.liked_by_me ? 'Unlike' : 'Like') | translate }} ({{ msg.likes_count || 0 }})
+                            </button>
+                            }
+                            <button
+                                type="button"
+                                (click)="selectReply(msg)"
+                                class="text-xs text-white/90 hover:underline">
+                                {{ 'Reply' | translate }}
+                            </button>
+                        </div>
+                    </div>
+                    <span class="text-[#043458] text-sm">{{ formatTime(msg.created_at) }}</span>
+                </div>
+                }
+                }
+            </div>
+            }
+        </div>
+
+        <!-- ================= INPUT (ALWAYS BOTTOM) ================= -->
+        @if (courseId && !error) {
+        <div class="mt-6 bg-[#F1F7FB] p-4 rounded-2xl">
+            @if (replyToMessage) {
+            <div class="mb-3 flex items-start justify-between gap-3 rounded-xl border border-[#D7E8F5] bg-white px-3 py-2">
+                <div>
+                    <p class="mb-1 text-xs font-semibold text-[#043458]">{{ 'Replying to' | translate }} {{ replyToMessage.sender_name }}</p>
+                    <p class="mb-0 text-sm text-[#545F71] line-clamp-1" [innerHTML]="replyToMessage.body | linkify"></p>
+                </div>
+                <button
+                    type="button"
+                    (click)="clearReply()"
+                    class="text-xs text-[#545F71] hover:text-[#043458]">
+                    {{ 'Cancel' | translate }}
+                </button>
+            </div>
+            }
+            @if (chatMode === 'channel') {
+            <div class="mb-3">
+                <div class="flex items-center gap-2">
+                    <button
+                        type="button"
+                        (click)="startMention()"
+                        class="px-3 py-2 rounded-xl border border-[#D7E8F5] text-sm text-[#043458] hover:bg-white">
+                        &#64; Mention
+                    </button>
+                    <select [(ngModel)]="mentionStudentId" class="bg-white border border-[#D7E8F5] rounded-xl px-3 py-2 text-sm text-[#545F71]">
+                        <option [ngValue]="null">{{ 'Mention student' | translate }}</option>
+                        @for (participant of groupParticipants; track participant.id) {
+                        <option [ngValue]="participant.id">{{ participant.name }}</option>
+                        }
+                    </select>
+                    <button
+                        type="button"
+                        (click)="addMention()"
+                        class="px-3 py-2 rounded-xl border border-[#D7E8F5] text-sm text-[#043458] hover:bg-white">
+                        {{ 'Add mention' | translate }}
+                    </button>
+                </div>
+                @if (selectedMentionIds.length) {
+                <div class="mt-2 flex flex-wrap gap-2">
+                    @for (id of selectedMentionIds; track id) {
+                    <button
+                        type="button"
+                        (click)="removeMention(id)"
+                        class="text-xs bg-white border border-[#D7E8F5] text-[#043458] px-2 py-1 rounded-full">
+                        &#64;{{ getMentionName(id) }} x
+                    </button>
+                    }
+                </div>
+                }
+            </div>
+            }
+            <div class="flex items-center gap-4">
+            <button
+                (click)="sendMessage()"
+                [disabled]="!newMessage.trim() || sending"
+                class="bg-[#0D3B5E] text-white px-6 py-3 rounded-xl hover:opacity-90 transition disabled:opacity-50 disabled:cursor-not-allowed">
+                {{ sending ? ('Sending...' | translate) : ('Send' | translate) }}
+            </button>
+            <input
+                type="text"
+                [(ngModel)]="newMessage"
+                (ngModelChange)="onMessageInputChange($event)"
+                (keydown.enter)="sendMessage()"
+                [placeholder]="'Write your message...' | translate"
+                maxlength="4000"
+                class="flex-1 bg-white rounded-xl px-4 py-3 outline-none text-[#545F71]" />
+            </div>
+            @if (chatMode === 'channel' && showMentionSuggestions) {
+            <div class="mt-2 bg-white border border-[#D7E8F5] rounded-xl overflow-hidden">
+                @for (participant of mentionSuggestions; track participant.id) {
+                <button
+                    type="button"
+                    (click)="chooseMention(participant)"
+                    class="w-full text-left px-3 py-2 text-sm text-[#043458] hover:bg-[#F1F7FB]">
+                    &#64;{{ participant.name }}
+                </button>
+                }
+            </div>
+            }
+        </div>
+        }
+    </div>
+</section>

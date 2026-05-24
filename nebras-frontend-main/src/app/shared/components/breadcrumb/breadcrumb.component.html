@@ -1,0 +1,28 @@
+<nav class="w-full my-3">
+  <ul class="flex items-center gap-2">
+
+    @for (item of data; track $index; let last = $last) {
+
+    <li class="flex items-start">
+      @if (!last && item.link) {
+      <a [routerLink]="item.link" class="!text-lg font-medium !text-[#778D9D] hover:text-gray-600 transition">
+        {{ item.title | translate }}
+      </a>
+      } @else {
+      <span class="text-lg font-semibold text-[#1396FD]">
+        {{ item.title | translate }}
+      </span>
+      }
+    </li>
+
+    @if (!last) {
+    <svg class="w-7 h-7 text-[#778D9D] mx-2 shrink-0 transition-transform rtl:rotate-180" fill="none"
+      stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+    </svg>
+    }
+
+    }
+
+  </ul>
+</nav>

@@ -1,0 +1,63 @@
+<div class="max-w-[1342px] mx-auto px-4">
+    <app-breadcrumb [data]="breadcrumb"></app-breadcrumb>
+</div>
+
+<section class="max-w-[1400px] mx-auto px-4 py-12">
+
+    <!-- ================= SKELETON ================= -->
+    <ng-container *ngIf="loading">
+
+        <!-- Title skeleton -->
+        <div class="h-10 md:h-14 w-2/4 bg-gray-200 rounded mb-8 animate-pulse"></div>
+
+        <!-- Image skeleton -->
+        <div class="w-full h-[420px] md:h-[480px] bg-gray-200 rounded-2xl mb-8 animate-pulse"></div>
+
+        <!-- Date skeleton -->
+        <div class="flex items-center gap-3 mb-10 animate-pulse">
+            <div class="w-6 h-6 bg-gray-200 rounded"></div>
+            <div class="h-4 w-28 bg-gray-200 rounded"></div>
+        </div>
+
+        <!-- Content skeleton -->
+        <div class="space-y-4 max-w-full animate-pulse">
+            <div class="h-4 w-full bg-gray-200 rounded"></div>
+            <div class="h-4 w-11/12 bg-gray-200 rounded"></div>
+            <div class="h-4 w-10/12 bg-gray-200 rounded"></div>
+            <div class="h-4 w-9/12 bg-gray-200 rounded"></div>
+            <div class="h-4 w-10/12 bg-gray-200 rounded"></div>
+        </div>
+
+    </ng-container>
+
+    <!-- ================= REAL CONTENT ================= -->
+    <ng-container *ngIf="!loading && news">
+
+        <!-- Title -->
+        <h1 class="text-3xl md:text-4xl font-bold text-[#043458] mb-12 text-start">
+            {{ news.title }}
+        </h1>
+
+        <!-- Hero Image -->
+        <div class="w-full mb-8">
+            <img [src]="news.image" [alt]="news.title" class="w-full h-[420px] md:h-[480px] object-cover rounded-2xl" />
+        </div>
+
+        <!-- Date -->
+        <div class="flex items-center gap-3 mb-10 text-[#545F71]">
+            <img src="app/assets/icons/calendar.svg" alt="Calendar" class="w-6 h-6" />
+            <span class="text-lg font-medium">
+                {{ formattedCreatedAt }}
+            </span>
+        </div>
+
+        <!-- Content (isolated from project CSS via Shadow DOM) -->
+        <div class="max-w-full mx-auto" appIsolateContent [appIsolateContent]="news.full_description">
+        </div>
+
+        <!-- Related news -->
+        <app-related-news [newsId]="news.id"></app-related-news>
+
+    </ng-container>
+
+</section>

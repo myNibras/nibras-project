@@ -1,0 +1,15 @@
+<section class="mx-auto max-w-[1335px] flex flex-col xl:px-4" *ngIf="courses && courses.length > 0">
+    <div class="max-w-full py-10 px-1">
+        <h2 class="text-center text-[30px] md:text-[42] lg:text-[48px] font-bold text-[#043458] mb-9">
+            {{"related courses" | translate}}
+        </h2>
+        <div class="swiper lg:px-0 h-full" #swiperContainer>
+            <div class="swiper-wrapper flex gap-3 jsustify-start md:ltr:ml-2 md:rtl:mr-2 lg:rtl:mr-0">
+                <div *ngFor="let course of courses"
+                    class="swiper-slide xl:max-w-[415px] lg:max-w-[330px] md:max-w-[48%] max-w-full h-full">
+                    <app-item-card [course]="course"></app-item-card>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

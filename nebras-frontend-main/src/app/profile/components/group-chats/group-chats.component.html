@@ -1,0 +1,49 @@
+<div class="flex-1 bg-white rounded-[32px] shadow-[0_16px_40px_rgba(15,23,42,0.08)] p-6 md:min-h-[1030px]">
+
+    <!-- Header -->
+    <div class="grid grid-cols-3 items-center text-sm text-[#043458] font-semibold pb-3 border-b border-[#E6EEF6]">
+
+        <div class="text-strat">
+            {{ 'Subject' | translate }}
+        </div>
+
+        <div class="text-center">
+            {{ 'Date' | translate }}
+        </div>
+
+        <div></div>
+
+    </div>
+
+
+    <!-- Rows -->
+    <div *ngFor="let chat of groupChats; let i = index">
+
+        <div
+            class="grid grid-cols-3 items-center py-4 border-b border-[#EEF3F8] text-sm text-[#545F71] hover:bg-[#F9FBFD] transition cursor-pointer">
+
+            <!-- Subject -->
+            <div class="flex items-center justify-start gap-2 text-[#043458]">
+
+                <img src="app\assets\icons\chat-dots.svg" class="w-4 h-4">
+                <span>
+                    {{ chat.subject }}
+                </span>
+
+            </div>
+
+            <!-- Date -->
+            <div class="text-center">
+                {{ chat.date }}
+            </div>
+
+            <!-- Arrow -->
+            <div class="flex justify-end ">
+                <img src="app\assets\icons\arrow2.svg" class="w-4 h-4 ltr:rotate-180">
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

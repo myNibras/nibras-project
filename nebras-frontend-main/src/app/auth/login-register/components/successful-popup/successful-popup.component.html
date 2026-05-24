@@ -1,0 +1,30 @@
+<div class="min-h-screen flex flex-col py-5 items-center justify-start bg-[#F5F8FB] px-4">
+
+    <!-- Title -->
+    <h1 class="text-[#043458] text-3xl md:text-4xl font-bold mb-8 text-center">
+        {{ title ? (title | translate) : ('reset title' | translate) }}
+    </h1>
+
+    <div class="w-full max-w-md bg-white p-8 rounded-2xl shadow-lg flex flex-col items-center text-center">
+
+        <!-- Success Icon -->
+        <div class="w-32 h-32 flex items-center justify-center rounded-full bg-blue-100 mb-6">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 text-blue-500" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+            </svg>
+        </div>
+
+        <!-- Message -->
+        <p class="text-gray-700 text-lg font-medium mb-6">
+            {{ message ? (message | translate) : ('reset message' | translate) }}
+        </p>
+
+        <!-- Login Button -->
+        <button type="button" (click)="goToLogin()"
+            class="w-full rounded-[14px] font-bold py-3 bg-[#0D3C63] text-white hover:bg-[#062b47]">
+            {{ buttonLabel ? (buttonLabel | translate) : ('login button' | translate) }}
+        </button>
+
+    </div>
+</div>

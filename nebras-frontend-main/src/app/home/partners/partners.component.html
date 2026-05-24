@@ -1,0 +1,63 @@
+<!-- Skeleton -->
+<section *ngIf="loadingPartners" class="w-full my-25 px-4 py-10 bg-white">
+    <div class="relative">
+
+        <!-- Title skeleton -->
+        <div class="pt-10 mb-5 text-center">
+            <ngx-skeleton-loader [theme]="{ width: '260px', height: '32px', borderRadius: '8px' }">
+            </ngx-skeleton-loader>
+        </div>
+
+        <!-- Skeleton slides -->
+        <div class="flex items-center justify-center gap-6 md:gap-20 py-10 min-h-[170px]">
+            <ng-container *ngFor="let _ of [].constructor(8)">
+                <div class="flex flex-col items-center gap-3">
+                    <ngx-skeleton-loader [theme]="{ width: '110px', height: '110px', borderRadius: '18px' }">
+                    </ngx-skeleton-loader>
+
+                    <ngx-skeleton-loader [theme]="{ width: '80px', height: '14px', borderRadius: '6px' }">
+                    </ngx-skeleton-loader>
+                </div>
+            </ng-container>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- REAL COMPONENT -->
+<section *ngIf="!loadingPartners && partners.length" class="w-full my-25 px-4 py-10 bg-white">
+    <div class="relative">
+
+        <!-- Title -->
+        <div class="pt-10 mb-5 text-center">
+            <h2 class="text-[#043458] font-bold text-3xl md:text-4xl">
+                {{ partnersSection?.section_title }}
+            </h2>
+        </div>
+
+        <!-- Swiper -->
+        <div class="swiper w-full" #partnersSwiperContainer>
+            <div class="swiper-wrapper">
+
+                <div class="swiper-slide cursor-pointer" *ngFor="let partner of partners"
+                    [routerLink]="partnersPage[storageService.siteLanguage$.value]">
+                    <div class="flex flex-col items-center justify-center gap-4">
+
+                        <div class="h-[80px] w-[160px] md:h-[132px] md:w-[102px]
+                        flex items-center justify-center">
+                            <img [src]="partner.logo" [alt]="partner.name"
+                                class="max-h-full max-w-full object-contain transition hover:scale-105" />
+                        </div>
+
+                        <span class="text-sm md:text-base text-[#545F71] font-medium">
+                            {{ partner.name }}
+                        </span>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

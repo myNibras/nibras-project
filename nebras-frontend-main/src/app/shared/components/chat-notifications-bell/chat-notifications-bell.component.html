@@ -1,0 +1,53 @@
+<div class="relative">
+  <button
+    type="button"
+    (click)="toggle()"
+    class="relative flex items-center justify-center w-9 h-9 text-[#778D9D] hover:text-[#1396FD] transition"
+    [attr.aria-label]="'Chat notifications' | translate">
+    <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+    </svg>
+    <span *ngIf="count() > 0"
+      class="absolute -top-1 -right-1 min-w-[18px] h-[18px] px-1 inline-flex items-center justify-center rounded-full bg-[#FD9A33] text-white text-[10px] font-bold leading-none ring-2 ring-[#f1f9ff]">
+      {{ count() > 99 ? '99+' : count() }}
+    </span>
+  </button>
+
+  <div *ngIf="open()"
+    class="absolute end-0 mt-2 w-[320px] bg-white rounded-2xl shadow-xl border border-[#E3E9EE] z-50 overflow-hidden">
+    <div class="px-4 py-3 border-b border-[#E3E9EE] text-[#043458] font-semibold bg-white">
+      {{ 'Messages' | translate }}
+    </div>
+
+    <div class="max-h-[360px] overflow-y-auto">
+      <ng-container *ngIf="(recent$ | async) as items">
+        <ng-container *ngIf="items.length > 0; else empty">
+          <button *ngFor="let item of items"
+            type="button"
+            (click)="goToChat(item)"
+            class="w-full text-start px-4 py-3 hover:bg-[#F5F8FB] transition border-b border-[#EEF2F5] last:border-b-0">
+            <div class="flex items-center justify-between gap-2">
+              <span class="font-medium text-[#043458] text-sm truncate">
+                {{ item.sender_name || ('Unknown' | translate) }}
+              </span>
+              <span class="text-[#7B8A99] text-xs ms-2 shrink-0">
+                {{ item.created_at | date: 'shortTime' }}
+              </span>
+            </div>
+            <div class="text-xs text-[#7B8A99] mt-0.5 truncate">
+              {{ item.course_name }} · {{ (item.thread_type === 'group' ? 'Group' : 'Direct') | translate }}
+            </div>
+            <div class="text-sm text-[#545F71] mt-1 line-clamp-2 break-words">
+              {{ item.body_preview }}
+            </div>
+          </button>
+        </ng-container>
+        <ng-template #empty>
+          <div class="px-4 py-6 text-center text-sm text-[#7B8A99]">
+            {{ 'No new messages.' | translate }}
+          </div>
+        </ng-template>
+      </ng-container>
+    </div>
+  </div>
+</div>

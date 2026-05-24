@@ -1,0 +1,36 @@
+<!-- Backdrop -->
+<div id="success-backdrop"
+    class="fixed inset-0 z-[100] bg-slate-900/40 backdrop-blur-[1px] flex items-center justify-center overscroll-none h-full"
+    role="dialog" aria-modal="true" (click)="onBackdropClick($event)">
+
+
+    <!-- Panel -->
+    <div class="relative w-full md:max-w-[450px] h-[418px] rounded-[24px] bg-[#043458] shadow-xl
+            flex flex-col overflow-hidden transition transform duration-150 ease-out scale-100"
+        (click)="$event.stopPropagation()">
+
+        <!-- Header -->
+        <div id="lr-title" class="relative rounded-t-[24px] text-[#F2F2F7] py-3 w-full">
+            <div class="flex justify-evenly md:text-2xl text-base font-medium relative">
+                {{ title | translate }}
+            </div>
+        </div>
+
+        <!-- Body -->
+        <div class="w-full flex-1 rounded-3xl md:px-8 px-5 py-6 bg-white flex flex-col justify-center items-center">
+            <!-- Success Icon -->
+            <div class="w-40 h-40 flex items-center justify-center rounded-full bg-blue-100">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-20 h-20 text-blue-500" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+            </div>
+
+            <!-- Success Message -->
+            <p class="mt-6 text-center text-gray-700 text-lg font-medium">
+                {{ message | translate }}
+            </p>
+
+        </div>
+    </div>
+</div>

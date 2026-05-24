@@ -1,0 +1,41 @@
+<!-- Backdrop -->
+<div id="shared-backdrop" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50"
+    (click)="onBackdropClick($event)">
+    <!-- Popup Card -->
+    <div class="relative w-[90%] max-w-md rounded-2xl bg-white p-6 shadow-xl">
+        <!--  Close button -->
+        <button type="button" (click)="close.emit()" class="absolute top-3 ltr:right-3 rtl:left-3 flex h-8 w-8 items-center justify-center
+             rounded-full text-[#545F71] hover:bg-gray-100 hover:text-[#043458]
+             transition" aria-label="Close popup">
+            ✕
+        </button>
+
+        <!-- Title -->
+        <h2 class="mb-3 text-xl font-bold text-[#043458]">
+            {{ title }}
+        </h2>
+
+        <!-- Message -->
+        <p class="mb-5 text-base text-[#545F71]">
+            {{ message }}
+        </p>
+
+        <!-- Actions -->
+        <div class="flex justify-end gap-3">
+            <button *ngIf="showLoginButton" (click)="login.emit()"
+                class="rounded-xl bg-[#043458] px-5 py-2 text-white hover:brightness-110">
+                {{ 'Login' | translate }}
+            </button>
+
+            <button *ngIf="showCartButton" (click)="goToCart.emit()"
+                class="rounded-xl bg-[#043458] px-5 py-2 text-white hover:brightness-110">
+                {{ 'goToBasket' | translate }}
+            </button>
+
+            <button *ngIf="!showCartButton" (click)="close.emit()" class="rounded-xl border border-[#D7DEE4] px-5 py-2 text-[#043458]
+               hover:bg-[#F4F6F8]">
+                {{ 'Close' | translate }}
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,244 @@
+<div class="flex-1 bg-white rounded-[32px] shadow-[0_16px_40px_rgba(15,23,42,0.08)] p-6 md:min-h-[1030px]">
+
+    <div class="flex justify-end gap-3 mb-6">
+        <button *ngIf="!isEditing" type="button" (click)="startEdit()"
+            class="rounded-2xl bg-gradient-to-r from-[#09528A] to-[#043458] text-[#F2F2F7] md:text-base text-[14px] md:px-8.5 px-5 py-2 hover:opacity-95 focus:outline-none">
+            {{ 'update profile' | translate }}
+        </button>
+
+        <ng-container *ngIf="isEditing">
+            <div class="flex flex-col md:flex-row gap-2">
+                <button type="button" (click)="save()"
+                    class="shrink-0 rounded-[16px] bg-gradient-to-r from-[#09528A] to-[#043458] text-[#F2F2F7] md:text-base text-[14px] md:px-8.5 px-5 py-2 hover:opacity-95 focus:outline-none">
+                    {{ 'Save' | translate }}
+                </button>
+                <button type="button" (click)="cancelEdit()"
+                    class="shrink-0 rounded-[16px] bg-white text-[#043458] border border-[#043458] md:text-base px-2 md:px-6 py-2 text-[14px] rounded-[16px] hover:bg-slate-50">
+                    {{ 'Cancel' | translate }}
+                </button>
+            </div>
+        </ng-container>
+    </div>
+
+    <hr class="border-[#D7E8F5]">
+
+    <form (click)="onHostClick()" [formGroup]="form" novalidate>
+        <div class="space-y-4 mt-3">
+
+            <div class="flex flex-col md:flex-row items-center gap-3">
+                <label class="w-full md:w-40 text-base text-[#043458]">{{ 'Full Name' | translate }}</label>
+                <div class="flex-1 w-full">
+                    <input type="text" formControlName="fullName" maxlength="50" [readOnly]="!isEditing" [disabled]="!isEditing" [attr.aria-readonly]="!isEditing ? 'true' : null" class="w-full rounded-full border border-[#E5E7EB] focus:outline-none px-4 py-2.5" [ngClass]="{ 'bg-[#F9FAFB] cursor-not-allowed text-gray-500': !isEditing, 'bg-white text-black': isEditing }" />
+                    <div *ngIf="form.get('fullName')?.touched && form.get('fullName')?.hasError('required')"
+                        class="text-red-600 text-sm mt-1">
+                        {{ 'Full name is required.' | translate }}
+                    </div>
+                    <div *ngIf="form.get('fullName')?.touched && form.get('fullName')?.hasError('maxlength')"
+                        class="text-red-600 text-sm mt-1">
+                        {{ 'Full name must not exceed 50 characters.' | translate }}
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-3 border-[#D7E8F5]">
+
+            <div class="flex flex-col md:flex-row items-center gap-3">
+                <label class="w-full md:w-40 text-base text-[#043458]">{{ 'Age' | translate }}</label>
+                <div class="flex-1 w-full">
+                    <input type="number" formControlName="age" min="3" [readonly]="!isEditing" [disabled]="!isEditing" [attr.aria-readonly]="!isEditing ? 'true' : null" class="w-full rounded-full border border-[#E5E7EB] focus:outline-none px-4 py-2.5" [ngClass]="{ 'bg-[#F9FAFB] cursor-not-allowed text-gray-500': !isEditing, 'bg-white text-black': isEditing }" placeholder="{{ 'Enter your age' | translate }}" />
+                    <div *ngIf="form.get('age')?.touched && form.get('age')?.hasError('required')" class="text-red-600 text-sm mt-1">
+                        {{ 'Age is required.' | translate }}
+                    </div>
+                    <div *ngIf="form.get('age')?.touched && form.get('age')?.hasError('min')" class="text-red-600 text-sm mt-1">
+                        {{ 'Age must be at least 3.' | translate }}
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-3 border-[#D7E8F5]">
+
+            <div class="flex flex-col md:flex-row items-center gap-3">
+                <label class="w-full md:w-40 text-base text-[#043458]">{{ 'Class' | translate }}</label>
+                <div class="flex-1 w-full relative">
+                    <button type="button" (click)="$event.stopPropagation(); toggle('class')"
+                        (keydown)="onKeydown('class', $event)"
+                        class="flex items-center justify-between w-full rounded-full border border-[#E5E7EB] focus:outline-none px-4 py-2.5"
+                        [ngClass]="{ 'bg-[#F9FAFB] cursor-not-allowed text-gray-500': !isEditing, 'bg-white text-black': isEditing }"
+                        [attr.aria-expanded]="dropdowns.class.open ? 'true' : 'false'">
+                        <span class="truncate">{{ getLabel('class') | translate }}</span>
+                        <svg class="w-5 h-5 ml-2 shrink-0" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+
+                    <!-- Dropdown list -->
+                    <ul *ngIf="dropdowns.class.open"
+                        class="absolute z-20 mt-1 w-full rounded-lg border border-[#D7DEE4] bg-white shadow-md overflow-hidden"
+                        (click)="$event.stopPropagation()">
+                        <li *ngFor="let opt of dropdowns.class.options; let i = index" (click)="select('class', i)"
+                            (mouseenter)="dropdowns.class.highlighted = i"
+                            class="px-4 py-2 text-sm text-[#545F71] cursor-pointer"
+                            [class.bg-blue-100]="i === dropdowns.class.highlighted">
+                            {{ opt.label | translate }}
+                        </li>
+                    </ul>
+
+                    <div *ngIf="form.get('class')?.touched && form.get('class')?.invalid"
+                        class="text-red-600 text-sm mt-1">
+                        {{ 'Class is required.' | translate }}
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-3 border-[#D7E8F5]">
+
+            <div class="flex flex-col md:flex-row items-center gap-3">
+                <label class="w-full md:w-40 text-base text-[#043458]">{{ 'Email' | translate }}</label>
+                <div class="flex-1 w-full">
+                    <input type="email" formControlName="email" [readOnly]="!isEditing" [disabled]="!isEditing" [attr.aria-readonly]="!isEditing ? 'true' : null" class="w-full rounded-full border border-[#E5E7EB] focus:outline-none px-4 py-2.5" [ngClass]="{ 'bg-[#F9FAFB] cursor-not-allowed text-gray-500': !isEditing, 'bg-white text-black': isEditing }" />
+                    <div *ngIf="form.get('email')?.touched && form.get('email')?.invalid" class="text-red-600 text-sm mt-1">
+                        {{ 'Enter a valid email.' | translate }}
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-3 border-[#D7E8F5]">
+
+            <div class="flex flex-col md:flex-row items-center gap-3">
+                <label class="w-full md:w-40 text-base text-[#043458]">{{ 'Phone' | translate }}</label>
+                <div class="flex-1 w-full relative">
+                    <div class="mt-1 flex px-4 py-2.5 items-center rounded-full border border-[#E5E7EB] overflow-hidden"
+                        [ngClass]="{ 'bg-[#F9FAFB] text-gray-500': !isEditing, 'bg-white text-black': isEditing }" dir="ltr">
+
+                        <!-- Country dropdown -->
+                        <button type="button" (click)="$event.stopPropagation(); toggle('country')"
+                            (keydown)="onKeydown('country', $event)"
+                            class="flex items-center justify-between gap-1 px-3 min-w-[60px] shrink-0 bg-transparent border-r border-[#D7DEE4]"
+                            [ngClass]="{ 'pointer-events-none cursor-not-allowed': !isEditing }"
+                            [attr.aria-expanded]="dropdowns.country.open ? 'true' : 'false'">
+                            <img [src]="countryFlag" alt="" class="w-8 h-4 rounded-sm block border border-[#E5E7EB]" />
+                            <svg class="w-3 text-[#545F71] shrink-0" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+
+                        <!-- Hidden field for country -->
+                        <input type="hidden" formControlName="phoneCountry" />
+
+                        <!-- Static dial code -->
+                        <div class="px-2 font-medium flex items-center whitespace-nowrap" [ngClass]="{ 'text-gray-500': !isEditing, 'text-[#043458]': isEditing }">
+                            {{ selectedDialCode }}
+                        </div>
+
+                        <!-- Phone input -->
+                        <input type="tel" formControlName="phone" placeholder="XXXXXXXX" maxlength="14"
+                            [readOnly]="!isEditing" [disabled]="!isEditing" [attr.aria-readonly]="!isEditing ? 'true' : null" class="flex-1 
+                            font-medium flex items-center bg-transparent border-0 outline-none h-full"
+                            [ngClass]="{ 'cursor-not-allowed text-gray-500 placeholder:text-gray-400': !isEditing, 'text-[#545F71] placeholder:text-[#545F71]/70': isEditing }" />
+                    </div>
+
+                    <!-- Country dropdown list -->
+                    <div *ngIf="dropdowns.country.open"
+                        class="absolute z-20 mt-1 w-full bg-white border border-[#D7DEE4] rounded-[14px] shadow"
+                        (click)="$event.stopPropagation()">
+                        <div class="p-2 border-b border-[#E9E9E9]">
+                            <input type="text" [value]="dropdowns.country.search || ''"
+                                (input)="onCountrySearch($event)" [placeholder]="'Search' | translate"
+                                class="w-full h-8 px-2 text-sm border border-[#D7DEE4] rounded-[8px] focus:outline-none focus:border-slate-300" />
+                        </div>
+                        <ul class="max-h-48 overflow-y-auto">
+                            <li *ngFor="let c of filtered('country'); let i = index" (click)="select('country', i)"
+                                (mouseenter)="dropdowns.country.highlighted = i"
+                                class="flex items-center gap-2 px-3 py-2 hover:bg-[#F5F7FA] cursor-pointer"
+                                [class.bg-blue-100]="i === dropdowns.country.highlighted">
+                                <img [src]="c.flag" class="h-4 w-8 rounded-sm" [alt]="c.label" />
+                                <span class="text-sm text-[#545F71]">{{ c.label }}</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Validation -->
+                    <div *ngIf="form.get('phone')?.touched && form.get('phone')?.invalid"
+                        class="text-red-600 text-sm mt-1">
+                        {{ 'Phone number is required.' | translate }}
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-3 border-[#D7E8F5]">
+
+            <div class="flex flex-col md:flex-row items-center gap-3">
+                <label class="w-full md:w-40 text-base text-[#043458]">{{ 'Gender' | translate }}</label>
+                <div class="flex-1 w-full relative">
+                    <!-- Trigger -->
+                    <button type="button" (click)="$event.stopPropagation(); toggle('gender')"
+                        (keydown)="onKeydown('gender', $event)"
+                        class="flex items-center justify-between w-full rounded-full border border-[#E5E7EB] focus:outline-none px-4 py-2.5"
+                        [ngClass]="{ 'bg-[#F9FAFB] cursor-not-allowed text-gray-500': !isEditing, 'bg-white text-black': isEditing }"
+                        [attr.aria-expanded]="dropdowns.gender.open ? 'true' : 'false'">
+                        <span class="truncate">{{ getLabel('gender') | translate }}</span>
+                        <svg class="w-5 h-5 ml-2 shrink-0" fill="none" stroke="currentColor" stroke-width="2"
+                            viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+
+                    <!-- Dropdown list -->
+                    <ul *ngIf="dropdowns.gender.open"
+                        class="absolute z-20 mt-1 w-full rounded-lg border border-[#D7DEE4] bg-white shadow-md overflow-hidden"
+                        (click)="$event.stopPropagation()">
+                        <li *ngFor="let opt of dropdowns.gender.options; let i = index" (click)="select('gender', i)"
+                            (mouseenter)="dropdowns.gender.highlighted = i"
+                            class="px-4 py-2 text-sm text-[#545F71] cursor-pointer"
+                            [class.bg-blue-100]="i === dropdowns.gender.highlighted">
+                            {{ opt.label | translate }}
+                        </li>
+                    </ul>
+
+                    <div *ngIf="form.get('gender')?.touched && form.get('gender')?.invalid"
+                        class="text-red-600 text-sm mt-1">
+                        {{ 'Gender is required.' | translate }}
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-3 border-[#D7E8F5]">
+
+            <!-- الصورة -->
+            <div class="flex flex-col md:flex-row items-center gap-3">
+                <label class="w-full md:w-40 text-base text-[#043458]"> {{ 'profile image' | translate }} </label>
+                <div class="flex-1 w-full">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 rounded-full overflow-hidden border border-[#E5E7EB]">
+                            <img [src]="profileImage" [alt]="'profile image' | translate"
+                                class="w-full h-full object-cover profile-image" />
+                        </div>
+                        <input #fileInput type="file" accept="image/jpeg,image/jpg,image/png"
+                            (change)="onFileSelected($event)" class="hidden" id="profile-image-input" />
+                        <button type="button" (click)="fileInput.click()" [disabled]="!isEditing"
+                            class="px-5 py-2.5 rounded-full cursor-pointer bg-[#E5F0FF] text-[#043458] text-sm font-semibold disabled:cursor-not-allowed disabled:opacity-50"
+                            [ngClass]="{ 'cursor-not-allowed opacity-50': !isEditing }"> {{ "change image" | translate
+                            }} </button>
+                    </div>
+                    <div *ngIf="imageError" class="text-red-600 text-sm mt-1">
+                        {{ imageError }}
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-3 border-[#D7E8F5]">
+
+            <div class="flex flex-col md:flex-row items-center gap-3">
+                <label class="w-full md:w-40 text-base text-[#043458]"> {{ 'Password' | translate }} </label>
+                <div class="flex-1 w-full flex items-center gap-4">
+                    <button
+                        class="shrink-0 rounded-[16px] bg-gradient-to-r from-[#09528A] to-[#043458] text-[#F2F2F7] md:text-base text-[14px] md:px-8.5 px-5 py-2 hover:opacity-95 focus:outline-none cursor-pointer"
+                        (click)="onChangePasswordClick()"> {{ "Change Password" | translate }} </button>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>

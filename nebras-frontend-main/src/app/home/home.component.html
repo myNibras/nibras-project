@@ -1,0 +1,15 @@
+<app-home-slider />
+<app-educational-stages />
+<app-testimonials />
+<div class="container mx-auto">
+    <app-contact-us />
+</div>
+<app-articles-section />
+<app-news />
+<app-faq [limit]="faqLimit ?? undefined" [showViewAllLink]="true" />
+<app-partners></app-partners>
+<app-teachers-section />
+<app-thank-you-modal [open]="tyOpen" [title]="'Thank You' | translate"
+    [message]="'Your payment was successful, and we\'re getting everything ready for you. You\'ll receive a confirmation shortly.'"
+    [primaryLabel]="'back to home' | translate" [isRTL]="isRTL" (primary)="goHome()" (closed)="goHome()">
+</app-thank-you-modal>

@@ -1,0 +1,92 @@
+<div class="flex-1 bg-white rounded-[32px] shadow-[0_16px_40px_rgba(15,23,42,0.08)] p-6 md:min-h-[1030px]">
+
+    <!-- Header -->
+    <div class="grid grid-cols-9 gap-4 text-sm text-[#043458] font-semibold pb-3 border-b border-[#E6EEF6]">
+
+        <div class="text-center col-span-2">
+            {{ 'Teacher' | translate }}
+        </div>
+
+        <div class="text-center col-span-2">
+            {{ 'Subject' | translate }}
+        </div>
+
+        <div class="text-center col-span-2">
+            {{ 'Date' | translate }}
+        </div>
+
+        <div class="col-span-2"></div>
+
+        <div></div>
+
+    </div>
+
+
+    <div *ngIf="loading" class="py-8 text-center text-[#545F71]">
+        {{ 'Loading' | translate }}...
+    </div>
+
+    <div *ngIf="!loading && notifications.length === 0" class="py-8 text-center text-[#545F71]">
+        {{ 'No notifications found' | translate }}
+    </div>
+
+    <ng-container *ngIf="!loading && notifications.length > 0">
+        <!-- Notifications -->
+        <div *ngFor="let notification of notifications; let i = index">
+
+            <!-- Row -->
+            <div
+                class="grid grid-cols-9 gap-4 items-center py-4 border-b border-[#EEF3F8] text-sm text-[#545F71] hover:bg-[#F9FBFD] transition">
+               
+                <!-- Teacher -->
+                <div class="text-center col-span-2">
+                    {{ notification.teacher_name || '-' }}
+                </div>
+
+                <!-- Subject -->
+                <div class="text-center col-span-2">
+                    {{ notification.course_name || '-' }}
+                </div>
+
+                <!-- Date -->
+                <div class="text-center col-span-2">
+                    {{ formatDate(notification.created_at) }}
+                </div>
+
+                <!-- Preview -->
+                <div class="col-span-2 flex flex-row justify-start text-start gap-3">
+
+                    <img src="app/assets/icons/bill-icon.svg" class="w-5 h-5">
+
+                    <p class="truncate">
+                        {{ notification.message }}
+                    </p>
+
+                </div>
+
+                <!-- Expand -->
+                <div class="flex justify-center cursor-pointer" (click)="toggleMessage(i)">
+
+                    <img [src]="openedIndex === i
+                        ? 'app/assets/icons/minus-icon.svg'
+                        : 'app/assets/icons/plus-icon.svg'" class="w-4 h-4">
+                </div>
+
+            </div>
+
+
+            <!-- Expanded Message -->
+        
+        <div *ngIf="openedIndex === i" class="bg-[#F2F6FA] rounded-2xl p-6 mt-3 mb-4 animate-fade">
+
+            <p class="text-[#545F71] text-start">
+                {{ notification.message }}
+            </p>
+
+        </div>
+       
+
+        </div>
+    </ng-container>
+
+</div>

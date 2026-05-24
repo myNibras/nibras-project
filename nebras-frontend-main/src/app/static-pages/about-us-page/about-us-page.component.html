@@ -1,0 +1,139 @@
+<section class="relative max-w-[1350px] mx-auto ">
+    <!-- Hero section -->
+    <div class="bg-[#031F34] lg:rounded-[48px] ">
+        <div class="
+    absolute inset-0
+    bg-no-repeat
+    bg-[length:auto_100%]
+    lg:rounded-[48px]
+    bottom-0 right-0
+    rtl:left-0
+    ltr:scale-x-[-1]
+  " style="background-image: url('app/assets/images/about-us/about-us-hero.png')"></div>
+
+        <!-- Content -->
+        <div class="relative text-[#F2F2F7]  z-10 lg:max-w-[80%] max-w-full lg:p-20 p-10">
+            <h1 class="lg:text-5xl text-3xl font-bold mb-4 leading-tight">
+                {{"about us title" |translate}}
+            </h1>
+
+            <p class="lg:text-[28px] text-xl leading-relaxed ">
+                {{"about us descreption" | translate}}
+            </p>
+        </div>
+    </div>
+
+</section>
+<section class="relative max-w-[1350px] mx-auto py-20 px-4 overflow-hidden">
+
+    <!-- Background Image (WHOLE SECTION) -->
+    <img src="app\assets\images\about-us\about-us-bg.png" alt="" class="
+          absolute top-1/2 -translate-y-1/2
+          rtl:right-0 ltr:left-0
+          pointer-events-none
+          z-0
+          max-h-[90%]
+        " />
+
+    <!-- ===== Row 1: Title + Description ===== -->
+    <div class="relative z-10 mb-14">
+        <h2 class="lg:text-5xl text-3xl font-bold text-[#043458] mb-4">
+            {{"My Nibras Platform" | translate}}
+        </h2>
+
+        <p class="text-[#043458] lg:text-2xl text-xl leading-relaxed">
+            {{"MyNibras is not just online lessons" |translate}}
+        </p>
+    </div>
+
+    <!-- ===== Grid ===== -->
+    <div class="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-16 items-stretch">
+
+        <!-- RIGHT: Vision & Mission -->
+        <div class="space-y-16 relative">
+            <div class="absolute inset-0 bg-no-repeat bg-contain bg-center opacity-5 pointer-events-none"
+                style="background-image: url('assets/images/about-us/about-pattern.png')"></div>
+
+            <div class="relative space-y-16">
+                <div>
+                    <h3 class="lg:text-5xl text-3xl font-bold text-[#043458] mb-4">{{"Our Vision" |translate}}</h3>
+                    <p class="text-[#043458] lg:text-2xl text-xl leading-relaxed">
+                        {{"To position MyNibras" | translate }}
+                    </p>
+                </div>
+
+                <div>
+                    <h3 class="lg:text-5xl text-3xl font-bold text-[#043458] mb-4">{{"Our Mission" |translate}}</h3>
+                    <p class="text-[#043458] lg:text-2xl text-xl leading-relaxed">
+                        {{"To deliver high-quality" |translate}}
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- LEFT: Blue Stats Card -->
+        <div class="flex">
+            <div class="bg-[#1396FD] rounded-[32px] text-white p-12 w-full h-full flex flex-col justify-center">
+                <h3 class="lg:text-5xl text-3xl font-bold mb-14 text-center">{{"numbers_section_title" |translate}}
+                </h3>
+
+                <div class="grid grid-cols-2 gap-y-14 text-center">
+                    <div>
+                        <div class="lg:text-5xl text-3xl font-bold">+50</div>
+                        <div class="lg:text-2xl text-lg mt-4">{{"available_subjects" |translate}} </div>
+                    </div>
+                    <div>
+                        <div class="lg:text-5xl text-3xl font-bold">+20</div>
+                        <div class="lg:text-2xl text-lg mt-4">{{"teachers_number" | translate}}</div>
+                    </div>
+                    <div>
+                        <div class="lg:text-5xl text-3xl font-bold">+500</div>
+                        <div class="lg:text-2xl text-lg mt-4">{{"students_number" | translate}}</div>
+                    </div>
+                    <div>
+                        <div class="lg:text-5xl text-3xl font-bold">95%</div>
+                        <div class="lg:text-2xl text-lg mt-4">{{"satisfaction" | translate}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== FULL WIDTH: What Makes Us Special ===== -->
+        <div class="lg:col-span-2 relative z-10 rounded-[48px] px-16 py-20 text-white overflow-hidden"
+            style="background: linear-gradient(90deg, #031F34 0%, #095C9A 100%);">
+
+            <h2 class="lg:text-5xl text-4xl font-bold text-center mb-16">
+                {{ "why_choose_us_title" | translate }}
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-16 text-center">
+
+                <div class="flex flex-col items-center gap-6">
+                    <img src="app/assets/images/about-us/person-workspace.svg" class="w-20 h-20" />
+                    <p class="lg:text-3xl text-2xl">
+                        {{ "expert_teachers" | translate }}
+                    </p>
+                </div>
+
+                <div class="flex flex-col items-center gap-6">
+                    <img src="app/assets/images/about-us/boxes.svg" class="w-20 h-20" />
+                    <p class="lg:text-3xl text-2xl">
+                        {{ "interactive_learning" | translate }}
+                    </p>
+                </div>
+
+                <div class="flex flex-col items-center gap-6">
+                    <img src="app/assets/images/about-us/recycle.svg" class="w-20 h-20" />
+                    <p class="lg:text-3xl text-2xl">
+                        {{ "continuous_updates" | translate }}
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- FAQs Section -->
+<app-faq [limit]="faqLimit ?? undefined" [showViewAllLink]="true" />

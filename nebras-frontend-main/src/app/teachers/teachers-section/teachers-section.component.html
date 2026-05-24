@@ -1,0 +1,50 @@
+<section class="mx-auto max-w-full py-14 overflow-hidden">
+
+    <a class="text-3xl font-bold text-center cursor-pointer text-[#0B3458] mb-5 block" (click)="goToTeachers()">
+        {{ sectionTitle || ('Education Experts' | translate) }}
+    </a>
+
+    <!-- ✅ NEW WRAPPER -->
+    <div class="teachers-swiper-container">
+        <div class="swiper" #swiperContainer>
+            <div class="swiper-wrapper">
+
+                <!-- 🔹 Skeleton -->
+                <ng-container *ngIf="loading">
+                    <div class="swiper-slide max-w-[280px]" *ngFor="let item of [1,2,3,4,5]">
+                        <div class="animate-pulse  rounded-xl  p-4">
+
+                            <!-- Image -->
+                            <div class="w-full h-65 bg-gray-200 rounded-lg mb-4"></div>
+
+                            <!-- Experience badge -->
+                            <div class="h-8 w-full bg-gray-200 rounded-md mb-4"></div>
+
+                            <!-- Name -->
+                            <div class="h-5 w-3/4 bg-gray-200 rounded mb-2 mx-auto"></div>
+
+                            <!-- Subtitle -->
+                            <div class="h-4 w-1/2 bg-gray-200 rounded mb-3 mx-auto"></div>
+
+                            <!-- Classes / Students -->
+                            <div class="h-4 w-2/3 bg-gray-200 rounded mx-auto"></div>
+
+
+                        </div>
+                    </div>
+                </ng-container>
+
+                <!-- 🔹 Real Data -->
+                <ng-container *ngIf="!loading">
+                    <div class="swiper-slide max-w-[280px] cursor-pointer" *ngFor="let teacher of teachers">
+
+                        <app-teatchers-section-card (click)="goToTeacherDetails(teacher.id)" [teacher]="teacher" />
+                    </div>
+                </ng-container>
+
+            </div>
+
+        </div>
+    </div>
+
+</section>

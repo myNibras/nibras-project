@@ -1,0 +1,8 @@
+/* subtle entrance animation (scale/opacity) */
+:host ::ng-deep [role='dialog'] > div {
+  animation: ty-pop 160ms ease-out;
+}
+@keyframes ty-pop {
+  from { transform: scale(.97); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}

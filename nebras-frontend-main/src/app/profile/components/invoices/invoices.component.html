@@ -1,0 +1,154 @@
+<div class="flex-1 space-y-6">
+  <!-- Invoices list: div-based grid, responsive -->
+  <div class="flex-1 bg-white rounded-[32px] shadow-[0_16px_40px_rgba(15,23,42,0.08)] p-6 md:min-h-[1030px]">
+    <!-- Header row: hidden on mobile, grid on md+ -->
+    <div class="invoices-list__header">
+      <div class="invoices-list__cell invoices-list__cell--header">{{ "invoice number" | translate }}</div>
+      <div class="invoices-list__cell invoices-list__cell--header">{{ "Description" | translate }}</div>
+      <div class="invoices-list__cell invoices-list__cell--header">{{ "Type" | translate }}</div>
+      <div class="invoices-list__cell invoices-list__cell--header">{{ "installment" | translate }}</div>
+      <div class="invoices-list__cell invoices-list__cell--header">{{ "Date" | translate }}</div>
+      <div class="invoices-list__cell invoices-list__cell--header invoices-list__cell--receipt">{{ "Receipt" | translate
+        }}</div>
+    </div>
+
+    @for (invoice of invoices; track invoice.id) {
+    @if (hasMultipleInstallments(invoice)) {
+    <!-- Collapsible group: parent row -->
+    @let parentInst = getParentInstallmentDisplay(invoice);
+    <div class="invoices-list__row">
+      <div class="invoices-list__cell">
+        <span class="invoices-list__label md:hidden">{{ "invoice number" | translate }}:</span>
+        <span>{{ invoice.invoiceNumber }}</span>
+      </div>
+      <div class="invoices-list__cell">
+        <span class="invoices-list__label md:hidden">{{ "Description" | translate }}:</span>
+        <span>{{ invoice.description }}</span>
+      </div>
+      <div class="invoices-list__cell">
+        <span class="invoices-list__label md:hidden">{{ "Type" | translate }}:</span>
+      </div>
+      <div class="invoices-list__cell">
+        <span class="invoices-list__label md:hidden">{{ "installment" | translate }}:</span>
+        <span>{{ "installment of total" | translate:{ number: parentInst.number, total: parentInst.total } }}</span>
+      </div>
+      <div class="invoices-list__cell">
+        <span class="invoices-list__label md:hidden">{{ "Date" | translate }}:</span>
+        <span>{{ invoice.installments[0].date }}</span>
+      </div>
+      <div class="invoices-list__cell invoices-list__cell--receipt">
+        <span class="invoices-list__label md:hidden">{{ "Receipt" | translate }}:</span>
+        <div class="invoices-list__receipt-actions">
+          <button type="button" (click)="toggleExpand(invoice.id)" class="invoices-list__expand-btn"
+            [attr.aria-expanded]="isExpanded(invoice.id)">
+            <img
+              [src]="isExpanded(invoice.id) ? 'app/assets/icons/collapse-open.svg' : 'app/assets/icons/collapse-close.svg'"
+              alt="" class="w-5 h-5" />
+          </button>
+          @if (invoice.invoiceLink) {
+          <a [href]="invoice.invoiceLink" target="_blank" rel="noopener noreferrer" class="invoices-list__link"
+            title="{{ 'download receipt' | translate }}">
+            <img src="app/assets/icons/download-invoice.svg" alt="{{ 'download receipt' | translate }}"
+              class="w-5 h-5" />
+          </a>
+          }
+        </div>
+      </div>
+    </div>
+    <!-- Child rows: installments (visible when expanded) -->
+    @if (isExpanded(invoice.id)) {
+    @for (inst of invoice.installments; track inst.date + inst.label) {
+    <div class="invoices-list__row invoices-list__row--nested">
+      <div class="invoices-list__cell">
+        <span class="invoices-list__label md:hidden">{{ "invoice number" | translate }}:</span>
+        <span>{{ inst.orderId || "—" }}</span>
+      </div>
+      <div class="invoices-list__cell">
+        <span class="invoices-list__label md:hidden">{{ "Description" | translate }}:</span>
+        <span>{{ "installment label" | translate:{ number: inst.label } }}</span>
+      </div>
+      <div class="invoices-list__cell">
+        <span class="invoices-list__label md:hidden">{{ "Type" | translate }}:</span>
+        @if (inst.paid) {
+        <span>{{ "Paid" | translate }}</span>
+        } @else {
+        <span class="text-[#B91C1C]">{{ "Unpaid" | translate }}</span>
+        }
+      </div>
+      <div class="invoices-list__cell">
+        <span class="invoices-list__label md:hidden">{{ "installment" | translate }}:</span>
+        <span>{{ "installment of total" | translate:{ number: inst.label, total: invoice.installments.length } }}</span>
+      </div>
+      <div class="invoices-list__cell">
+        <span class="invoices-list__label md:hidden">{{ "Date" | translate }}:</span>
+        <span>{{ inst.date }}</span>
+      </div>
+      <div class="invoices-list__cell invoices-list__cell--receipt">
+        <span class="invoices-list__label md:hidden">{{ "Receipt" | translate }}:</span>
+        @if (inst.invoiceLink) {
+        <a [href]="inst.invoiceLink" target="_blank" rel="noopener noreferrer" class="invoices-list__link"
+          title="{{ 'download receipt' | translate }}">
+          <img src="app/assets/icons/download-invoice.svg" alt="{{ 'download receipt' | translate }}" class="w-5 h-5" />
+        </a>
+        } @else if (!inst.paid && inst.isNextUnpaid) {
+        <button type="button" (click)="payNow(invoice, inst)" class="invoices-list__pay-btn"
+          [disabled]="installmentPaymentLoading()">
+          {{ "Pay Now" | translate }}
+        </button>
+        } @else {
+        <span class="invoices-list__muted">—</span>
+        }
+      </div>
+    </div>
+    }
+    }
+    } @else {
+    <!-- Single installment row -->
+    <div class="invoices-list__row">
+      <div class="invoices-list__cell">
+        <span class="invoices-list__label md:hidden">{{ "invoice number" | translate }}:</span>
+        <span>{{ invoice.installments[0].orderId || "—" }}</span>
+      </div>
+      <div class="invoices-list__cell">
+        <span class="invoices-list__label md:hidden">{{ "Description" | translate }}:</span>
+        <span>{{ invoice.description }}</span>
+      </div>
+      <div class="invoices-list__cell">
+        <span class="invoices-list__label md:hidden">{{ "Type" | translate }}:</span>
+      </div>
+      <div class="invoices-list__cell">
+        <span class="invoices-list__label md:hidden">{{ "installment" | translate }}:</span>
+        @if (!invoice.isCashPayment) {
+        <span>{{ "installment of total" | translate:{ number: invoice.installments[0].label, total:
+          invoice.installments.length } }}</span>
+        @if (invoice.installments[0].paid) {
+        <span>{{ "Paid" | translate }}</span>
+        } @else {
+        <span class="text-[#B91C1C]">{{ "Unpaid" | translate }}</span>
+        <button type="button" (click)="payNow(invoice, invoice.installments[0])" class="invoices-list__pay-btn"
+          [disabled]="installmentPaymentLoading()">
+          {{ "Pay Now" | translate }}
+        </button>
+        }
+        }
+      </div>
+      <div class="invoices-list__cell">
+        <span class="invoices-list__label md:hidden">{{ "Date" | translate }}:</span>
+        <span>{{ invoice.installments[0].date }}</span>
+      </div>
+      <div class="invoices-list__cell invoices-list__cell--receipt">
+        <span class="invoices-list__label md:hidden">{{ "Receipt" | translate }}:</span>
+        @if (invoice.invoiceLink && invoice.installments[0].hasReceipt) {
+        <a [href]="invoice.invoiceLink" target="_blank" rel="noopener noreferrer" class="invoices-list__link"
+          title="{{ 'download receipt' | translate }}">
+          <img src="app/assets/icons/download-invoice.svg" alt="{{ 'download receipt' | translate }}" class="w-5 h-5" />
+        </a>
+        } @else {
+        <span class="invoices-list__muted">—</span>
+        }
+      </div>
+    </div>
+    }
+    }
+  </div>
+</div>

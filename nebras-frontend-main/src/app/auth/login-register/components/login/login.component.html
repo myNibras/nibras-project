@@ -1,0 +1,107 @@
+<div class="min-h-screen flex flex-col py-5 items-center justify-start bg-[#F5F8FB] px-4">
+
+    <!-- Title -->
+    <h1 class="text-[#043458] text-3xl md:text-4xl font-bold mb-8">
+        {{ 'login button' | translate }}
+    </h1>
+
+    <div class="w-full max-w-md bg-white p-8 rounded-2xl shadow-lg">
+        <form [formGroup]="loginForm" (ngSubmit)="submit()" class="space-y-6">
+            <!-- Email -->
+            <div>
+                <label class="block text-[#043458] md:text-[18px] text-[16px] font-medium">
+                    {{ 'Email' | translate }}
+                </label>
+                <input type="email" formControlName="email" autocomplete="email"
+                    placeholder="{{ 'Enter your email' | translate }}"
+                    class="mt-1 w-full rounded-xl md:text-base text-[14px] text-[#545F71] border border-[#D7DEE4] px-5 py-4" />
+                <p *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched"
+                    class="text-red-600 text-sm mt-1">
+                    {{ 'Enter a valid email address.' | translate }}
+                </p>
+            </div>
+
+            <!-- Password with eye toggle -->
+            <div>
+                <label class="block text-[#043458] md:text-[18px] text-[16px] font-medium">
+                    {{ 'Password' | translate }}
+                </label>
+                <div class="mt-1 relative">
+                    <input [type]="showLoginPassword ? 'text' : 'password'" formControlName="password"
+                        autocomplete="current-password" placeholder="{{ 'Enter your password' | translate }}"
+                        class="w-full rounded-xl md:text-base text-sm text-[#545F71] border border-[#D7DEE4] px-5 py-3 ltr:pr-10 rtl:pl-10" />
+
+                    <button type="button" (click)="toggleLoginPassword()"
+                        class="absolute inset-y-0 rtl:left-3 ltr:right-3 my-auto flex items-center justify-center text-[#545F71]/80 hover:text-[#043458]"
+                        aria-label="Toggle password visibility">
+                        <!-- eye -->
+                        <svg *ngIf="!showLoginPassword" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                            <circle cx="12" cy="12" r="3" />
+                        </svg>
+
+                        <!-- eye-off -->
+                        <svg *ngIf="showLoginPassword" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3 3l18 18M10.584 10.59A3 3 0 0113.41 13.41M9.88 4.24A9.94 9.94 0 0112 4c4.477 0 8.268 2.943 9.542 7a9.98 9.98 0 01-2.102 3.368M6.61 6.61C4.7 7.81 3.3 9.67 2.458 12c1.274 4.057 5.065 7 9.542 7 1.1 0 2.165-.18 3.166-.514" />
+                        </svg>
+                    </button>
+                </div>
+
+                <p *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched"
+                    class="text-red-600 text-sm mt-1">
+                    {{ 'Password must be at least 6 characters.' | translate }}
+                </p>
+
+                <div class="mt-1 flex justify-end">
+                    <button type="button" [routerLink]="resetPasswordRoutes[storageService.siteLanguage$.value]"
+                        class="text-sm text-[#545F71] hover:text-[#043458] underline underline-offset-4 cursor-pointer">
+                        {{ 'Forgot Password?' | translate }}
+                    </button>
+                </div>
+            </div>
+
+            <!-- Submit -->
+            <button type="submit" [disabled]="!loginForm.valid || loginForm.pending || loading" class="w-full mt-3 rounded-[14px] font-bold py-3
+            bg-[#0D3C63] text-white cursor-pointer flex justify-center items-center gap-2
+            disabled:bg-gray-400 disabled:text-gray-200 disabled:cursor-not-allowed">
+                <img src="app/assets/images/shared/loader-white.gif" class="w-6" *ngIf="loading">
+                {{ 'login button' | translate }}
+            </button>
+            <p *ngIf="error_message != ''" class="text-base text-red-600">
+                {{ error_message }}
+            </p>
+            <!-- Divider + Google (only when Google is configured) -->
+            <ng-container *ngIf="googleSignInEnabled">
+                <div class="flex items-center my-6">
+                    <div class="flex-1 h-px bg-[#D7DEE4]"></div>
+                    <span class="px-4 text-sm text-[#545F71] whitespace-nowrap">
+                        {{ 'Or login via' | translate }}
+                    </span>
+                    <div class="flex-1 h-px bg-[#D7DEE4]"></div>
+                </div>
+                <button type="button" (click)="signInWithGoogle()"
+                   [disabled]="loading"
+                   class="w-full border border-[#D7DEE4] rounded-[14px] py-3
+                   flex items-center justify-center gap-3
+                   bg-white hover:bg-gray-50 transition disabled:opacity-60 disabled:cursor-not-allowed">
+                    <img src="https://www.svgrepo.com/show/475656/google-color.svg" class="w-5 h-5" alt="Google" />
+                    <span class="text-[#0D3C63] font-medium">
+                        {{ 'Google' | translate }}
+                    </span>
+                </button>
+            </ng-container>
+        </form>
+    </div>
+    <!-- Sign up under card -->
+    <p class="mt-6 text-[#545F71] text-sm">
+        {{ "Don't have an account in Nibras?" | translate }}
+        <a type="button" [routerLink]="registerRoutes[storageService.siteLanguage$.value]"
+            class="text-[#1396FD] font-semibold hover:underline ml-1">
+            {{ 'Sign Up button' | translate }}
+        </a>
+    </p>
+</div>

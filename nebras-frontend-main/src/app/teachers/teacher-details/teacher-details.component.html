@@ -1,0 +1,233 @@
+<section class="max-w-[1400px] mx-auto px-4 py-12">
+    <section class="max-w-[1400px] mx-auto px-4 py-12">
+
+        <!-- ================= SKELETON ================= -->
+        <ng-container *ngIf="loading">
+
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
+
+                <!-- LEFT CARD SKELETON -->
+                <div class="bg-[#043458] rounded-3xl p-6 w-full animate-pulse">
+
+                    <div class="flex justify-center mb-6">
+                        <div class="h-[300px] w-[240px] bg-white/20 rounded-xl"></div>
+                    </div>
+
+                    <div class="h-6 bg-white/20 rounded w-3/4 mb-6"></div>
+
+                    <div class="h-4 bg-white/20 rounded mb-3"></div>
+                    <div class="h-4 bg-white/20 rounded mb-3"></div>
+                    <div class="h-4 bg-white/20 rounded mb-3"></div>
+                    <div class="h-4 bg-white/20 rounded mb-3"></div>
+
+                </div>
+
+                <!-- RIGHT SIDE SKELETON -->
+                <div class="lg:col-span-3 animate-pulse">
+
+                    <!-- Title -->
+                    <div class="h-8 bg-gray-300 rounded w-1/3 mb-6"></div>
+
+                    <!-- Video -->
+                    <div class="w-full h-[350px] bg-gray-300 rounded-2xl mb-6"></div>
+
+                    <!-- Description -->
+                    <div class="space-y-3 mb-10">
+                        <div class="h-4 bg-gray-300 rounded w-full"></div>
+                        <div class="h-4 bg-gray-300 rounded w-5/6"></div>
+                        <div class="h-4 bg-gray-300 rounded w-4/6"></div>
+                    </div>
+
+                    <!-- Courses Title -->
+                    <div class="h-8 bg-gray-300 rounded w-1/4 mb-6"></div>
+
+                    <!-- Courses Cards -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div *ngFor="let i of [1,2]" class="bg-white rounded-xl p-4 shadow">
+
+                            <div class="h-40 bg-gray-200 rounded mb-4"></div>
+                            <div class="h-5 bg-gray-200 rounded mb-2"></div>
+                            <div class="h-4 bg-gray-200 rounded w-2/3"></div>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </ng-container>
+
+        <!-- ================= REAL CONTENT ================= -->
+        <ng-container *ngIf="!loading">
+
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
+
+                <!-- Teacher Card (English Style) -->
+                <div class="bg-[#043458] text-white rounded-3xl p-6 w-full ">
+
+                    <!-- Image -->
+                    <div class="flex justify-center mb-6">
+                        <img [src]="teacher?.image ? teacher?.image : 'app/assets/images/shared/domy-profile.png'"
+                            (error)="onImageError($event)" alt="Teacher" alt="Teacher Image"
+                            class="h-[240px] w-[240px] object-cover rounded-xl" />
+                    </div>
+
+                    <!-- Name -->
+                    <div class="text-start pb-4 border-b border-white/10">
+                        <h2 class="text-2xl font-bold">
+                            {{teacher?.name}}
+                        </h2>
+                    </div>
+
+                    <!-- Experience -->
+                    <div class="text-start py-2 gap-2 border-b border-white/10">
+                        <span class="text-l text-gray-300">{{"Years of Experience" |translate}}</span>
+                        <span class="font-bold ms-1">{{teacher?.years_of_experience}}</span>
+                    </div>
+
+                    <!-- Rating -->
+                    <div class="py-2 border-b border-white/10">
+
+                        <div class="flex items-center justify-between">
+
+                            <div class="flex items-center gap-2">
+
+                                <!-- Label -->
+                                <p class="text-gray-300 text-sm">
+                                    {{ "Rating" | translate }}
+                                </p>
+
+                                <!-- Stars -->
+                                <div class="flex items-center gap-1">
+
+                                    <ng-container *ngFor="let i of [1,2,3,4,5]">
+
+                                        <!-- FULL -->
+                                        <svg *ngIf="rating >= i" class="h-5 w-5 text-[#FD9A33]" viewBox="0 0 24 24">
+                                            <path fill="currentColor"
+                                                d="M12 17.3l-6.18 3.7 1.64-7.03L2 9.24l7.19-.61L12 2l2.81 6.63L22 9.24l-5.46 4.73L18.18 21z" />
+                                        </svg>
+
+                                        <!-- HALF -->
+                                        <span *ngIf="rating >= i - 0.5 && rating < i" class="relative h-5 w-5">
+
+                                            <!-- Gray base -->
+                                            <svg class="absolute inset-0 h-5 w-5 text-gray-400" viewBox="0 0 24 24">
+                                                <path fill="currentColor"
+                                                    d="M12 17.3l-6.18 3.7 1.64-7.03L2 9.24l7.19-.61L12 2l2.81 6.63L22 9.24l-5.46 4.73L18.18 21z" />
+                                            </svg>
+
+                                            <!-- Orange half -->
+                                            <span class="absolute inset-0 overflow-hidden"
+                                                [ngStyle]="{ 'clip-path': isArabic ? 'inset(0 0 0 50%)' : 'inset(0 50% 0 0)' }">
+
+                                                <svg class="h-5 w-5 text-[#FD9A33]" viewBox="0 0 24 24">
+                                                    <path fill="currentColor"
+                                                        d="M12 17.3l-6.18 3.7 1.64-7.03L2 9.24l7.19-.61L12 2l2.81 6.63L22 9.24l-5.46 4.73L18.18 21z" />
+                                                </svg>
+
+                                            </span>
+                                        </span>
+
+                                        <!-- EMPTY -->
+                                        <svg *ngIf="rating < i - 0.5" class="h-5 w-5 text-gray-400" viewBox="0 0 24 24">
+                                            <path fill="currentColor"
+                                                d="M12 17.3l-6.18 3.7 1.64-7.03L2 9.24l7.19-.61L12 2l2.81 6.63L22 9.24l-5.46 4.73L18.18 21z" />
+                                        </svg>
+
+                                    </ng-container>
+
+                                    <span class="text-white font-bold text-sm ms-2">
+                                        {{ rating }}
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Subjects -->
+                    <div class="flex justify-start py-2 gap-2 border-b border-white/10 text-l">
+                        <span class="text-gray-300">{{"Subjects" | translate}}</span>
+                        <span class="font-bold text-sm">{{subjects}}</span>
+                    </div>
+
+                    <!-- Students -->
+                    @if (teacher?.number_of_students != null) {
+                    <div class="flex justify-start py-2 gap-2 border-b border-white/10 text-l">
+                        <span class="text-gray-300">{{"Students" | translate}}</span>
+                        <span class="font-bold">{{teacher?.number_of_students}}</span>
+                    </div>
+                    }
+
+                    <!-- Classes -->
+                    <div class="flex justify-start py-2 gap-2 text-l">
+                        <span class="text-gray-300">{{"Classes" | translate}}</span>
+                        <span class="font-bold">{{teacher?.number_of_classes}}</span>
+                    </div>
+
+                </div>
+
+                <!-- RIGHT: Video + Description -->
+                <div class="lg:col-span-3 text-start text-[#043458]">
+                    <h1 class="text-2xl font-bold mb-6">{{"Meet the Teacher" | translate}}</h1>
+
+                    <div class="relative w-full h-[350px] rounded-2xl overflow-hidden bg-gray-300 mb-6">
+
+                        <iframe *ngIf="teacher?.video_embed_url"
+                            [src]="teacher?.video_embed_url | safeUrl"
+                            class="w-full h-full"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+
+                        <video *ngIf="!teacher?.video_embed_url && teacher?.video"
+                            [src]="teacher?.video" controls
+                            class="w-full h-full object-cover">
+                        </video>
+
+                        <!-- Fallback if no video -->
+                        <div *ngIf="!teacher?.video_embed_url && !teacher?.video" class="w-full h-full flex items-center justify-center">
+                            <button class="bg-white/80 p-6 rounded-xl">
+                                {{ "No Video Available" | translate }}
+                            </button>
+                        </div>
+
+                    </div>
+
+                    <!-- Description -->
+                    <p class="text-gray-700 text-xl leading-relaxed">
+                        {{teacher?.description}}
+                    </p>
+
+                    <ng-container *ngIf="courses.length > 0">
+                        <h1 class="text-2xl font-bold my-6">
+                            {{ "Subjects Offered" | translate }}
+                        </h1>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 h-full">
+
+                            <app-item-card *ngFor="let course of courses" [course]="course">
+                            </app-item-card>
+
+                        </div>
+
+                    </ng-container>
+
+                </div>
+
+            </div>
+
+        </ng-container>
+
+    </section>
+
+
+</section>
+
+<!-- Testimonials (same component as home, filtered by teacher) -->
+<app-testimonials class="mt-12 block" [teacherId]="teacherId" [useApiTitle]="false"/>

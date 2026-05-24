@@ -1,0 +1,59 @@
+<section *ngIf="loading || articlesList.length > 0" class="max-w-[1440px] mx-auto px-4 py-14">
+
+    <!-- SECTION TITLE -->
+    <a class="text-3xl md:text-4xl font-bold text-center cursor-pointer text-[#0B3458] block mb-5" (click)="goToArticlesPage()">
+        {{ sectionTitle || ('Articles' | translate) }}
+    </a>
+
+    <!-- SECTION DESCRIPTION -->
+    <p class="mb-5 text-center font-medium text-[#545F71] max-w-3xl mx-auto" *ngIf="sectionDescription">
+        {{ sectionDescription }}
+    </p>
+
+    <!-- SKELETON: show until response returns -->
+    <ng-container *ngIf="loading">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <!-- Skeleton Card -->
+            <div *ngFor="let i of [1,2,3]"
+                class="relative w-full h-[630px] rounded-2xl overflow-hidden bg-gray-200 animate-pulse">
+
+                <!-- Image Placeholder -->
+                <div class="absolute inset-0 bg-gray-300"></div>
+
+                <!-- Logo/Pattern Placeholder -->
+                <div class="absolute inset-0 bg-gray-400/30"></div>
+
+                <!-- Gradient Overlay -->
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-500 via-gray-500/70 to-transparent"></div>
+
+                <!-- Content -->
+                <div class="absolute bottom-0 p-6 w-full space-y-4">
+                    <!-- Title -->
+                    <div class="h-5 w-3/4 bg-gray-100 rounded"></div>
+
+                    <!-- Description -->
+                    <div class="h-4 w-full bg-gray-100 rounded"></div>
+                    <div class="h-4 w-5/6 bg-gray-100 rounded"></div>
+
+                    <!-- Read More -->
+                    <div class="flex items-center gap-2">
+                        <div class="h-4 w-20 bg-gray-100 rounded"></div>
+                        <div class="h-4 w-4 bg-gray-100 rounded"></div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </ng-container>
+
+    <!-- CONTENT: only after response returned and not empty -->
+    <ng-container *ngIf="!loading && articlesList.length > 0">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <app-article-card *ngFor="let article of articlesList.slice(0,3)" [article]="article">
+            </app-article-card>
+        </div>
+    </ng-container>
+
+</section>

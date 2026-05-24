@@ -1,0 +1,42 @@
+<section *ngIf="loading || newsList.length > 0" class="max-w-[1335px] mx-auto px-4 py-12">
+    <!-- Section Title -->
+    <a class="text-3xl md:text-4xl font-bold text-center cursor-pointer text-[#0B3458] block mb-5" (click)="goToNewsPage()">
+        {{ sectionTitle || ('Our News' | translate) }}
+    </a>
+
+    <!-- SECTION DESCRIPTION -->
+    <p class="mb-5 text-center font-medium text-[#545F71] max-w-3xl mx-auto" *ngIf="sectionDescription">
+        {{ sectionDescription }}
+    </p>
+    
+    <!-- Skeleton: show until response returns -->
+    <div *ngIf="loading" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div *ngFor="let i of [1, 2]" class="bg-white rounded-2xl shadow-md overflow-hidden animate-pulse">
+            <!-- Image -->
+            <div class="h-[260px] bg-gray-200"></div>
+
+            <div class="p-6 space-y-4">
+                <!-- Date -->
+                <div class="h-4 w-32 bg-gray-200 rounded"></div>
+
+                <!-- Title -->
+                <div class="h-5 w-3/4 bg-gray-200 rounded"></div>
+
+                <!-- Description -->
+                <div class="space-y-2">
+                    <div class="h-4 w-full bg-gray-200 rounded"></div>
+                    <div class="h-4 w-5/6 bg-gray-200 rounded"></div>
+                </div>
+
+                <!-- Link -->
+                <div class="h-4 w-24 bg-gray-200 rounded mt-4"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Real Cards: only after response returned and not empty -->
+    <div *ngIf="!loading && newsList.length > 0" class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <app-news-card *ngFor="let news of newsList.slice(0,2)" [news]="news">
+        </app-news-card>
+    </div>
+</section>

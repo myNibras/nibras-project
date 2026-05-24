@@ -1,0 +1,41 @@
+<div
+    class="max-w-[660px] bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300 h-full">
+    <!-- Image -->
+    <div class="h-[360px] w-full overflow-hidden rounded-2xl">
+        <img src={{news?.image}} alt="News image" class="w-full h-full object-cover object-center" />
+    </div>
+
+    <!-- Content -->
+    <div class="p-5 text-start">
+        <!-- Date -->
+        <div class="flex items-center gap-3 mb-5">
+            <img src="app\assets\icons\calendar.svg" alt="Calendar" class="w-7 h-7" />
+
+            <span class="text-xl font-medium text-[#545F71]">
+                {{formattedCreatedAt}}
+            </span>
+        </div>
+
+
+        <!-- Title -->
+        <h3 class="text-xl font-bold text-[#043458] mb-2 line-clamp-2">
+            {{news?.title}}
+        </h3>
+
+        <!-- Description -->
+        <p class="text-lg font-medium text-[#043458] mb-4 line-clamp-3 h-[84px]">
+            {{news?.small_description}}
+        </p>
+
+        <!-- Link -->
+        <a *ngIf="news?.id" [routerLink]="['/',storageService.siteLanguage$.value, 
+        storageService.siteLanguage$.value === 'ar'? 'تفاصيل-الخبر' : 'news-details', news?.id
+        ]" class="inline-flex items-center gap-5 text-xl font-bold text-[#063E69] cursor-pointer group">
+            {{ 'View more' | translate }}
+
+            <img src="app/assets/icons/arrow2.svg" alt="arrow"
+                class="transition-transform ltr:rotate-180 rtl:rotate-0 group-hover:translate-x-1" />
+        </a>
+
+    </div>
+</div>

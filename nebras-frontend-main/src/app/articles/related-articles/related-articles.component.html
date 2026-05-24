@@ -1,0 +1,36 @@
+<section class="max-w-full mx-auto py-14">
+
+    <!-- Section Title -->
+    <a class="text-2xl font-bold text-start text-[#0B3458] mb-5 block">
+        {{ "Articles" | translate }}
+    </a>
+
+    <!-- SKELETON -->
+    <ng-container *ngIf="loading; else content">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div *ngFor="let i of [1,2,3]"
+                class="relative w-full h-[630px] rounded-2xl overflow-hidden bg-gray-200 animate-pulse">
+
+                <div class="absolute inset-0 bg-gray-300"></div>
+
+                <div class="absolute inset-0 bg-gradient-to-t from-gray-400 via-gray-400/70 to-transparent"></div>
+
+                <div class="absolute bottom-0 p-6 w-full space-y-4">
+                    <div class="h-5 w-3/4 bg-gray-100 rounded"></div>
+                    <div class="h-4 w-full bg-gray-100 rounded"></div>
+                    <div class="h-4 w-5/6 bg-gray-100 rounded"></div>
+                    <div class="h-4 w-24 bg-gray-100 rounded"></div>
+                </div>
+            </div>
+        </div>
+    </ng-container>
+
+    <!-- REAL CONTENT -->
+    <ng-template #content>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <app-article-card *ngFor="let article of relatedArticles.slice(0,3)" [article]="article">
+            </app-article-card>
+        </div>
+    </ng-template>
+
+</section>

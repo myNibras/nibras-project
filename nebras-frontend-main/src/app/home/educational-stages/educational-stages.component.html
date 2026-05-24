@@ -1,0 +1,49 @@
+<section class="container mb-25 mx-auto">
+    <div class="mx-auto max-w-5xl px-4">
+        <!-- Heading -->
+        <ng-container *ngIf="loading; else content">
+            <!-- Title skeleton -->
+            <ngx-skeleton-loader [theme]="{ height: '36px', width: '90%', display: 'block', margin: '0 auto'
+            }">
+            </ngx-skeleton-loader>
+            <!-- Description skeleton -->
+            <ngx-skeleton-loader [theme]="{ height: '20px', width: '60%', display: 'block', margin: '20px auto 0 auto'
+            }">
+            </ngx-skeleton-loader>
+            <!-- Cards skeleton -->
+            <div class="flex flex-col md:flex-row gap-6 md:gap-5 md:max-h-[383px] mt-8">
+                <div *ngFor="let _ of skeletonCount"
+                    class="flex-1 flex flex-col rounded-xl overflow-hidden bg-white/70">
+                    <ngx-skeleton-loader [theme]="{ height: '250px', width: '100%' }"></ngx-skeleton-loader>
+                    <ngx-skeleton-loader [theme]="{ height: '56px', width: '100%' }"></ngx-skeleton-loader>
+                </div>
+            </div>
+        </ng-container>
+
+        <!-- Actual content -->
+        <ng-template #content>
+            <h2 class="text-3xl md:text-4xl font-bold text-[#043458] text-center">
+                {{ "academicLevels_section_title" | translate }}
+            </h2>
+            <p class="mt-5 text-center font-medium text-[#545F71] max-w-3xl mx-auto">
+                {{ "academicLevels_section_description" | translate }}
+            </p>
+
+            <div class="mt-8">
+                <div class="flex flex-col md:flex-row gap-6 md:gap-5 md:max-h-[383px] px-3 lg:p-0">
+                    <!-- Card -->
+                    <a [routerLink]="storageService.siteLanguage$.value === 'ar' ? ['/ar/المواد', level.slug] : ['/en/subjects', level.slug]"
+                        *ngFor="let level of academicLevels.data"
+                        class="flex-1 flex flex-col rounded-xl overflow-hidden bg-white/70 cursor-pointer transition-transform duration-300 ease-out hover:scale-102 hover:shadow-xl hover:z-10">
+                        <img [src]="level.image" alt="{{ level.title }}" class="w-full object-cover " loading="lazy" />
+                        <div class="h-14 bg-[#EEF2F6] flex items-center justify-center">
+                            <span class="text-[#043458] font-extrabold">
+                                {{ level.title }}
+                            </span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+</section>

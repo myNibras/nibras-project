@@ -1,0 +1,65 @@
+<app-hero-banner title="Cancellation and Refund Policy"></app-hero-banner>
+
+<section class="max-w-4xl mx-auto px-6 pt-8 pb-16 space-y-12">
+
+  <!-- ========== Cancellation ========== -->
+  <article>
+    <header class="mb-5 flex items-center gap-3">
+      <span class="inline-flex w-10 h-10 rounded-xl bg-[#FEE2E2] text-[#DC2626] items-center justify-center">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </span>
+      <h2 class="text-2xl md:text-3xl font-bold text-[#043458]">{{ 'Cancellation Policy' | translate }}</h2>
+    </header>
+
+    <p class="mb-5 text-[#475569] text-base md:text-[17px] leading-relaxed">
+      {{ 'Cancellation Intro' | translate }}
+    </p>
+
+    <ul class="space-y-3">
+      <li *ngFor="let key of cancellationItems"
+        class="bg-white border border-[#E1ECF5] rounded-2xl px-5 py-4 shadow-[0_3px_14px_rgba(15,23,42,0.03)]
+               hover:shadow-[0_8px_24px_rgba(15,23,42,0.06)] transition flex gap-3 items-start">
+        <span class="shrink-0 inline-flex w-2 h-2 mt-2.5 rounded-full bg-[#1396FD]"></span>
+        <p class="text-[#1f2937] text-base leading-relaxed flex-1">{{ key | translate }}</p>
+      </li>
+    </ul>
+
+    <div class="mt-6 inline-flex items-center gap-2 bg-[#F1F5F9] text-[#475569] rounded-xl px-4 py-2 text-sm font-medium">
+      {{ 'Cancellation Last update' | translate }}
+    </div>
+  </article>
+
+  <hr class="border-t border-[#E1ECF5]" />
+
+  <!-- ========== Refund ========== -->
+  <article>
+    <header class="mb-5 flex items-center gap-3">
+      <span class="inline-flex w-10 h-10 rounded-xl bg-[#DCFCE7] text-[#16A34A] items-center justify-center">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M9 14l2 2 4-4m4 4a9 9 0 11-18 0 9 9 0 0118 0z" />
+        </svg>
+      </span>
+      <h2 class="text-2xl md:text-3xl font-bold text-[#043458]">{{ 'Refund Policy' | translate }}</h2>
+    </header>
+
+    <p class="mb-5 text-[#475569] text-base md:text-[17px] leading-relaxed">
+      {{ 'Refund Intro' | translate }}
+    </p>
+
+    <ul class="space-y-3">
+      <li *ngFor="let key of refundItems"
+        class="bg-white border border-[#E1ECF5] rounded-2xl px-5 py-4 shadow-[0_3px_14px_rgba(15,23,42,0.03)]
+               hover:shadow-[0_8px_24px_rgba(15,23,42,0.06)] transition flex gap-3 items-start">
+        <span class="shrink-0 inline-flex w-2 h-2 mt-2.5 rounded-full bg-[#16A34A]"></span>
+        <p class="text-[#1f2937] text-base leading-relaxed flex-1">{{ key | translate }}</p>
+      </li>
+    </ul>
+
+    <div class="mt-6 inline-flex items-center gap-2 bg-[#F1F5F9] text-[#475569] rounded-xl px-4 py-2 text-sm font-medium">
+      {{ 'Refund Last update' | translate }}
+    </div>
+  </article>
+
+</section>

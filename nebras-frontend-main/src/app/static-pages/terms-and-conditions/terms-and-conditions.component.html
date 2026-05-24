@@ -1,0 +1,24 @@
+<app-hero-banner title="Terms and Conditions" subtitle="I acknowledge and agree"></app-hero-banner>
+
+<section class="max-w-4xl mx-auto px-6 pt-8 pb-16">
+
+  <ol class="space-y-3">
+    <li *ngFor="let key of terms; let i = index"
+      class="bg-white border border-[#E1ECF5] rounded-2xl px-5 py-4 shadow-[0_3px_14px_rgba(15,23,42,0.03)]
+             hover:shadow-[0_8px_24px_rgba(15,23,42,0.06)] transition flex gap-4 items-start">
+      <span class="shrink-0 inline-flex items-center justify-center w-8 h-8 rounded-lg bg-[#EFF6FF] text-[#1396FD] font-bold text-sm">
+        {{ i + 1 }}
+      </span>
+      <p class="text-[#1f2937] text-base md:text-[16px] leading-relaxed flex-1">
+        {{ key | translate }}
+      </p>
+    </li>
+  </ol>
+
+  <div class="mt-8 inline-flex items-center gap-2 bg-[#FFF7ED] border border-[#FED7AA] text-[#9A3412] rounded-2xl px-5 py-3 font-semibold">
+    <svg class="w-5 h-5 text-[#EA580C]" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="9" /><path stroke-linecap="round" d="M12 8v4M12 16h.01" />
+    </svg>
+    {{ 'Terms Last update' | translate }}
+  </div>
+</section>

@@ -1,0 +1,63 @@
+<div class="min-h-screen flex flex-col py-5 items-center justify-start bg-[#F5F8FB] px-4">
+
+    <!-- Page Title -->
+    <h1 class="text-[#043458] text-3xl md:text-4xl font-bold mb-8">
+        {{ 'verificationCode title' | translate }}
+    </h1>
+
+    <div class="w-full max-w-md bg-white p-8 rounded-2xl shadow-lg">
+
+        <div class="flex flex-col gap-6">
+
+            <!-- Label -->
+            <p class="text-[#043458] text-[18px] md:text-[20px] font-medium text-center">
+                {{ 'verificationCode label' | translate }}
+            </p>
+
+            <!-- OTP Inputs -->
+            <div class="flex justify-center gap-2" dir="ltr">
+                <input *ngFor="let digit of code; let i = index; trackBy: trackByIndex" #otpInput type="text"
+                    inputmode="numeric" autocomplete="one-time-code" pattern="\d*" maxlength="1" class="md:w-[60px] w-[45px] h-[55px] text-center border border-[#D7DEE4] rounded-xl
+                 focus:border-[#0D3C63] focus:ring-1 focus:ring-[#0D3C63] outline-none" [value]="code[i]"
+                    (input)="onInput($event, i)" (keydown)="onKeyDown($event, i)" (paste)="onPaste($event, i)" />
+            </div>
+
+            <!-- Countdown -->
+            <p class="text-sm text-center text-[#545F71]">
+                {{ 'verificationCode resendIn' | translate:{ seconds: countdown } }}
+            </p>
+
+            <!-- Error -->
+            <p *ngIf="errorMessage" class="text-red-600 text-center text-sm">
+                {{ errorMessage | translate }}
+            </p>
+
+            <!-- Buttons -->
+            <div class="flex flex-col gap-3">
+
+                <!-- Continue -->
+                <button (click)="onContinueClick()" [disabled]="loading" class="w-full rounded-[14px] bg-[#0D3C63] text-white py-3 font-bold
+                 disabled:bg-gray-400 disabled:text-gray-200 disabled:cursor-not-allowed">
+
+                    <img src="app/assets/images/shared/loader-white.gif" class="w-6 mx-auto" *ngIf="loading">
+
+                    <span *ngIf="!loading">
+                        {{ 'continue' | translate }}
+                    </span>
+                </button>
+
+                <!-- Resend -->
+                <button type="button" (click)="resendOtp()" [disabled]="countdown > 0"
+                    class="w-full rounded-[14px] py-3 font-semibold border border-[#D7DEE4]" [ngClass]="countdown > 0 
+            ? 'bg-gray-200 text-gray-500'
+            : 'bg-white text-[#0D3C63] hover:bg-gray-50'">
+
+                    {{ 'Resend Code' | translate }}
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>

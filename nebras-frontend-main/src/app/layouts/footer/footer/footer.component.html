@@ -1,0 +1,96 @@
+<footer class="relative overflow-hidden bg-gradient-to-r from-[#09528A] to-[#043458] text-white rounded-t-[50px] ">
+    <!-- Decorative gradient shape -->
+    <img src="app/assets/images/layouts/union-logo.svg" alt="" aria-hidden="true" class="pointer-events-none select-none absolute lg:left-0 left-[-12%] bottom-0 z-0
+            h-full w-auto max-w-none" />
+
+    <div class="relative z-10 max-w-[1440px] mx-auto px-6 py-10 lg:py-12 ">
+        <!-- main row -->
+        <div class="flex flex-col gap-10 text-lg font-normal
+                md:grid md:grid-cols-3 md:grid-rows-[auto_auto] md:gap-8
+                lg:flex lg:flex-row px-2 lg:justify-between">
+
+            <!-- Brand (always top) -->
+            <div class="order-1 md:col-span-3 md:row-start-1 
+            lg:w-2/5 xl:w-1/4">
+                <div class="flex items-center gap-3 mb-8">
+                    <img [src]="translateService.currentLang.startsWith('ar')
+                ? 'app/assets/images/layouts/ar-logo-white.png'
+                : 'app/assets/images/layouts/en-logo-white.png'" class="h-[95px] w-auto" alt="Scholars Factory" />
+                </div>
+                <p class="mt-4 text-xl md:text-2xl text-white/85">
+                    {{ 'An advanced interactive' | translate }}
+                </p>
+            </div>
+
+            <!-- Links -->
+            <div class="order-2 md:col-start-1 md:row-start-2 flex flex-col gap-6">
+                <h3 class="text-[#FD9A33] font-bold text-2xl">{{ "Links" | translate }}</h3>
+                <a [routerLink]="subjrctsRoutes[storageService.siteLanguage$.value]" class="hover:underline">{{
+                    "Subjects" | translate }}</a>
+                <a [routerLink]="aboutUsRoutes[storageService.siteLanguage$.value]" class="hover:underline cursor-pointer">{{
+                    "About Us" |
+                    translate
+                    }}</a>
+                <a [routerLink]="contactUsRoutes[storageService.siteLanguage$.value]"
+                    class="hover:underline cursor-pointer">{{ "Contact Us" |
+                    translate
+                    }}</a>
+                <a [routerLink]="faqRoutes[storageService.siteLanguage$.value]" class="hover:underline">{{
+                    "Frequently Asked Questions" | translate }}</a>
+                <a [routerLink]="careersRoutes[storageService.siteLanguage$.value]"
+                    class="hover:underline cursor-pointer">{{ "Our Careers" | translate }}</a>
+            </div>
+
+            <!-- Support -->
+            <div class="order-3 md:col-start-2 md:row-start-2 flex flex-col gap-6">
+                <h3 class="text-[#FD9A33] font-bold text-2xl">{{ "Nibras Polices" | translate }}</h3>
+                <a [routerLink]="PrivacyPolicyRoutes[storageService.siteLanguage$.value]" class="hover:underline">{{
+                    "Privacy Policy" | translate }}</a>
+                <a [routerLink]="termsRoutes[storageService.siteLanguage$.value]" class="hover:underline">
+                    {{ "Terms and Conditions of Use" | translate }}</a>
+                <a [routerLink]="CancellationAndRefundRoutes[storageService.siteLanguage$.value]"
+                    class="hover:underline">{{ "Cancellation and Refund Policy" | translate }}</a>
+            </div>
+
+            <!-- Social -->
+            <div class="order-4 md:col-start-3 md:row-start-2 flex flex-col gap-6 md:items-end
+            lg:w-1/5 xl:w-auto">
+                <div class="font-bold text-[#FD9A33] text-2xl md:text-right">
+                    {{ "Follow us on social media" | translate }}
+                </div>
+                <div class="flex gap-3 md:justify-end">
+                    <a href="https://youtube.com/@mynibras?si=v0XT9Y74VjPVa2Gj" target="_blank" rel="noopener"
+                        class="grid place-items-center h-11 w-11 rounded-full hover:bg-white/10 transition">
+                        <img src="app/assets/icons/youtube.svg" alt="YouTube" class="h-full w-full">
+                    </a>
+
+                    <a href="https://www.instagram.com/nibrasqatar?igsh=MThrcXZhOWprM21yZg==" target="_blank"
+                        rel="noopener"
+                        class="grid place-items-center h-11 w-11 rounded-full hover:bg-white/10 transition">
+                        <img src="app/assets/icons/instagram.svg" alt="Instagram" class="h-full w-full">
+                    </a>
+                    <a href="https://www.facebook.com/share/16zZrzkvm3/" target="_blank" rel="noopener"
+                        class="grid place-items-center h-11 w-11 rounded-full hover:bg-white/10 transition">
+                        <img src="app/assets/icons/facebook.svg" alt="Facebook" class="h-full w-full">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Payment row (below grid in tablet, separate row in mobile) -->
+        <div class=" ml-2 md:mt-1 mt-10 flex justify-start md:justify-end ">
+            <div class="flex flex-row gap-4 items-center">
+                <img src="app/assets/images/layouts/mastercard.svg" class="lg:h-[55.3px] h-[45.3px]" alt="Mastercard">
+                <img src="app/assets/images/layouts/visa.svg" class="lg:h-[32.6px] h-[27.6px]" alt="VISA">
+            </div>
+        </div>
+
+        <!-- divider -->
+        <div class="mt-8 h-px bg-white/20"></div>
+
+        <!-- bottom bar -->
+        <div class="pt-7 flex flex-col md:flex-row items-center justify-center gap-4 text-base text-white/85">
+            <div class="text-sm md:text-base">{{ "All rights reserved" | translate:{year: currentYear} }}</div>
+        </div>
+    </div>
+</footer>

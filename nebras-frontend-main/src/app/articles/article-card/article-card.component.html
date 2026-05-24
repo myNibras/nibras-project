@@ -1,0 +1,32 @@
+<div class="relative w-full h-[630px] rounded-2xl overflow-hidden group ">
+    <!-- Background Image -->
+    <img src={{article?.image}} alt="Article background" class="absolute inset-0 w-full h-full object-cover" />
+
+    <!-- Logo / Pattern Overlay -->
+    <img src="app/assets/images/articles/union-Logo.svg" alt="Logo overlay"
+        class="absolute top-0 rtl:left-0 ltr:right-0 h-full w-auto object-contain opacity-80 pointer-events-none " />
+
+    <!-- Gradient Overlay -->
+    <div class="absolute inset-0 bg-gradient-to-t from-[#043458] via-[#043458]/80 to-transparent"></div>
+
+    <!-- Content -->
+    <div class="relative z-10 h-full flex flex-col justify-end p-6 text-white text-start">
+        <!-- Title -->
+        <h3 class="text-lg md:text-xl font-bold mb-3 leading-tight">
+            {{article?.title}}
+        </h3>
+
+        <!-- Description -->
+        <p class="text-base md:text-lg text-white/90 font-medium mb-5 line-clamp-2">
+            {{article?.small_description}}
+        </p>
+
+        <!-- Read More -->
+        <a *ngIf="article?.id" [routerLink]="['/',storageService.siteLanguage$.value, 
+        storageService.siteLanguage$.value === 'ar'? 'تفاصيل-المقال' : 'article-details', article?.id
+        ]" class="flex items-center gap-2 text-xl font-medium w-fit cursor-pointer">
+            {{"Read more" | translate}}
+            <img src="app/assets/images/articles/arrow.svg" class="transition-transform ltr:rotate-180" />
+        </a>
+    </div>
+</div>
